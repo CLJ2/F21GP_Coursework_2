@@ -1423,6 +1423,7 @@ GameObject:
   - component: {fileID: 136275810328743533}
   - component: {fileID: 136275810328743534}
   - component: {fileID: 136275810328743535}
+  - component: {fileID: 136275810328743536}
   m_Layer: 0
   m_Name: FireWizard
   m_TagString: Untagged
@@ -2739,6 +2740,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbd380292771314da2f8c42a09f67c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &136275810328743536
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953271400422973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.877275
+  m_Radius: 0.3271355
+  m_SlopeLimit: 45
+  m_StepOffset: 0.25
+  m_SkinWidth: 0.02
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0.99, z: 0}
 --- !u!137 &137047875371989523
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
