@@ -61,9 +61,11 @@ public class ThirdPersonController : MonoBehaviour
     public GameObject CinemachineCameraTarget;
 
     [Tooltip("How far in degrees can you move the camera up")]
+    [SerializeField]
     private float TopClamp = 70.0f;
 
     [Tooltip("How far in degrees can you move the camera down")]
+    [SerializeField]
     private float BottomClamp = -30.0f;
 
     // cinemachine
@@ -111,6 +113,7 @@ public class ThirdPersonController : MonoBehaviour
     void Start()
     {
         cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+        controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         input = GetComponent<PlayerMovementInputs>();
 

@@ -14,6 +14,9 @@ public class PlayerMovementInputs : MonoBehaviour
     private bool jump;
     private bool sprint;
 
+    public bool cursorLocked = true;
+    public bool cursorInputForLook = true;
+
     //These On functions recieve data from the input manager and store it
     public void OnMove(InputValue value)
     {
@@ -33,6 +36,16 @@ public class PlayerMovementInputs : MonoBehaviour
     public void OnSprint(InputValue value)
     {
         sprint = value.isPressed;
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        SetCursorState(cursorLocked);
+    }
+
+    private void SetCursorState(bool newState)
+    {
+        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
     }
 
     //Getters allow other code to access the information in this object
