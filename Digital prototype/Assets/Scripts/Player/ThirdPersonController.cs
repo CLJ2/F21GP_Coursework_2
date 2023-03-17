@@ -87,7 +87,6 @@ public class ThirdPersonController : MonoBehaviour
     private int animIDGrounded;
     private int animIDJump;
     private int animIDFreeFall;
-    private int animIDMotionSpeed;
 
     //Other components
     private Animator animator;
@@ -111,7 +110,7 @@ public class ThirdPersonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cinemachineTargetYaw = CinemachineCameraTarget.transform.roation.eulerAngles.y;
+        cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
         animator = GetComponent<Animator>();
         input = GetComponent<PlayerMovementInputs>();
 
@@ -143,7 +142,6 @@ public class ThirdPersonController : MonoBehaviour
         animIDGrounded = Animator.StringToHash("Grounded");
         animIDJump = Animator.StringToHash("Jump");
         animIDFreeFall = Animator.StringToHash("FreeFall");
-        animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
     }
 
     /*
@@ -166,10 +164,10 @@ public class ThirdPersonController : MonoBehaviour
     private void CameraRotation()
     {
         // if there is an input
-        if (input.look.sqrMagnitude >= threshold)
+        if (input.GetLook().sqrMagnitude >= THRESHOLD)
         {
-            cinemachineTargetYaw += input.look.x;
-            cinemachineTargetPitch += input.look.y;
+            cinemachineTargetYaw += input.GetLook().x;
+            cinemachineTargetPitch += input.GetLook().y;
         }
 
         // clamp our rotations so our values are limited 360 degrees
@@ -187,11 +185,11 @@ public class ThirdPersonController : MonoBehaviour
     private void Move()
     {
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
+        float targetSpeed = input.GetSprint() ? SprintSpeed : MoveSpeed;
 
         // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
         // if there is no input, set the target speed to 0
-        if (input.move == Vector2.zero)
+        if (input.GetMove() == Vector2.zero)
         {
             targetSpeed = 0.0f;
         }
@@ -223,11 +221,11 @@ public class ThirdPersonController : MonoBehaviour
         }
 
         // normalise input direction
-        Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+        Vector3 inputDirection = new Vector3(input.GetMove().x, 0.0f, input.GetMove().y).normalized;
 
         // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
         // if there is a move input rotate player when the player is moving
-        if (input.move != Vector2.zero)
+        if (input.GetMove() != Vector2.zero)
         {
             targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
             float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
@@ -244,6 +242,99 @@ public class ThirdPersonController : MonoBehaviour
 
         // update animator
         animator.SetFloat(animIDSpeed, animationBlend);
-        animator.SetFloat(animIDMotionSpeed, inputMagnitude);
+    }
+
+    /* This handles Jumping and gravity (Obviously)
+	* If on the ground and jump pressed and not jumped recently, increase vertical velocity
+	* Otherwise  if on ground lower jump cooldown
+	* 
+	* If not on ground then potentially enter falling state
+	* 
+	* Finally apply gravity effects to vertical velocity
+	*/
+    private void JumpAndGravity()
+    {
+        if (Grounded)
+        {
+            // reset the fall timeout timer
+            fallTimeoutDelta = FallTimeout;
+            
+            //Update animator
+            animator.SetBool(animIDJump, false);
+            animator.SetBool(animIDFreeFall, false);
+
+            // stop our velocity dropping infinitely when grounded
+            if (verticalVelocity < 0.0f)
+            {
+                verticalVelocity = -2f;
+            }
+
+            // Jump
+            if (input.GetJump() && jumpTimeoutDelta <= 0.0f)
+            {
+                // the square root of H * -2 * G = how much velocity needed to reach desired height
+                verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+                // update animator
+                animator.SetBool(animIDJump, true);
+            }
+
+            // jump timeout
+            if (jumpTimeoutDelta >= 0.0f)
+            {
+                jumpTimeoutDelta -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            // reset the jump timeout timer
+            jumpTimeoutDelta = JumpTimeout;
+
+            // fall timeout
+            if (fallTimeoutDelta >= 0.0f)
+            {
+                fallTimeoutDelta -= Time.deltaTime;
+            }
+            else
+            {
+                // update animator
+                animator.SetBool(animIDFreeFall, true);
+            }
+
+            // if we are not grounded, do not jump
+            input.SetJump(false);
+        }
+
+        // apply gravity over time if under terminal
+        if (verticalVelocity < terminalVelocity)
+        {
+            verticalVelocity += Gravity * Time.deltaTime;
+        }
+    }
+
+    /*
+	* Clamps the camera angle to prevent unreasonable movement
+	* It effectivley limits how much it can turn vertically
+	*/
+    private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+    {
+        if (lfAngle < -360f) lfAngle += 360f;
+        if (lfAngle > 360f) lfAngle -= 360f;
+        return Mathf.Clamp(lfAngle, lfMin, lfMax);
+    }
+
+    /*
+	* This adds visualisation for the ground collider
+	* when the object is selected
+	*/
+    private void OnDrawGizmosSelected()
+    {
+        Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
+        Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
+
+        Gizmos.color = Grounded ? transparentGreen : transparentRed;
+
+        // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+        Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
     }
 }

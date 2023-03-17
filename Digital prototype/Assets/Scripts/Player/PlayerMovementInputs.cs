@@ -55,4 +55,9 @@ public class PlayerMovementInputs : MonoBehaviour
     {
         return sprint;
     }
+
+    public void SetJump(bool value)
+    {
+        jump = value;
+    }
 }
