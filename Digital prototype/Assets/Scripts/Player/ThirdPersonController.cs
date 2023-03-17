@@ -125,7 +125,15 @@ public class ThirdPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        JumpAndGravity();
+        GroundedCheck();
+        Move();
+    }
+
+    //Called after update has finished
+    private void LateUpdate()
+    {
+        CameraRotation();
     }
 
     //Sets all animation parameters to ID's for faster comparison
@@ -136,5 +144,106 @@ public class ThirdPersonController : MonoBehaviour
         animIDJump = Animator.StringToHash("Jump");
         animIDFreeFall = Animator.StringToHash("FreeFall");
         animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+    }
+
+    /*
+	*Check if on ground by checking if character collides with ground
+	*This is done using a spherical collider at the base of the character
+	*/
+    private void GroundedCheck()
+    {
+        // set sphere position, with offset
+        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+        Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+
+        // update animator
+        animator.SetBool(animIDGrounded, Grounded);
+    }
+
+    /*
+	* Rotates the camera based on mouse input using the cinemachine package
+    */
+    private void CameraRotation()
+    {
+        // if there is an input
+        if (input.look.sqrMagnitude >= threshold)
+        {
+            cinemachineTargetYaw += input.look.x;
+            cinemachineTargetPitch += input.look.y;
+        }
+
+        // clamp our rotations so our values are limited 360 degrees
+        cinemachineTargetYaw = ClampAngle(cinemachineTargetYaw, float.MinValue, float.MaxValue);
+        cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
+
+        // Cinemachine will follow this target
+        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch, cinemachineTargetYaw, 0.0f);
+    }
+
+    /*Calculates speed and direction for characters movement
+	* Looks at current speed and applies acceleration or decelration if neccesarry
+	* Then looks at direction of speed and moves the player
+	*/
+    private void Move()
+    {
+        // set target speed based on move speed, sprint speed and if sprint is pressed
+        float targetSpeed = input.sprint ? SprintSpeed : MoveSpeed;
+
+        // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+        // if there is no input, set the target speed to 0
+        if (input.move == Vector2.zero)
+        {
+            targetSpeed = 0.0f;
+        }
+
+        // a reference to the players current horizontal velocity
+        float currentHorizontalSpeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
+
+        float speedOffset = 0.1f;
+
+        // accelerate or decelerate to target speed
+        if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
+        {
+            // creates curved result rather than a linear one which provides a more natural speed change
+            // note T in Lerp is clamped, so we don't need to clamp our speed
+            speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed, Time.deltaTime * SpeedChangeRate);
+
+            // round speed to 3 decimal places
+            speed = Mathf.Round(speed * 1000f) / 1000f;
+        }
+        else
+        {
+            speed = targetSpeed;
+        }
+
+        animationBlend = Mathf.Lerp(animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
+        if (animationBlend < 0.01f)
+        {
+            animationBlend = 0f;
+        }
+
+        // normalise input direction
+        Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+        // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+        // if there is a move input rotate player when the player is moving
+        if (input.move != Vector2.zero)
+        {
+            targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
+            float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
+
+            // rotate to face input direction relative to camera position
+            transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+        }
+
+
+        Vector3 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
+
+        // move the player
+        controller.Move(targetDirection.normalized * (speed * Time.deltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
+
+        // update animator
+        animator.SetFloat(animIDSpeed, animationBlend);
+        animator.SetFloat(animIDMotionSpeed, inputMagnitude);
     }
 }
