@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ThirdPersonController : MonoBehaviour
 {
@@ -88,15 +89,52 @@ public class ThirdPersonController : MonoBehaviour
     private int animIDFreeFall;
     private int animIDMotionSpeed;
 
+    //Other components
+    private Animator animator;
+    private CharacterController controller;
+    private PlayerMovementInputs input;
+    private GameObject mainCamera;
+
+    //Constants
+    private const float THRESHOLD = 0.01f; //For camera movement
+
+    //Awake is called when the script instance is first loaded
+    private void Awake()
+    {
+        // get a reference to our main camera
+        if (mainCamera == null)
+        {
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        cinemachineTargetYaw = CinemachineCameraTarget.transform.roation.eulerAngles.y;
+        animator = GetComponent<Animator>();
+        input = GetComponent<PlayerMovementInputs>();
+
+        AssignAnimationIDs();
+
+        //Reset timeouts at the start
+        jumpTimeoutDelta = JumpTimeout;
+        fallTimeoutDelta = FallTimeout;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    //Sets all animation parameters to ID's for faster comparison
+    private void AssignAnimationIDs()
+    {
+        animIDSpeed = Animator.StringToHash("Speed");
+        animIDGrounded = Animator.StringToHash("Grounded");
+        animIDJump = Animator.StringToHash("Jump");
+        animIDFreeFall = Animator.StringToHash("FreeFall");
+        animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
     }
 }
