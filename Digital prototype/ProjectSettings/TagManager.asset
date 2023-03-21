@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Fire
+  - Lightning
   layers:
   - Default
   - TransparentFX
