@@ -42,6 +42,7 @@ public class lightning : MonoBehaviour
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
+        //get reference to lightning end object (this is to do with the way the asset functions)
         if (lightningEndObj == null) {
             lightningEndObj = GameObject.FindGameObjectWithTag("Lightning");
         }
@@ -58,6 +59,7 @@ public class lightning : MonoBehaviour
         AssignAnimationIDs();
         animator = GetComponent<Animator>();
 
+        //input sick custom audio
         audio = GetComponent<AudioSource>();
         audio.volume = 0.3f;
     }
@@ -67,8 +69,10 @@ public class lightning : MonoBehaviour
     {
         if(input.GetUseAbility() == true)
         {
+            
             if (abilityTimeoutDelta <= 0.0f)
             {
+                StartCoroutine(RotateOverTime());
                 animator.SetBool(animIDAbility, true);
                 abilityTimeoutDelta = lightningBoltCooldown;
                 StartCoroutine(throwLightningBolt());
@@ -97,6 +101,7 @@ public class lightning : MonoBehaviour
         animIDAbility = Animator.StringToHash("UseAbility");
     }
 
+    // shoots lightning bolt
     IEnumerator throwLightningBolt()
     {
         yield return new WaitForSeconds(lightningBoltDelay);
@@ -107,7 +112,7 @@ public class lightning : MonoBehaviour
         
         GameObject current = GameObject.Instantiate(lightningBolt);
         current.GetComponent<LightningBoltScript>().StartObject = transform.gameObject;
-        //current.GetComponent<LightningBoltScript>().EndObject = 
+        
         current.GetComponent<LightningBoltScript>().StartPosition = new Vector3(current.transform.position.x + 0.3f, current.transform.position.y + lightningBoltHeight, current.transform.position.z + 0.3f);
 
         current.transform.position = transform.position + (positionAdjustment * lightningBoltForwardPosition);
@@ -119,6 +124,21 @@ public class lightning : MonoBehaviour
         //current.GetComponent<LightningBoltScript>().EndPosition = new Vector3(lightningEndObj.transform.position.x, lightningEndObj.transform.position.y + lightningBoltHeight, lightningEndObj.transform.position.z);
         current.GetComponent<LightningBoltScript>().EndObject = lightningEndObj;
        
+       // cleaning up cloned bolts
         Destroy(current, 0.3f);
+    }
+
+    // Rotates the player to face the camera direction smoothly
+    IEnumerator RotateOverTime() {
+        float timer = 0.0f;
+        Vector3 fwd = new Vector3(transform.localEulerAngles.x, Camera.main.transform.localEulerAngles.y, transform.localEulerAngles.z);
+        while (timer < 0.5f) {
+            timer += Time.deltaTime;
+            float t = timer / 0.5f;
+            t = t * t * t *(t *(6f *t -15f) + 10f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(fwd), t);
+            yield return null;
+        }
+        yield return null;
     }
 }
