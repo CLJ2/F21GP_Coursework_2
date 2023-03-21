@@ -13,6 +13,7 @@ public class PlayerMovementInputs : MonoBehaviour
     private Vector2 look;
     private bool jump;
     private bool sprint;
+    private bool useAbility;
 
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
@@ -36,6 +37,11 @@ public class PlayerMovementInputs : MonoBehaviour
     public void OnSprint(InputValue value)
     {
         sprint = value.isPressed;
+    }
+
+    public void OnUseAbility(InputValue value)
+    {
+        useAbility = value.isPressed;
     }
 
     private void OnApplicationFocus(bool hasFocus)
@@ -69,8 +75,18 @@ public class PlayerMovementInputs : MonoBehaviour
         return sprint;
     }
 
+    public bool GetUseAbility()
+    {
+        return useAbility;
+    }
+
     public void SetJump(bool value)
     {
         jump = value;
+    }
+
+    public void SetUseAbility(bool value)
+    {
+        useAbility = value;
     }
 }
