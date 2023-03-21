@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class skeleton_ai : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Serialize]
+    private UnityEngine.AI.NavMeshAgent agent;
+
+    //Call coroutines here that are to be running continueously
+    void Awake()
     {
-        
+        StartCoroutine(Behaviour());
     }
 
-    // Update is called once per frame
-    void Update()
+
+    
+    private IEnumerator Behaviour()
     {
-        
+
     }
+
 }
