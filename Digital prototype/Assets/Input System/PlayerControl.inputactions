@@ -1,5 +1,5 @@
 {
-    "name": "Digital prototype",
+    "name": "PlayerControl",
     "maps": [
         {
             "name": "Player",
@@ -47,6 +47,15 @@
                     "id": "818c05b3-5e17-4ccf-9b9f-1c321b214051",
                     "expectedControlType": "Button",
                     "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hotbar",
+                    "type": "Button",
+                    "id": "89cf23b5-1473-4b97-9730-f1e6a7ca8726",
+                    "expectedControlType": "Button",
+                    "processors": "Scale",
                     "interactions": "",
                     "initialStateCheck": false
                 }
@@ -192,6 +201,39 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "UseAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ffdb7d1b-f0de-4bf6-b628-6f8986d040df",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "Scale(factor=0)",
+                    "groups": "",
+                    "action": "Hotbar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c27b927-2818-443c-811f-57177f7dda95",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "Hotbar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32a229de-7dcd-4ee5-985f-6449cad8bbd4",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "Hotbar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

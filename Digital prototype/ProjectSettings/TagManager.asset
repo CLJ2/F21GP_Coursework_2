@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Fire
+  - FollowCamera
   layers:
   - Default
   - TransparentFX

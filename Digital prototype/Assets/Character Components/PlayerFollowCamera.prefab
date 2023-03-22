@@ -64,7 +64,7 @@ MonoBehaviour:
   CameraDistance: 4
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 449
   IgnoreTag: Player
   CameraRadius: 0.15
   DampingIntoCollision: 0
@@ -79,9 +79,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5546923297733700400}
   - component: {fileID: 5546923297733700401}
+  - component: {fileID: 1887812484313470861}
   m_Layer: 0
   m_Name: PlayerFollowCamera
-  m_TagString: Untagged
+  m_TagString: FollowCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,3 +141,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 5546923297651878317}
+--- !u!114 &1887812484313470861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5546923297733700402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af9aa5cbb33abb40889973ffd4055a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterTransforms:
+  - {fileID: 0}
+  - {fileID: 0}
