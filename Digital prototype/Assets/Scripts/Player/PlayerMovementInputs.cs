@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +13,7 @@ public class PlayerMovementInputs : MonoBehaviour
     private bool jump;
     private bool sprint;
     private bool useAbility;
+    private int characterSelection;
 
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
@@ -42,6 +42,11 @@ public class PlayerMovementInputs : MonoBehaviour
     public void OnUseAbility(InputValue value)
     {
         useAbility = value.isPressed;
+    }
+
+    public void OnHotbar(InputValue value)
+    {
+        characterSelection = Convert.ToInt32(value.Get());
     }
 
     private void OnApplicationFocus(bool hasFocus)
@@ -78,6 +83,11 @@ public class PlayerMovementInputs : MonoBehaviour
     public bool GetUseAbility()
     {
         return useAbility;
+    }
+
+    public int GetCharacterSelection()
+    {
+        return characterSelection;
     }
 
     public void SetJump(bool value)
