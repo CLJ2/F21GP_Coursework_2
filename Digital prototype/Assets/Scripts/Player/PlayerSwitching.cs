@@ -6,7 +6,7 @@ using Cinemachine;
 public class PlayerSwitching : MonoBehaviour
 {
     [Header("Characters available for switching")]
-    [Tooltip("This contains the transforms of all characters that can be switched to")]
+    [Tooltip("This contains the transforms of all characters that can be switched to. Element 0 corresponds to number 1, etc")]
     [SerializeField]
     private Transform[] characterTransforms = new Transform[2];
 
@@ -23,6 +23,7 @@ public class PlayerSwitching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        int selection = input.GetCharacterSelection();
+        virtualCamera.Follow = characterTransforms[selection];
     }
 }

@@ -1,5 +1,5 @@
 {
-    "name": "Digital prototype",
+    "name": "PlayerMovement",
     "maps": [
         {
             "name": "Player",
@@ -47,15 +47,6 @@
                     "id": "818c05b3-5e17-4ccf-9b9f-1c321b214051",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar",
-                    "type": "Button",
-                    "id": "ea7bed03-23d8-448c-b33b-43a13b768e00",
-                    "expectedControlType": "Button",
-                    "processors": "Scale",
                     "interactions": "",
                     "initialStateCheck": false
                 }
@@ -201,28 +192,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "UseAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2d874060-bf6c-4f65-8df2-b7e59115a5c9",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "Scale(factor=0)",
-                    "groups": "",
-                    "action": "Hotbar",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e011bf56-fc81-4529-915b-266eb527c26f",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "Scale",
-                    "groups": "",
-                    "action": "Hotbar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
