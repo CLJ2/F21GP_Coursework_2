@@ -13,7 +13,10 @@ public class PlayerMovementInputs : MonoBehaviour
     private bool jump;
     private bool sprint;
     private bool useAbility;
+    [Tooltip("This must equal the position of this wizard in follow camera array at start")]
+    [SerializeField]
     private int characterSelection;
+    private bool switchNeeded = false;
 
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
@@ -46,7 +49,12 @@ public class PlayerMovementInputs : MonoBehaviour
 
     public void OnHotbar(InputValue value)
     {
-        characterSelection = Convert.ToInt32(value.Get());
+        int latestSelection = Convert.ToInt32(value.Get());
+        if (latestSelection != characterSelection)
+        {
+            characterSelection = latestSelection;
+            switchNeeded = true;
+        }
     }
 
     private void OnApplicationFocus(bool hasFocus)
@@ -90,6 +98,11 @@ public class PlayerMovementInputs : MonoBehaviour
         return characterSelection;
     }
 
+    public bool GetSwitchNeeded()
+    {
+        return switchNeeded;
+    }
+
     public void SetJump(bool value)
     {
         jump = value;
@@ -98,5 +111,15 @@ public class PlayerMovementInputs : MonoBehaviour
     public void SetUseAbility(bool value)
     {
         useAbility = value;
+    }
+
+    public void SetSwitchNeeded(bool value)
+    {
+        switchNeeded = value;
+    }
+
+    public void SetCharacterSelection(int value)
+    {
+        characterSelection = value;
     }
 }

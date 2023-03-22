@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.InputSystem;
 
 public class PlayerSwitching : MonoBehaviour
 {
     [Header("Characters available for switching")]
     [Tooltip("This contains the transforms of all characters that can be switched to. Element 0 corresponds to number 1, etc")]
     [SerializeField]
-    private Transform[] characterTransforms = new Transform[2];
+    private GameObject[] characters = new GameObject[2];
 
     private CinemachineVirtualCamera virtualCamera;
     private PlayerMovementInputs input;
@@ -17,13 +18,12 @@ public class PlayerSwitching : MonoBehaviour
     void Start()
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        input = GetComponent<PlayerMovementInputs>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void switchCharacter(int selection)
     {
-        int selection = input.GetCharacterSelection();
-        virtualCamera.Follow = characterTransforms[selection];
+        characters[selection].GetComponent<PlayerInput>().enabled = true;
+        characters[selection].GetComponent<PlayerMovementInputs>().SetCharacterSelection(selection);
+        virtualCamera.Follow = characters[selection].transform.GetChild(2);
     }
 }

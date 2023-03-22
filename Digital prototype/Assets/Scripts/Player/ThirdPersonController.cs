@@ -95,6 +95,7 @@ public class ThirdPersonController : MonoBehaviour
     private CharacterController controller;
     private PlayerMovementInputs input;
     private GameObject mainCamera;
+    private GameObject playerFollowCamera;
 
     //Constants
     private const float THRESHOLD = 0.01f; //For camera movement
@@ -106,6 +107,10 @@ public class ThirdPersonController : MonoBehaviour
         if (mainCamera == null)
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+        if (playerFollowCamera == null)
+        {
+            playerFollowCamera = GameObject.FindGameObjectWithTag("FollowCamera");
         }
     }
 
@@ -127,6 +132,7 @@ public class ThirdPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SwitchCharacter();
         JumpAndGravity();
         GroundedCheck();
         Move();
@@ -145,6 +151,19 @@ public class ThirdPersonController : MonoBehaviour
         animIDGrounded = Animator.StringToHash("Grounded");
         animIDJump = Animator.StringToHash("Jump");
         animIDFreeFall = Animator.StringToHash("FreeFall");
+    }
+
+    /*
+     * Switches the character if a change happens
+     */
+    private void SwitchCharacter()
+    {
+        if (input.GetSwitchNeeded())
+        {
+            input.SetSwitchNeeded(false);
+            GetComponent<PlayerInput>().enabled = false;
+            playerFollowCamera.gameObject.SendMessage("switchCharacter", input.GetCharacterSelection());
+        }
     }
 
     /*
