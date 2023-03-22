@@ -9,7 +9,7 @@ public class PlayerSwitching : MonoBehaviour
     [Header("Characters available for switching")]
     [Tooltip("This contains the transforms of all characters that can be switched to. Element 0 corresponds to number 1, etc")]
     [SerializeField]
-    private GameObject[] characters = new GameObject[2];
+    private GameObject[] characters = new GameObject[3];
 
     private CinemachineVirtualCamera virtualCamera;
     private PlayerMovementInputs input;
