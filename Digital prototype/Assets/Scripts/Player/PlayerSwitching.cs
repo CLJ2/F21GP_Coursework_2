@@ -12,7 +12,6 @@ public class PlayerSwitching : MonoBehaviour
     private GameObject[] characters = new GameObject[3];
 
     private CinemachineVirtualCamera virtualCamera;
-    private PlayerMovementInputs input;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +19,11 @@ public class PlayerSwitching : MonoBehaviour
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
+    //Switches characters based on input and array of characters set in unity
     public void switchCharacter(int selection)
     {
-        characters[selection].GetComponent<PlayerInput>().enabled = true;
-        characters[selection].GetComponent<PlayerMovementInputs>().SetCharacterSelection(selection);
-        virtualCamera.Follow = characters[selection].transform.GetChild(2);
+        characters[selection].GetComponent<PlayerInput>().enabled = true; //Enalbe control of character swapping too
+        characters[selection].GetComponent<PlayerMovementInputs>().SetCharacterSelection(selection); //Let character know its selected (for swapping purposes)
+        virtualCamera.Follow = characters[selection].transform.GetChild(2); //Tell camera to follow new character
     }
 }

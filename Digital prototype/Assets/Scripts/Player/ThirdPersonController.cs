@@ -161,8 +161,8 @@ public class ThirdPersonController : MonoBehaviour
         if (input.GetSwitchNeeded())
         {
             input.SetSwitchNeeded(false);
-            GetComponent<PlayerInput>().enabled = false;
-            playerFollowCamera.gameObject.SendMessage("switchCharacter", input.GetCharacterSelection());
+            GetComponent<PlayerInput>().enabled = false; //Disable control of current character
+            playerFollowCamera.gameObject.SendMessage("switchCharacter", input.GetCharacterSelection()); //Request control of next character
         }
     }
 
