@@ -2179,9 +2179,7 @@ MonoBehaviour:
   flamethrower: {fileID: 163286, guid: ad09ebd0e5af89044812854af3b809de, type: 3}
   flamethrowerCooldown: 3
   flamethrowerDelay: 0.4
-  flamethrowerLength: 1
-  flamethrowerForwardPosition: 1.9
-  flamethrowerHeight: 1
+  flamethrowerLength: 1.5
   origin: {fileID: 1125836007397351001}
 --- !u!114 &9112362107269496264
 MonoBehaviour:

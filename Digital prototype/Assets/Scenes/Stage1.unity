@@ -17640,6 +17640,10 @@ PrefabInstance:
       propertyPath: flamethrower
       value: 
       objectReference: {fileID: 163286, guid: ad09ebd0e5af89044812854af3b809de, type: 3}
+    - target: {fileID: 8644840445461909565, guid: 000fa2a2abf8a354595fa22e63702c2c, type: 3}
+      propertyPath: flamethrowerLength
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8688739188944873605, guid: 000fa2a2abf8a354595fa22e63702c2c, type: 3}
       propertyPath: m_Name
       value: FireMagicPoint
