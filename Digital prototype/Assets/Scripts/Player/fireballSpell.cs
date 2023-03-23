@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class abilityUsage : MonoBehaviour
+public class fireballSpell : MonoBehaviour
 {
     [Header("Fireball")]
     [Tooltip("Fireball to launch")]

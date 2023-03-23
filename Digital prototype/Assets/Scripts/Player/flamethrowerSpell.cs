@@ -2,30 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fireballSpell : MonoBehaviour
+public class flamethrowerSpell : MonoBehaviour
 {
-    [Header("Fireball")]
-    [Tooltip("Fireball to launch")]
+    [Header("Flamethrower")]
+    [Tooltip("Fire to shoot")]
     [SerializeField]
-    private GameObject fireball;
+    private GameObject flamethrower;
     [Tooltip("Ability cooldown in seconds")]
     [SerializeField]
-    private float fireballCooldown = 1.0f;
+    private float flamethrowerCooldown;
     [Tooltip("A small delay to allow for casting animation")]
     [SerializeField]
-    private float fireballDelay = 0.3f;
-    [Tooltip("How far in front of the wizard should the fireball be conjured")]
+    private float flamethrowerDelay;
+    [Tooltip("The length of the ability cast")]
     [SerializeField]
-    private float fireballForwardPosition = 1.9f;
-    [Tooltip("How high up(from the wizards feet) should the fireball be conjured")]
+    private float flamethrowerLength;
+    [Tooltip("The origin point of the magic(Crystal in staff)")]
     [SerializeField]
-    private float fireballHeight = 1.0f;
+    private Transform origin;
 
     private PlayerMovementInputs input;
     private float abilityTimeoutDelta;
 
     // animation IDs
     private int animIDAbility;
+    private int animIDFinishedAbility;
     //Other components
     private Animator animator;
     private GameObject mainCamera;
@@ -46,7 +47,7 @@ public class fireballSpell : MonoBehaviour
         //Get the inputs
         input = GetComponent<PlayerMovementInputs>();
         //Initialise snowball cooldown timer
-        abilityTimeoutDelta = fireballCooldown;
+        abilityTimeoutDelta = flamethrowerCooldown;
 
         AssignAnimationIDs();
         animator = GetComponent<Animator>();
@@ -55,17 +56,16 @@ public class fireballSpell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(input.GetUseAbility() == true)
+        if(input.GetUseSecondaryAbility() == true)
         {
             if (abilityTimeoutDelta <= 0.0f)
             {
-                animator.SetBool(animIDAbility, true);
-                abilityTimeoutDelta = fireballCooldown;
-                StartCoroutine(throwFireball());
+                abilityTimeoutDelta = flamethrowerCooldown;
+                StartCoroutine(startFlamethrower());
             }
             else
             {
-                input.SetUseAbility(false);
+                input.SetUseSecondaryAbility(false);
             }
         }
         else
@@ -83,18 +83,21 @@ public class fireballSpell : MonoBehaviour
     //Sets all animation parameters to ID's for faster comparison
     private void AssignAnimationIDs()
     {
-        animIDAbility = Animator.StringToHash("UseAbility");
+        animIDAbility = Animator.StringToHash("UseSecondaryAbility");
+        animIDFinishedAbility = Animator.StringToHash("FinishedSecondaryAbility");
     }
 
-    IEnumerator throwFireball()
+    IEnumerator startFlamethrower()
     {
-        yield return new WaitForSeconds(fireballDelay);
+        animator.SetBool(animIDAbility, true);
+        animator.SetBool(animIDFinishedAbility, false);
+        yield return new WaitForSeconds(flamethrowerDelay);
         float yRot = transform.rotation.eulerAngles.y;
         Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
-        GameObject current = GameObject.Instantiate(fireball);
-        current.transform.position = transform.position + (positionAdjustment * fireballForwardPosition);
-        positionAdjustment =  new Vector3(current.transform.position.x, current.transform.position.y + fireballHeight, current.transform.position.z);
-        current.transform.position = positionAdjustment;
-        current.transform.rotation = mainCamera.transform.rotation;
+        GameObject current = GameObject.Instantiate(flamethrower);
+        current.transform.position = origin.position;
+        current.transform.rotation = origin.rotation;
+        yield return new WaitForSeconds(flamethrowerLength);
+        animator.SetBool(animIDFinishedAbility, true);
     }
 }
