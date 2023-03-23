@@ -2223,8 +2223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flamethrower: {fileID: 163286, guid: ad09ebd0e5af89044812854af3b809de, type: 3}
   flamethrowerCooldown: 4
-  flamethrowerDelay: 0
-  flamethrowerLength: 1.5
+  flamethrowerDelay: 0.25
+  flamethrowerLength: 1.45
   origin: {fileID: 1125836007397351001}
 --- !u!114 &6772259190379039209
 MonoBehaviour:
@@ -2240,7 +2240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryAbility: {fileID: 7724563765605789138}
   primaryCooldown: 1
-  secondaryAbility: {fileID: 0}
+  secondaryAbility: {fileID: 5323442577066029210}
   secondaryCooldown: 4
 --- !u!1 &9193908672351851160
 GameObject:

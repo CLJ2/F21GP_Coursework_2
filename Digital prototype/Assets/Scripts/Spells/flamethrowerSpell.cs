@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class flamethrowerSpell : MonoBehaviour
+public class flamethrowerSpell : Spell
 {
     [Header("Flamethrower")]
     [Tooltip("Fire to shoot")]
@@ -14,7 +14,7 @@ public class flamethrowerSpell : MonoBehaviour
     [Tooltip("A small delay to allow for casting animation")]
     [SerializeField]
     private float flamethrowerDelay;
-    [Tooltip("The length of the ability cast")]
+    [Tooltip("The length of the ability cast(This affects animation time not actual duration)")]
     [SerializeField]
     private float flamethrowerLength;
     [Tooltip("The origin point of the magic(Crystal in staff)")]
@@ -54,7 +54,7 @@ public class flamethrowerSpell : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void nonsenseUpdate()
     {
         if(input.GetUseSecondaryAbility() == true)
         {
@@ -92,6 +92,7 @@ public class flamethrowerSpell : MonoBehaviour
         animator.SetBool(animIDAbility, true);
         animator.SetBool(animIDFinishedAbility, false);
         yield return new WaitForSeconds(flamethrowerDelay);
+        animator.SetBool(animIDAbility, false);
         float yRot = transform.rotation.eulerAngles.y;
         Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
         GameObject current = GameObject.Instantiate(flamethrower);
@@ -99,5 +100,11 @@ public class flamethrowerSpell : MonoBehaviour
         current.transform.rotation = origin.rotation;
         yield return new WaitForSeconds(flamethrowerLength);
         animator.SetBool(animIDFinishedAbility, true);
+        endSpell();
+    }
+
+    public override void beginSpell()
+    {
+        StartCoroutine(startFlamethrower());
     }
 }
