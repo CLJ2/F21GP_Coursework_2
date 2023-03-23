@@ -5,9 +5,6 @@ using UnityEngine;
 public class fireballSpell : Spell
 {
     [Header("Fireball")]
-    [Tooltip("Fireball to launch")]
-    [SerializeField]
-    private GameObject fireball;
     [Tooltip("A small delay to allow for casting animation")]
     [SerializeField]
     private float fireballDelay = 0.3f;
@@ -53,7 +50,7 @@ public class fireballSpell : Spell
         animator.SetBool(animIDAbility, false);
         float yRot = transform.rotation.eulerAngles.y;
         Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
-        GameObject current = GameObject.Instantiate(fireball);
+        GameObject current = GameObject.Instantiate(projectile);
         current.transform.position = transform.position + (positionAdjustment * fireballForwardPosition);
         positionAdjustment =  new Vector3(current.transform.position.x, current.transform.position.y + fireballHeight, current.transform.position.z);
         current.transform.position = positionAdjustment;

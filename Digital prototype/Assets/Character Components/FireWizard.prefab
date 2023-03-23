@@ -2204,8 +2204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabfaacbb1b7a5a4c8198697755463f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireball: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 3}
-  fireballCooldown: 1
+  projectile: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 3}
   fireballDelay: 0.3
   fireballForwardPosition: 1.9
   fireballHeight: 1
@@ -2221,8 +2220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834efa0c2cb24114487feef3710c3abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flamethrower: {fileID: 163286, guid: ad09ebd0e5af89044812854af3b809de, type: 3}
-  flamethrowerCooldown: 4
+  projectile: {fileID: 163286, guid: ad09ebd0e5af89044812854af3b809de, type: 3}
   flamethrowerDelay: 0.25
   flamethrowerLength: 1.45
   origin: {fileID: 1125836007397351001}

@@ -5,9 +5,6 @@ using UnityEngine;
 public class flamethrowerSpell : Spell
 {
     [Header("Flamethrower")]
-    [Tooltip("Fire to shoot")]
-    [SerializeField]
-    private GameObject flamethrower;
     [Tooltip("A small delay to allow for casting animation")]
     [SerializeField]
     private float flamethrowerDelay;
@@ -48,7 +45,7 @@ public class flamethrowerSpell : Spell
         animator.SetBool(animIDAbility, false);
         float yRot = transform.rotation.eulerAngles.y;
         Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
-        GameObject current = GameObject.Instantiate(flamethrower);
+        GameObject current = GameObject.Instantiate(projectile);
         current.transform.position = origin.position;
         current.transform.rotation = origin.rotation;
         yield return new WaitForSeconds(flamethrowerLength);
