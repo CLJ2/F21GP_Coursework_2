@@ -8,9 +8,6 @@ public class fireballSpell : Spell
     [Tooltip("Fireball to launch")]
     [SerializeField]
     private GameObject fireball;
-    [Tooltip("Ability cooldown in seconds")]
-    [SerializeField]
-    private float fireballCooldown = 1.0f;
     [Tooltip("A small delay to allow for casting animation")]
     [SerializeField]
     private float fireballDelay = 0.3f;
@@ -20,9 +17,6 @@ public class fireballSpell : Spell
     [Tooltip("How high up(from the wizards feet) should the fireball be conjured")]
     [SerializeField]
     private float fireballHeight = 1.0f;
-
-    private PlayerMovementInputs input;
-    private float abilityTimeoutDelta;
 
     // animation IDs
     private int animIDAbility;
@@ -43,41 +37,8 @@ public class fireballSpell : Spell
     // Start is called before the first frame update
     void Start()
     {
-        //Get the inputs
-        input = GetComponent<PlayerMovementInputs>();
-        //Initialise snowball cooldown timer
-        abilityTimeoutDelta = fireballCooldown;
-
         AssignAnimationIDs();
         animator = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void nonsenseUpdate()
-    {
-        if(input.GetUseAbility() == true)
-        {
-            if (abilityTimeoutDelta <= 0.0f)
-            {
-                animator.SetBool(animIDAbility, true);
-                abilityTimeoutDelta = fireballCooldown;
-                StartCoroutine(throwFireball());
-            }
-            else
-            {
-                input.SetUseAbility(false);
-            }
-        }
-        else
-        {
-            animator.SetBool(animIDAbility, false);
-        }
-
-        if(abilityTimeoutDelta > 0.0f)
-        {
-            abilityTimeoutDelta -= Time.deltaTime;
-        }
-
     }
 
     //Sets all animation parameters to ID's for faster comparison
