@@ -2040,6 +2040,7 @@ GameObject:
   - component: {fileID: 9112362107269496278}
   - component: {fileID: 7724563765605789138}
   - component: {fileID: 5323442577066029210}
+  - component: {fileID: 6772259190379039209}
   m_Layer: 9
   m_Name: FireWizard
   m_TagString: Untagged
@@ -2225,6 +2226,22 @@ MonoBehaviour:
   flamethrowerDelay: 0
   flamethrowerLength: 1.5
   origin: {fileID: 1125836007397351001}
+--- !u!114 &6772259190379039209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193899985922452890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648baf4730a5a3548aa39c26936c3316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryAbility: {fileID: 7724563765605789138}
+  primaryCooldown: 1
+  secondaryAbility: {fileID: 0}
+  secondaryCooldown: 4
 --- !u!1 &9193908672351851160
 GameObject:
   m_ObjectHideFlags: 0

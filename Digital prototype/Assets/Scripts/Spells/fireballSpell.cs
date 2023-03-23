@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fireballSpell : MonoBehaviour
+public class fireballSpell : Spell
 {
     [Header("Fireball")]
     [Tooltip("Fireball to launch")]
@@ -53,7 +53,7 @@ public class fireballSpell : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void nonsenseUpdate()
     {
         if(input.GetUseAbility() == true)
         {
@@ -89,6 +89,7 @@ public class fireballSpell : MonoBehaviour
     IEnumerator throwFireball()
     {
         yield return new WaitForSeconds(fireballDelay);
+        animator.SetBool(animIDAbility, false);
         float yRot = transform.rotation.eulerAngles.y;
         Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
         GameObject current = GameObject.Instantiate(fireball);
@@ -96,5 +97,12 @@ public class fireballSpell : MonoBehaviour
         positionAdjustment =  new Vector3(current.transform.position.x, current.transform.position.y + fireballHeight, current.transform.position.z);
         current.transform.position = positionAdjustment;
         current.transform.rotation = mainCamera.transform.rotation;
+        endSpell();
+    }
+
+    public override void beginSpell()
+    {
+        animator.SetBool(animIDAbility, true);
+        StartCoroutine(throwFireball());
     }
 }
