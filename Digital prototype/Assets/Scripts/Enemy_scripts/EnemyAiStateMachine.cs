@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
+//statemachine used for determining enemy agent state
 public class EnemyAiStateMachine
 {
-    public EnemyAiState[] states;
-    public EnemyAiAgent agent;
-    public EnemyAiStateID currentState;
+    public EnemyAiState[] states;   //stores possible states
+    public EnemyAiAgent agent;  //stores enemy agent
+    public EnemyAiStateID currentState; //stores current state
 
     public EnemyAiStateMachine(EnemyAiAgent agent)
     {
@@ -32,6 +33,7 @@ public class EnemyAiStateMachine
         GetState(currentState)?.Update(agent);
     }
 
+    //method changes state of the agent
     public void ChangeState(EnemyAiStateID newStateID)
     {
         GetState(currentState)?.Exit(agent);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//configuration for enemy agents
 [CreateAssetMenu()]
 public class EnemyAiConfig : ScriptableObject
 {
@@ -11,4 +12,6 @@ public class EnemyAiConfig : ScriptableObject
     public float minDistance = 1.0f;
 
     public float deathForce = 5.0f;
+
+    public float maxhealth = 50.0f;
 }
