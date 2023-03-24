@@ -16,8 +16,8 @@ public class EnemyDeathState : EnemyAiState
         //add death handling here
         agent.ragdoll.ActivateRagdoll();
         agent.healthBar.gameObject.SetActive(false);
-        direction.y = 0.5f;
-        agent.ragdoll.ApplyForce(direction * agent.config.deathForce);
+        deathDirection.y = 0.5f;
+        agent.ragdoll.ApplyForce(deathDirection * agent.config.deathForce);
     }
 
     public void Update(EnemyAiAgent agent)
