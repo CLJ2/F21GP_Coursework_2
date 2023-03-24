@@ -24,7 +24,8 @@ public class EnemyIdleState : EnemyAiState
         float dotProduct = Vector3.Dot(agentDirection, playerDirection);
         if (dotProduct > 0.0f) 
         {
-            agent.stateMachine.ChangeState(EnemyAiStateID.targetPlayer);
+            if (Random.Range(0, 11) < 5) agent.stateMachine.ChangeState(EnemyAiStateID.TargetPlayer);
+            else agent.stateMachine.ChangeState(EnemyAiStateID.Hide);
         }
     }
     

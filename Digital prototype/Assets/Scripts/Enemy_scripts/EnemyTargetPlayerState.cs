@@ -6,7 +6,7 @@ public class EnemyTargetPlayer : EnemyAiState
 {
     public EnemyAiStateID GetID()
     { 
-        return EnemyAiStateID.targetPlayer;
+        return EnemyAiStateID.TargetPlayer;
     }
     
     public void Enter(EnemyAiAgent agent)
@@ -25,9 +25,16 @@ public class EnemyTargetPlayer : EnemyAiState
             float srtDistance = (agent.playerTransform.position - agent.navMeshAgent.destination).sqrMagnitude;
             if (srtDistance > agent.config.minDistance*agent.config.minDistance)
             {
+                agent.navMeshAgent.isStopped = false;
                 agent.navMeshAgent.destination = agent.playerTransform.position;
+                Debug.Log(agent.navMeshAgent.destination);
             }
             agent.timer = agent.config.maxTime;
+        }
+        if (Vector3.Distance(agent.playerTransform.position, agent.transform.position) < agent.config.attackRange)
+        {
+            //agent.player.takeDamage();    uncomment once player can take damage;
+            Debug.Log("attack");
         }
     }
 

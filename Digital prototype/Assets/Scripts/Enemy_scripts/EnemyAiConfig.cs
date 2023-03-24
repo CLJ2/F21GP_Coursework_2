@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyAiConfig : ScriptableObject
 {
     public float maxSightDistance = 5.0f;
+    public float attackRange = 1.0f;
 
     public float maxTime = 1.0f;
     public float minDistance = 1.0f;

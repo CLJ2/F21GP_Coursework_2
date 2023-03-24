@@ -4,9 +4,10 @@ using UnityEngine;
 
 public enum EnemyAiStateID  //possible states for enmey agents to have
 {
-    targetPlayer,
+    TargetPlayer,
     Dead,
-    Idle
+    Idle,
+    Hide
 }
 public interface EnemyAiState
 {

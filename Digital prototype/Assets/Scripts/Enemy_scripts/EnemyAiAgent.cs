@@ -13,6 +13,9 @@ public class EnemyAiAgent : MonoBehaviour
     public float timer = 0.0f;
     public Ragdoll ragdoll;
     public UIHealthBar healthBar;
+    public GameObject player;
+    public GameObject[] barricades;
+    public GameObject barricade;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +23,15 @@ public class EnemyAiAgent : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         ragdoll = GetComponent<Ragdoll>();
         healthBar = GetComponentInChildren<UIHealthBar>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = player.gameObject.transform;
+        barricades = GameObject.FindGameObjectsWithTag("Barricades");
+        
         stateMachine = new EnemyAiStateMachine(this);
         stateMachine.RegisterState(new EnemyTargetPlayer());
         stateMachine.RegisterState(new EnemyDeathState());
         stateMachine.RegisterState(new EnemyIdleState());
+        stateMachine.RegisterState(new EnemyHideState());
         stateMachine.ChangeState(initialState);
     }
 
