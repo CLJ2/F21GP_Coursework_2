@@ -11,11 +11,15 @@ public class EnemyAiAgent : MonoBehaviour
     public Transform playerTransform;
     public EnemyAiConfig config;
     public float timer = 0.0f;
+    public Ragdoll ragdoll;
+    public UIHealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        ragdoll = GetComponent<Ragdoll>();
+        healthBar = GetComponentInChildren<UIHealthBar>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         stateMachine = new EnemyAiStateMachine(this);
