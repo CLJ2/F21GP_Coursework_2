@@ -15,4 +15,7 @@ public class EnemyAiConfig : ScriptableObject
     public float deathForce = 5.0f;
 
     public float maxhealth = 50.0f;
+
+    public int unhideChance = 2;
+    public int attackPlayerOnSightChance = 4;
 }

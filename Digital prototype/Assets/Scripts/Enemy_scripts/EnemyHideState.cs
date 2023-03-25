@@ -13,6 +13,7 @@ public class EnemyHideState : EnemyAiState
     {
         agent.barricade = agent.barricades[Random.Range(0, agent.barricades.Length)];
         agent.navMeshAgent.destination = agent.barricade.gameObject.transform.position;
+        agent.timer = agent.config.maxTime;
     }
     
     public void Update(EnemyAiAgent agent)
@@ -23,9 +24,9 @@ public class EnemyHideState : EnemyAiState
         {
             agent.navMeshAgent.isStopped = true;
             agent.timer -= Time.deltaTime;
-            if (agent.timer < agent.config.maxTime/2)
+            if (agent.timer < 0.0f)
             {
-                if (Random.Range(0, 11) < 5) agent.stateMachine.ChangeState(EnemyAiStateID.TargetPlayer);
+                if (Random.Range(0, 11) < agent.config.unhideChance) agent.stateMachine.ChangeState(EnemyAiStateID.TargetPlayer);
                 else agent.timer = agent.config.maxTime;
             }
         }
