@@ -14,27 +14,25 @@ public class EnemyTargetPlayer : EnemyAiState
         //this acts similar to the start function
     }
 
-     public void Update(EnemyAiAgent agent)
+    public void Update(EnemyAiAgent agent)
     {
-        //implement enemy movement here
-        if (!agent.enabled) return;
+        if (!agent.enabled) return; //if agent is not enabled, wait frame
 
-        agent.timer -= Time.deltaTime;
-        if(agent.timer < 0)
+        agent.timer -= Time.deltaTime;  //timer is used to make sure the agent only ever calculates a new destination every second instead of every frame
+        if(agent.timer < 0) //if the timer has reached 0
         {
-            float srtDistance = (agent.playerTransform.position - agent.navMeshAgent.destination).sqrMagnitude;
-            if (srtDistance > agent.config.minDistance*agent.config.minDistance)
+            float srtDistance = (agent.playerTransform.position - agent.navMeshAgent.destination).sqrMagnitude; //calc distance to the player
+            if (srtDistance > agent.config.minDistance*agent.config.minDistance)    //if the distance is greater than the maxdistance^2
             {
                 agent.navMeshAgent.isStopped = false;
-                agent.navMeshAgent.destination = agent.playerTransform.position;
-                Debug.Log(agent.navMeshAgent.destination);
+                agent.navMeshAgent.destination = agent.playerTransform.position;    //move to the player
             }
-            agent.timer = agent.config.maxTime;
+            agent.timer = agent.config.maxTime; //reset timer
         }
-        if (Vector3.Distance(agent.playerTransform.position, agent.transform.position) < agent.config.attackRange)
+        if (Vector3.Distance(agent.playerTransform.position, agent.transform.position) < agent.config.attackRange)  //if close enough to the player, attack player
         {
             //agent.player.takeDamage();    uncomment once player can take damage;
-            Debug.Log("attack");
+            //Debug.Log("attack");
         }
     }
 

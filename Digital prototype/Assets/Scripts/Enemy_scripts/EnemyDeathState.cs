@@ -13,11 +13,10 @@ public class EnemyDeathState : EnemyAiState
 
     public void Enter(EnemyAiAgent agent)
     {
-        //add death handling here
-        agent.ragdoll.ActivateRagdoll();
-        agent.healthBar.gameObject.SetActive(false);
-        deathDirection.y = 0.5f;
-        agent.ragdoll.ApplyForce(deathDirection * agent.config.deathForce);
+        agent.ragdoll.ActivateRagdoll();    //upon death, turn on the ragdoll physics
+        agent.healthBar.gameObject.SetActive(false);    //turn off health bar
+        deathDirection.y = 0.5f;    //give direction of death a heigh to make the agent lift up at the start of death
+        agent.ragdoll.ApplyForce(deathDirection * agent.config.deathForce); //apply the force to the agent
     }
 
     public void Update(EnemyAiAgent agent)

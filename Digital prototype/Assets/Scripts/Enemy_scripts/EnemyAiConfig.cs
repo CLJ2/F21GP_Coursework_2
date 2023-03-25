@@ -11,6 +11,7 @@ public class EnemyAiConfig : ScriptableObject
 
     public float maxTime = 1.0f;
     public float minDistance = 1.0f;
+    public float hideDistance = 1.5f;
 
     public float deathForce = 5.0f;
 
