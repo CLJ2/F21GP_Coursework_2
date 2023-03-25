@@ -22,11 +22,13 @@ public class EnemyHealth : MonoBehaviour
             EnemyHitbox hitbox = rigidBody.gameObject.AddComponent<EnemyHitbox>();  //add a hit box to every rigidbody component on agent
             hitbox.health = this;   //provide the hit box with EnemyHealth object
         }
+        healthBar.gameObject.SetActive(false);
     }
 
     //calculate health when being damaged
     public void TakeDamage(float damage, Vector3 direction)
     {
+        if(healthBar.gameObject.active == false) healthBar.gameObject.SetActive(true);
         health -= damage;
         healthBar.SetHealthBarPecentage(health /agent.config.maxhealth);
         if (health < 0)
