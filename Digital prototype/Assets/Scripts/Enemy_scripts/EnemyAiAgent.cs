@@ -13,7 +13,7 @@ public class EnemyAiAgent : MonoBehaviour
     public float timer = 0.0f;
     public Ragdoll ragdoll;
     public UIHealthBar healthBar;
-    public GameObject player;
+    public GameObject[] players;
     public GameObject[] barricades;
     public GameObject barricade;
 
@@ -23,8 +23,7 @@ public class EnemyAiAgent : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         ragdoll = GetComponent<Ragdoll>();
         healthBar = GetComponentInChildren<UIHealthBar>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = player.gameObject.transform;
+        players = GameObject.FindGameObjectsWithTag("Player");
         barricades = GameObject.FindGameObjectsWithTag("Barricades");
         
         stateMachine = new EnemyAiStateMachine(this);
