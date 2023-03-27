@@ -18,7 +18,7 @@ public class EnemyIdleState : EnemyAiState
     {
         GameObject player = agent.players[Random.Range(0, agent.players.Length)];
         agent.playerTransform = player.transform;
-        Debug.Log(agent.playerTransform);
+        //Debug.Log(agent.playerTransform);
         Vector3 playerDirection = agent.playerTransform.position - agent.transform.position;
         if (playerDirection.magnitude > agent.config.maxSightDistance) return;
 

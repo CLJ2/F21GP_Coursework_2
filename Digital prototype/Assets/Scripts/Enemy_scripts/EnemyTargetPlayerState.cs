@@ -16,6 +16,7 @@ public class EnemyTargetPlayer : EnemyAiState
 
     public void Update(EnemyAiAgent agent)
     {
+        Debug.Log(agent.navMeshAgent.velocity.magnitude);
         if (!agent.enabled) return; //if agent is not enabled, wait frame
 
         agent.timer -= Time.deltaTime;  //timer is used to make sure the agent only ever calculates a new destination every second instead of every frame
