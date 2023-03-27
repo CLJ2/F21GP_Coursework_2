@@ -33,6 +33,7 @@ public class EnemyTargetPlayer : EnemyAiState
         {
             //agent.player.takeDamage();    uncomment once player can take damage;
             //Debug.Log("attack");
+            agent.animator.SetTrigger("Attack");
         }
     }
 

@@ -1246,7 +1246,7 @@ Animator:
   m_GameObject: {fileID: 165424}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3392e95529ae7540ad53657e3d0ce7d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba69e4360fe1be744adb2f4657205326, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1295,6 +1295,11 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   config: {fileID: 11400000, guid: 97c235cb1e033ee49bb9de43e4580126, type: 2}
   timer: 0
+  ragdoll: {fileID: 0}
+  healthBar: {fileID: 0}
+  players: []
+  barricades: []
+  barricade: {fileID: 0}
 --- !u!114 &6404071971503148806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,8 +1324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90165bab5eadfec4eb3dde34a89d21a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhealth: 0
-  health: 0
 --- !u!1 &165938
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,7 +2057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d905c90b00ea94418e8093deb905e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 420612}
+  agentTransform: {fileID: 0}
   foreground: {fileID: 8329647744583310339}
   background: {fileID: 5684214312843787135}
   offset: {x: 0, y: 0.4, z: 0}

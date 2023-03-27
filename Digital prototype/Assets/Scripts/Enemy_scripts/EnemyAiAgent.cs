@@ -16,6 +16,7 @@ public class EnemyAiAgent : MonoBehaviour
     public GameObject[] players;
     public GameObject[] barricades;
     public GameObject barricade;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +33,14 @@ public class EnemyAiAgent : MonoBehaviour
         stateMachine.RegisterState(new EnemyIdleState());
         stateMachine.RegisterState(new EnemyHideState());
         stateMachine.ChangeState(initialState);
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         stateMachine.Update();
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
     }
 }
