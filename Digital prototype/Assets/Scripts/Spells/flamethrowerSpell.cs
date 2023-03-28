@@ -50,11 +50,13 @@ public class flamethrowerSpell : Spell
         current.transform.rotation = origin.rotation;
         yield return new WaitForSeconds(flamethrowerLength);
         animator.SetBool(animIDFinishedAbility, true);
+        gameObject.SendMessage("enableMove");
         endSpell();
     }
 
     public override void beginSpell()
     {
         StartCoroutine(startFlamethrower());
+        gameObject.SendMessage("disableMove");
     }
 }
