@@ -13,6 +13,7 @@ public class PlayerMovementInputs : MonoBehaviour
     private bool jump;
     private bool sprint;
     private bool useAbility;
+    private bool useSecondaryAbility;
     [Tooltip("This must equal the position of this wizard in follow camera array at start")]
     [SerializeField]
     private int characterSelection;
@@ -45,6 +46,11 @@ public class PlayerMovementInputs : MonoBehaviour
     public void OnUseAbility(InputValue value)
     {
         useAbility = value.isPressed;
+    }
+
+    public void OnUseSecondaryAbility(InputValue value)
+    {
+        useSecondaryAbility = value.isPressed;
     }
 
     public void OnHotbar(InputValue value)
@@ -93,6 +99,11 @@ public class PlayerMovementInputs : MonoBehaviour
         return useAbility;
     }
 
+    public bool GetUseSecondaryAbility()
+    {
+        return useSecondaryAbility;
+    }
+
     public int GetCharacterSelection()
     {
         return characterSelection;
@@ -111,6 +122,11 @@ public class PlayerMovementInputs : MonoBehaviour
     public void SetUseAbility(bool value)
     {
         useAbility = value;
+    }
+
+    public void SetUseSecondaryAbility(bool value)
+    {
+        useSecondaryAbility = value;
     }
 
     public void SetSwitchNeeded(bool value)
