@@ -16,13 +16,13 @@ public class AiAgent : MonoBehaviour
     void Start()
     {
         active = true;
-        navMeshAgent = GetComponent<NavMeshAgent>(); 
+        navMeshAgent = GetComponent<NavMeshAgent>();
 
         stateMachine = new AiStateMachine(this);
         //stateMachine.RegisterState(new UnactiveState());
         stateMachine.RegisterState(new IdleState());
-        //stateMachine.RegisterState(new FollowPlayerState());
-        //stateMachine.RegisterState(new TargetEnemyState());
+        stateMachine.RegisterState(new FollowPlayerState());
+        stateMachine.RegisterState(new TargetEnemyState());
         //stateMachine.RegisterState(new DownedState());
         stateMachine.ChangeState(initialState);
     }

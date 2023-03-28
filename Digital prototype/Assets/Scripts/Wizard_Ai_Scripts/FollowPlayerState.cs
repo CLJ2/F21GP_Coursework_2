@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayerState : MonoBehaviour
+public class FollowPlayerState : AiState
 {
-    // Start is called before the first frame update
-    void Start()
+    public AiStateID GetStateID()
+    {
+        return AiStateID.FollowPlayer;
+    }
+    
+    public void Enter(AiAgent agent)
+    {
+        
+    }
+    
+    public void Update(AiAgent agent)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit(AiAgent agent)
     {
         
     }

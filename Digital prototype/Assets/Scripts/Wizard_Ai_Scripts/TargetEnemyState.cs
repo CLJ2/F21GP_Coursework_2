@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetEnemyState : MonoBehaviour
+public class TargetEnemyState : AiState
 {
-    // Start is called before the first frame update
-    void Start()
+    public AiStateID GetStateID()
     {
-        
+        return AiStateID.TargetEnemy;
+    }
+    
+    public void Enter(AiAgent agent)
+    {
+        throw new System.NotImplementedException();
+    }
+    
+    public void Update(AiAgent agent)
+    {
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit(AiAgent agent)
     {
-        
+        throw new System.NotImplementedException();
     }
 }
