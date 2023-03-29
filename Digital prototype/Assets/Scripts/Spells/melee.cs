@@ -15,6 +15,16 @@ public class melee : Spell
 
     public override void beginSpell()
     {
+        StartCoroutine(meleeAttack());
+    }
 
+    IEnumerator meleeAttack()
+    {
+        //The durations here are based off the animation length so arent really customisable
+        animator.SetBool(animIDMelee, true);
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool(animIDMelee, false);
+        yield return new WaitForSeconds(1.0f);
+        endSpell();
     }
 }
