@@ -1979,6 +1979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbd380292771314da2f8c42a09f67c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSelection: 0
   cursorLocked: 1
   cursorInputForLook: 1
 --- !u!114 &771419628981647773
@@ -2469,6 +2470,10 @@ PrefabInstance:
     - target: {fileID: 1412941605713842, guid: c413fed5af1bfe847af0ed883ee868db, type: 3}
       propertyPath: m_Name
       value: Staff03PolyArt
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412941605713842, guid: c413fed5af1bfe847af0ed883ee868db, type: 3}
+      propertyPath: m_TagString
+      value: Staff
       objectReference: {fileID: 0}
     - target: {fileID: 4655755034758078, guid: c413fed5af1bfe847af0ed883ee868db, type: 3}
       propertyPath: m_RootOrder
