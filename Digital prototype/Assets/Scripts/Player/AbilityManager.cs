@@ -17,6 +17,8 @@ public class AbilityManager : MonoBehaviour
     [SerializeField]
     private float secondaryCooldown;
     [Header("Melee Ability")]
+    [Tooltip("The secondary spell of the wizard")]
+    public Spell meleeAbility;
     [Tooltip("Melee attack cooldown")]
     [SerializeField]
     private float meleeCooldown;
@@ -70,7 +72,7 @@ public class AbilityManager : MonoBehaviour
             if (abilityActive == false && meleeTimeoutDelta <= 0.0f)
             {
                 abilityActive = true;
-                //Do melee attack
+                meleeAbility.beginSpell();
                 secondaryTimeoutDelta = secondaryCooldown;
             }
             input.SetMelee(false);
