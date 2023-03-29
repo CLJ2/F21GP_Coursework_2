@@ -2,15 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fireballSpell : MonoBehaviour
+public class fireballSpell : Spell
 {
     [Header("Fireball")]
-    [Tooltip("Fireball to launch")]
-    [SerializeField]
-    private GameObject fireball;
-    [Tooltip("Ability cooldown in seconds")]
-    [SerializeField]
-    private float fireballCooldown = 1.0f;
     [Tooltip("A small delay to allow for casting animation")]
     [SerializeField]
     private float fireballDelay = 0.3f;
@@ -20,9 +14,6 @@ public class fireballSpell : MonoBehaviour
     [Tooltip("How high up(from the wizards feet) should the fireball be conjured")]
     [SerializeField]
     private float fireballHeight = 1.0f;
-
-    private PlayerMovementInputs input;
-    private float abilityTimeoutDelta;
 
     // animation IDs
     private int animIDAbility;
@@ -43,41 +34,8 @@ public class fireballSpell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Get the inputs
-        input = GetComponent<PlayerMovementInputs>();
-        //Initialise snowball cooldown timer
-        abilityTimeoutDelta = fireballCooldown;
-
         AssignAnimationIDs();
         animator = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(input.GetUseAbility() == true)
-        {
-            if (abilityTimeoutDelta <= 0.0f)
-            {
-                animator.SetBool(animIDAbility, true);
-                abilityTimeoutDelta = fireballCooldown;
-                StartCoroutine(throwFireball());
-            }
-            else
-            {
-                input.SetUseAbility(false);
-            }
-        }
-        else
-        {
-            animator.SetBool(animIDAbility, false);
-        }
-
-        if(abilityTimeoutDelta > 0.0f)
-        {
-            abilityTimeoutDelta -= Time.deltaTime;
-        }
-
     }
 
     //Sets all animation parameters to ID's for faster comparison
@@ -89,12 +47,20 @@ public class fireballSpell : MonoBehaviour
     IEnumerator throwFireball()
     {
         yield return new WaitForSeconds(fireballDelay);
+        animator.SetBool(animIDAbility, false);
         float yRot = transform.rotation.eulerAngles.y;
         Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
-        GameObject current = GameObject.Instantiate(fireball);
+        GameObject current = GameObject.Instantiate(projectile);
         current.transform.position = transform.position + (positionAdjustment * fireballForwardPosition);
         positionAdjustment =  new Vector3(current.transform.position.x, current.transform.position.y + fireballHeight, current.transform.position.z);
         current.transform.position = positionAdjustment;
         current.transform.rotation = mainCamera.transform.rotation;
+        endSpell();
+    }
+
+    public override void beginSpell()
+    {
+        animator.SetBool(animIDAbility, true);
+        StartCoroutine(throwFireball());
     }
 }

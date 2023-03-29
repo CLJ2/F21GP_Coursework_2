@@ -79,6 +79,7 @@ public class ThirdPersonController : MonoBehaviour
     private float rotationVelocity;
     private float verticalVelocity;
     private float terminalVelocity = 53.0f;
+    private bool moveAllowed;
 
     // timeout deltatime
     private float jumpTimeoutDelta;
@@ -123,6 +124,8 @@ public class ThirdPersonController : MonoBehaviour
         input = GetComponent<PlayerMovementInputs>();
 
         AssignAnimationIDs();
+
+        moveAllowed = true;
 
         //Reset timeouts at the start
         jumpTimeoutDelta = JumpTimeout;
@@ -211,7 +214,7 @@ public class ThirdPersonController : MonoBehaviour
 
         // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
         // if there is no input, set the target speed to 0
-        if (input.GetMove() == Vector2.zero)
+        if (input.GetMove() == Vector2.zero || moveAllowed == false)
         {
             targetSpeed = 0.0f;
         }
@@ -358,5 +361,15 @@ public class ThirdPersonController : MonoBehaviour
 
         // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+    }
+
+    public void enableMove()
+    {
+        moveAllowed = true;
+    }
+
+    public void disableMove()
+    {
+        moveAllowed = false;
     }
 }
