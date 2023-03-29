@@ -2259,6 +2259,7 @@ MonoBehaviour:
   active: 0
   player: {fileID: 0}
   config: {fileID: 11400000, guid: 9e6c7b19d68ea2541968f2e25ce63fd9, type: 2}
+  timer: 0
 --- !u!195 &6395659164994411040
 NavMeshAgent:
   m_ObjectHideFlags: 0

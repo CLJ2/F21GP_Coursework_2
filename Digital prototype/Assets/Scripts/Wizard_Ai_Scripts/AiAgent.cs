@@ -11,6 +11,7 @@ public class AiAgent : MonoBehaviour
     public bool active;
     public GameObject player;
     public AiConfig config;
+    public float timer;
 
     // Start is called before the first frame update
     void Start()

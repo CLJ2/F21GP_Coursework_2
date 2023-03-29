@@ -24,7 +24,6 @@ public class IdleState : AiState
         {
             agent.stateMachine.ChangeState(AiStateID.FollowPlayer);
         }
-
     }
 
     public void Exit(AiAgent agent)
