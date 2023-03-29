@@ -7,8 +7,8 @@ public class EnemyHitbox : MonoBehaviour
 {
     public EnemyHealth health;  //stores EnemyHealth object
 
-    public void OnHit(RaycastHit hit, Vector3 direction)    //the raycast hit should be replaced with a spell/weapon object. direction is the direction of the attack
+    public void OnHit(float damage, Vector3 direction)    //the raycast hit should be replaced with a spell/weapon object. direction is the direction of the attack
     {
-        //health.TakeDamage(hit.damage, direction);    uncomment line once spell class is added
+        health.TakeDamage(damage, direction); 
     }
 }
