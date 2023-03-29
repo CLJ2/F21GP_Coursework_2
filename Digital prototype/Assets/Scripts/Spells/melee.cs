@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class melee : Spell
 {
-    // Start is called before the first frame update
-    void Start()
+
+    // animation IDs
+    private int animIDMelee;
+
+    protected override void AssignAnimationIDs()
     {
-        
+        animIDMelee = Animator.StringToHash("Melee");
     }
 
     public override void beginSpell()
