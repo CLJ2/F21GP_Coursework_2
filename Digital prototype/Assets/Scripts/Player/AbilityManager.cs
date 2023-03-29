@@ -16,11 +16,16 @@ public class AbilityManager : MonoBehaviour
     [Tooltip("Secondary ability cooldown")]
     [SerializeField]
     private float secondaryCooldown;
+    [Header("Melee Ability")]
+    [Tooltip("Melee attack cooldown")]
+    [SerializeField]
+    private float meleeCooldown;
 
     //Whether an ability is being used
     private bool abilityActive;
     private float primaryTimeoutDelta;
     private float secondaryTimeoutDelta;
+    private float meleeTimeoutDelta;
 
     //The player input
     private PlayerMovementInputs input;
@@ -31,6 +36,7 @@ public class AbilityManager : MonoBehaviour
         abilityActive = false;
         primaryTimeoutDelta = 0.0f;
         secondaryTimeoutDelta = 0.0f;
+        meleeTimeoutDelta = 0.0f;
         //Get the inputs
         input = GetComponent<PlayerMovementInputs>();
     }
@@ -59,7 +65,27 @@ public class AbilityManager : MonoBehaviour
             }
             input.SetUseSecondaryAbility(false);
         }
+        else if (input.GetMelee() == true)
+        {
+            if (abilityActive == false && meleeTimeoutDelta <= 0.0f)
+            {
+                abilityActive = true;
+                //Do melee attack
+                secondaryTimeoutDelta = secondaryCooldown;
+            }
+            input.SetMelee(false);
+        }
 
+        adjustTimers();
+    }
+
+    public void abilityFinished()
+    {
+        abilityActive = false;
+    }
+
+    private void adjustTimers()
+    {
         if (primaryTimeoutDelta > 0.0f)
         {
             primaryTimeoutDelta -= Time.deltaTime;
@@ -68,10 +94,9 @@ public class AbilityManager : MonoBehaviour
         {
             secondaryTimeoutDelta -= Time.deltaTime;
         }
-    }
-
-    public void abilityFinished()
-    {
-        abilityActive = false;
+        if (meleeTimeoutDelta > 0.0f)
+        {
+            meleeTimeoutDelta -= Time.deltaTime;
+        }
     }
 }
