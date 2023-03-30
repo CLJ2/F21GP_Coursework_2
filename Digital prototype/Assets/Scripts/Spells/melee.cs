@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class melee : Spell
 {
-    [Tooltip("A collider to enable for melee attacks. It needs enabled as if its enabled all the time it causes problems")]
+    [Tooltip("A collider to enable for melee attacks. It should only be enabled when needed as if its enabled all the time it causes problems")]
     [SerializeField]
     private CapsuleCollider difficultCollider;
     // animation IDs

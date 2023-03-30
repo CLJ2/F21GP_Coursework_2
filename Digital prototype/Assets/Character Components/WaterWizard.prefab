@@ -2493,7 +2493,7 @@ GameObject:
   - component: {fileID: 2987367263262414988}
   - component: {fileID: 8085766215816214447}
   - component: {fileID: 2496175980110819688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Staff
   m_TagString: Staff
   m_Icon: {fileID: 0}
@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
-  difficultCollider: {fileID: 2496175980110819688}
+  difficultCollider: {fileID: 0}
 --- !u!54 &8085766215816214447
 Rigidbody:
   m_ObjectHideFlags: 0
