@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class melee : Spell
 {
-
+    [Tooltip("A collider to enable for melee attacks. It needs enabled as if its enabled all the time it causes problems")]
+    [SerializeField]
+    private CapsuleCollider difficultCollider;
     // animation IDs
     private int animIDMelee;
 
     private int enemyLayer = 10;
     private bool attacking = false;
+    private bool colliderIssues = false;
 
     void Start()
     {
         AssignAnimationIDs();
         animator = GetComponentInParent<Animator>();
+        if (Object.ReferenceEquals(difficultCollider, null))
+        {
+            colliderIssues = true;
+        }
+        
     }
 
     protected override void AssignAnimationIDs()
@@ -29,6 +37,10 @@ public class melee : Spell
 
     IEnumerator meleeAttack()
     {
+        if (colliderIssues)
+        {
+            difficultCollider.enabled = true;
+        }
         //The durations here are based off the animation length so arent really customisable
         animator.SetBool(animIDMelee, true);
         attacking = true;
@@ -36,15 +48,19 @@ public class melee : Spell
         animator.SetBool(animIDMelee, false);
         yield return new WaitForSeconds(1.0f);
         attacking = false;
+        if (colliderIssues)
+        {
+            difficultCollider.enabled = false;
+        }
         endSpell();
     }
 
-    public void endSpell()
+    public new void endSpell()
     {
         gameObject.SendMessageUpwards("abilityFinished");
     }
 
-    public void onCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (attacking && (collision.gameObject.layer == enemyLayer))
         {
