@@ -9,7 +9,16 @@ public abstract class Spell : MonoBehaviour
     [SerializeField]
     protected GameObject projectile;
 
-    public abstract void beginSpell();
+    protected Animator animator;
+
+    public abstract void beginSpell();                  //Begins the spell effects
+    protected abstract void AssignAnimationIDs();       //Sets all animation parameters to ID's for faster comparison
+
+    void Start()
+    {
+        AssignAnimationIDs();
+        animator = GetComponent<Animator>();
+    }
 
     public void endSpell()
     {
