@@ -18,7 +18,6 @@ public class fireballSpell : Spell
     // animation IDs
     private int animIDAbility;
     //Other components
-    private Animator animator;
     private GameObject mainCamera;
 
     //Awake is called when the script instance is first loaded
@@ -31,15 +30,8 @@ public class fireballSpell : Spell
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        AssignAnimationIDs();
-        animator = GetComponent<Animator>();
-    }
-
     //Sets all animation parameters to ID's for faster comparison
-    private void AssignAnimationIDs()
+    protected override void AssignAnimationIDs()
     {
         animIDAbility = Animator.StringToHash("UseAbility");
     }
