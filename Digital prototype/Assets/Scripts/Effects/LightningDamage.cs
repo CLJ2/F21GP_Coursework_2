@@ -28,11 +28,12 @@ public class LightningDamage : MonoBehaviour
     void Update()
     {
         Vector3 temp = boltStart.transform.position - boltEnd.transform.position;
-        RaycastHit[] enemies = Physics.SphereCastAll(boltStart.transform.position, radius, temp.normalized, temp.magnitude, collisionLayer);
+        RaycastHit[] enemies = Physics.SphereCastAll(boltStart.transform.position, radius, -temp.normalized, temp.magnitude, collisionLayer);
         foreach (RaycastHit enemy in enemies)
         {
+            Debug.Log("Shocking enemy");
             var hitBox = enemy.transform.gameObject.GetComponent<EnemyHitbox>();
-            hitBox.OnHit(damage, temp.normalized);
+            hitBox.OnHit(damage, -temp.normalized);
         }
        
     }
