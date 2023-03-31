@@ -21,23 +21,6 @@ public class lightning : Spell
 
     // animation IDs
     private int animIDAbility;
-    //Other components
-    private GameObject mainCamera;
-    private GameObject lightningEndObj;
-
-    //Awake is called when the script instance is first loaded
-    private void Awake()
-    {
-        // get a reference to our main camera
-        if (mainCamera == null)
-        {
-            mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        }
-        //get reference to lightning end object (this is to do with the way the asset functions)
-        if (lightningEndObj == null) {
-            lightningEndObj = GameObject.FindGameObjectWithTag("Lightning");
-        }
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -63,8 +46,6 @@ public class lightning : Spell
         animator.SetBool(animIDAbility, false);
         gameObject.SendMessage("enableMove");
         GameObject bolt = GameObject.Instantiate(projectile);
-        GameObject boltStart = bolt.transform.GetChild(0).gameObject; //Gets first child, so dont change order of projectile prefab
-        GameObject boltEnd = bolt.transform.GetChild(1).gameObject; //Gets second child, so dont change order of projectile prefab
         yield return new WaitForSeconds(boltDuration);
         Destroy(bolt);
         endSpell();
