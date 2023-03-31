@@ -4,15 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DigitalRuby.LightningBolt;
 
-public class lightning : MonoBehaviour
+public class lightning : Spell
 {
     [Header("LightningBolt")]
-    [Tooltip("LightningBolt to launch")]
-    [SerializeField]
-    private GameObject lightningBolt;
-    [Tooltip("Ability cooldown in seconds")]
-    [SerializeField]
-    private float lightningBoltCooldown = 1.0f;
     [Tooltip("A small delay to allow for casting animation")]
     [SerializeField]
     private float lightningBoltDelay = 0.3f;
@@ -23,16 +17,12 @@ public class lightning : MonoBehaviour
     [SerializeField]
     private float lightningBoltHeight = 1.0f;
 
-    private PlayerMovementInputs input;
-    private float abilityTimeoutDelta;
-
     // animation IDs
     private int animIDAbility;
     //Other components
-    private Animator animator;
     private GameObject mainCamera;
     private GameObject lightningEndObj;
-    private AudioSource audio;
+    private AudioSource lightningAudio;
 
     //Awake is called when the script instance is first loaded
     private void Awake()
@@ -51,17 +41,12 @@ public class lightning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Get the inputs
-        input = GetComponent<PlayerMovementInputs>();
-        //Initialise snowball cooldown timer
-        abilityTimeoutDelta = lightningBoltCooldown;
-
         AssignAnimationIDs();
         animator = GetComponent<Animator>();
 
         //input sick custom audio
-        audio = GetComponent<AudioSource>();
-        audio.volume = 0.3f;
+        lightningAudio = GetComponent<AudioSource>();
+        lightningAudio.volume = 0.3f;
     }
 
     // Update is called once per frame
@@ -76,7 +61,7 @@ public class lightning : MonoBehaviour
                 animator.SetBool(animIDAbility, true);
                 abilityTimeoutDelta = lightningBoltCooldown;
                 StartCoroutine(throwLightningBolt());
-                audio.Play(0);
+                lightningAudio.Play(0);
             }
             else
             {
@@ -96,7 +81,7 @@ public class lightning : MonoBehaviour
     }
 
     //Sets all animation parameters to ID's for faster comparison
-    private void AssignAnimationIDs()
+    protected override void AssignAnimationIDs()
     {
         animIDAbility = Animator.StringToHash("UseAbility");
     }
@@ -110,7 +95,7 @@ public class lightning : MonoBehaviour
         float yRot = transform.rotation.eulerAngles.y;
         Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
         
-        GameObject current = GameObject.Instantiate(lightningBolt);
+        GameObject current = GameObject.Instantiate(projectile);
         current.GetComponent<LightningBoltScript>().StartObject = transform.gameObject;
         
         current.GetComponent<LightningBoltScript>().StartPosition = new Vector3(current.transform.position.x + 0.3f, current.transform.position.y + lightningBoltHeight, current.transform.position.z + 0.3f);
@@ -126,6 +111,7 @@ public class lightning : MonoBehaviour
        
        // cleaning up cloned bolts
         Destroy(current, 0.3f);
+        endSpell();
     }
 
     // Rotates the player to face the camera direction smoothly
@@ -140,5 +126,10 @@ public class lightning : MonoBehaviour
             yield return null;
         }
         yield return null;
+    }
+
+    public override void beginSpell()
+    {
+        StartCoroutine(throwLightningBolt());
     }
 }
