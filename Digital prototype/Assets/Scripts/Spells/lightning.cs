@@ -49,37 +49,6 @@ public class lightning : Spell
         lightningAudio.volume = 0.3f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(input.GetUseAbility() == true)
-        {
-            
-            if (abilityTimeoutDelta <= 0.0f)
-            {
-                StartCoroutine(RotateOverTime());
-                animator.SetBool(animIDAbility, true);
-                abilityTimeoutDelta = lightningBoltCooldown;
-                StartCoroutine(throwLightningBolt());
-                lightningAudio.Play(0);
-            }
-            else
-            {
-                input.SetUseAbility(false);
-            }
-        }
-        else
-        {
-            animator.SetBool(animIDAbility, false);
-        }
-
-        if(abilityTimeoutDelta > 0.0f)
-        {
-            abilityTimeoutDelta -= Time.deltaTime;
-        }
-
-    }
-
     //Sets all animation parameters to ID's for faster comparison
     protected override void AssignAnimationIDs()
     {
@@ -89,6 +58,7 @@ public class lightning : Spell
     // shoots lightning bolt
     IEnumerator throwLightningBolt()
     {
+        /**
         yield return new WaitForSeconds(lightningBoltDelay);
 
         
@@ -111,11 +81,15 @@ public class lightning : Spell
        
        // cleaning up cloned bolts
         Destroy(current, 0.3f);
+        */
+        animator.SetBool(animIDAbility, false);
         endSpell();
+        yield return null;
     }
 
     // Rotates the player to face the camera direction smoothly
     IEnumerator RotateOverTime() {
+        /**
         float timer = 0.0f;
         Vector3 fwd = new Vector3(transform.localEulerAngles.x, Camera.main.transform.localEulerAngles.y, transform.localEulerAngles.z);
         while (timer < 0.5f) {
@@ -125,11 +99,14 @@ public class lightning : Spell
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(fwd), t);
             yield return null;
         }
+        */
         yield return null;
     }
 
     public override void beginSpell()
     {
+        lightningAudio.Play(0);
+        animator.SetBool(animIDAbility, true);
         StartCoroutine(throwLightningBolt());
     }
 }
