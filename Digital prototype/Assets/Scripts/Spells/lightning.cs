@@ -10,12 +10,11 @@ public class lightning : Spell
     [Tooltip("A small delay to allow for casting animation")]
     [SerializeField]
     private float lightningBoltDelay = 0.3f;
-    [Tooltip("How far in front of the wizard should the lightningBolt be conjured")]
+    [Tooltip("The origin point of the magic(Crystal in staff)")]
     [SerializeField]
-    private float lightningBoltForwardPosition = 1.9f;
-    [Tooltip("How high up(from the wizards feet) should the lightningBolt be conjured")]
-    [SerializeField]
-    private float lightningBoltHeight = 1.0f;
+    private Transform origin;
+
+    private Transform destination;
 
     // animation IDs
     private int animIDAbility;
