@@ -58,6 +58,15 @@
                     "processors": "Scale",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UseSecondaryAbility",
+                    "type": "Button",
+                    "id": "9ad49fe7-8ec2-41eb-a0a6-3a9a5ad373c1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -234,6 +243,17 @@
                     "processors": "Scale(factor=2)",
                     "groups": "",
                     "action": "Hotbar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "989d37d6-8a40-4ace-8844-4dda1559af2b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "UseSecondaryAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
