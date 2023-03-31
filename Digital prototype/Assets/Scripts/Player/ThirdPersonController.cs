@@ -79,6 +79,7 @@ public class ThirdPersonController : MonoBehaviour
     private float rotationVelocity;
     private float verticalVelocity;
     private float terminalVelocity = 53.0f;
+    private bool moveAllowed;
 
     // timeout deltatime
     private float jumpTimeoutDelta;
@@ -95,6 +96,7 @@ public class ThirdPersonController : MonoBehaviour
     private CharacterController controller;
     private PlayerMovementInputs input;
     private GameObject mainCamera;
+    private GameObject playerFollowCamera;
 
     //Constants
     private const float THRESHOLD = 0.01f; //For camera movement
@@ -106,6 +108,10 @@ public class ThirdPersonController : MonoBehaviour
         if (mainCamera == null)
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+        if (playerFollowCamera == null)
+        {
+            playerFollowCamera = GameObject.FindGameObjectWithTag("FollowCamera");
         }
     }
 
@@ -119,6 +125,8 @@ public class ThirdPersonController : MonoBehaviour
 
         AssignAnimationIDs();
 
+        moveAllowed = true;
+
         //Reset timeouts at the start
         jumpTimeoutDelta = JumpTimeout;
         fallTimeoutDelta = FallTimeout;
@@ -127,6 +135,7 @@ public class ThirdPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SwitchCharacter();
         JumpAndGravity();
         GroundedCheck();
         Move();
@@ -145,6 +154,19 @@ public class ThirdPersonController : MonoBehaviour
         animIDGrounded = Animator.StringToHash("Grounded");
         animIDJump = Animator.StringToHash("Jump");
         animIDFreeFall = Animator.StringToHash("FreeFall");
+    }
+
+    /*
+     * Switches the character if a change happens
+     */
+    private void SwitchCharacter()
+    {
+        if (input.GetSwitchNeeded())
+        {
+            input.SetSwitchNeeded(false);
+            GetComponent<PlayerInput>().enabled = false; //Disable control of current character
+            playerFollowCamera.gameObject.SendMessage("switchCharacter", input.GetCharacterSelection()); //Request control of next character
+        }
     }
 
     /*
@@ -192,7 +214,7 @@ public class ThirdPersonController : MonoBehaviour
 
         // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
         // if there is no input, set the target speed to 0
-        if (input.GetMove() == Vector2.zero)
+        if (input.GetMove() == Vector2.zero || moveAllowed == false)
         {
             targetSpeed = 0.0f;
         }
@@ -339,5 +361,15 @@ public class ThirdPersonController : MonoBehaviour
 
         // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+    }
+
+    public void enableMove()
+    {
+        moveAllowed = true;
+    }
+
+    public void disableMove()
+    {
+        moveAllowed = false;
     }
 }

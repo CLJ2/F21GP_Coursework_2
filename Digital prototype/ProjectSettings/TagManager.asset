@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CinemachineTarget
   - Fire
+  - FollowCamera
+  - Barricades
+  - Staff
   - Lightning
   layers:
   - Default
