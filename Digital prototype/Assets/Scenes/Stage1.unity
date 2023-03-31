@@ -9848,6 +9848,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6696313456021706611}
     - target: {fileID: 5546923297651878316, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
+      propertyPath: CameraDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546923297651878316, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
+      propertyPath: VerticalArmLength
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546923297651878316, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
       propertyPath: CameraCollisionFilter.m_Bits
       value: 449
       objectReference: {fileID: 0}
@@ -9857,11 +9865,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5546923297733700400, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.786275
+      value: 12.126275
       objectReference: {fileID: 0}
     - target: {fileID: 5546923297733700400, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 5546923297733700400, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
       propertyPath: m_LocalPosition.z
@@ -43875,11 +43883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1696924525532352694, guid: 6bd1cb4dea0d5c148b0914ea7d88ad49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.786275
+      value: 12.126275
       objectReference: {fileID: 0}
     - target: {fileID: 1696924525532352694, guid: 6bd1cb4dea0d5c148b0914ea7d88ad49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 1696924525532352694, guid: 6bd1cb4dea0d5c148b0914ea7d88ad49, type: 3}
       propertyPath: m_LocalPosition.z
