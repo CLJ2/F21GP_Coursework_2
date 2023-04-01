@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class windSpell : Spell
 {
@@ -15,12 +14,17 @@ public class windSpell : Spell
     [Tooltip("What layers does the wind affect")]
     [SerializeField]
     private LayerMask EnemyLayer;
+    [Tooltip("How strong is the wind")]
+    [SerializeField]
+    private float windForce = 400f;
 
     // animation IDs
     private int animIDAbility;
     //Other components
-    private Animator animator;
     private GameObject mainCamera;
+    private Ragdoll ragdoll;
+    private Vector3 original_rot;
+    private Vector3 original_pos;
 
     //Awake is called when the script instance is first loaded
     private void Awake()
@@ -42,7 +46,7 @@ public class windSpell : Spell
     }
 
     //Sets all animation parameters to ID's for faster comparison
-    private void AssignAnimationIDs()
+    protected override void AssignAnimationIDs()
     {
         animIDAbility = Animator.StringToHash("UseAbility");
     }
@@ -59,11 +63,29 @@ public class windSpell : Spell
 
         if(Physics.Raycast(ray, out hitData, windForwardLength, EnemyLayer)) {
             if (hitData.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-                if (hitData.rigidbody != null)
-                    hitData.rigidbody.AddForce(mainCamera.transform.forward * 400);
+                ragdoll = hitData.transform.root.gameObject.GetComponent<Ragdoll>();
+                /* original_rot = ragdoll.transform.localEulerAngles;
+                original_pos = ragdoll.transform.localPosition; */
+                ragdoll.ActivateRagdoll();
+                ragdoll.ApplyForce(Vector3.up * windForce);
+                
+                ragdoll.ApplyForce(-ragdoll.transform.forward * windForce);
+                
+                /* if (hitData.rigidbody != null)
+                    hitData.rigidbody.AddForce(mainCamera.transform.forward * 400); */
+                    
             }
         }
         endSpell();
+         if (ragdoll != null) {
+            yield return new WaitForSeconds(3);
+            
+            ragdoll.DeactivateRagdoll();
+            /* ragdoll.transform.position = original_pos;
+            ragdoll.transform.eulerAngles = original_rot; */
+
+        } 
+        
     }
 
     public override void beginSpell()

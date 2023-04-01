@@ -1862,6 +1862,7 @@ GameObject:
   - component: {fileID: 771419628981647773}
   - component: {fileID: 1308906921586756281}
   - component: {fileID: 5615978924836236750}
+  - component: {fileID: 1958447682082401961}
   m_Layer: 9
   m_Name: AirWizard
   m_TagString: Untagged
@@ -1884,6 +1885,7 @@ Transform:
   - {fileID: 810733701790816057}
   - {fileID: 810998038042136669}
   - {fileID: 815296875218071292}
+  - {fileID: 3940771296079673302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -2025,8 +2027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648baf4730a5a3548aa39c26936c3316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAbility: {fileID: 0}
-  primaryCooldown: 0
+  primaryAbility: {fileID: 1958447682082401961}
+  primaryCooldown: 1
   secondaryAbility: {fileID: 5615978924836236750}
   secondaryCooldown: 2
   meleeAbility: {fileID: 6929113773737087622}
@@ -2047,6 +2049,24 @@ MonoBehaviour:
   lightningBoltDelay: 2
   boltDuration: 5
   origin: {fileID: 1780863150686055238}
+--- !u!114 &1958447682082401961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816968258418747857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c777b4db256134a9c35ea4a49c8b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 3878443439248275763}
+  windDelay: 0.3
+  windForwardLength: 15
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &816972211590613799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,6 +2547,37 @@ Transform:
   m_Father: {fileID: 6318017900041110448}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+--- !u!1 &3878443439248275763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3940771296079673302}
+  m_Layer: 9
+  m_Name: WindProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3940771296079673302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878443439248275763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 819351630301205789}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6321810037723348924
 GameObject:
   m_ObjectHideFlags: 0
