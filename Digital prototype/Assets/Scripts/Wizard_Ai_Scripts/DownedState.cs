@@ -16,7 +16,7 @@ public class DownedState : AiState
     
     public void Update(AiAgent agent)
     {
-        if (agent.health > 0) agent.stateMachine.ChangeState(AiStateID.Idle);
+        if (agent.health > 0.0f) agent.stateMachine.ChangeState(AiStateID.Idle);
     }
 
     public void Exit(AiAgent agent)

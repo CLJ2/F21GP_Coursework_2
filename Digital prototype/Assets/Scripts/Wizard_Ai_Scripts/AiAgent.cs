@@ -15,7 +15,7 @@ public class AiAgent : MonoBehaviour
     public GameObject[] enemies;
     public CharacterController characterController;
     public bool attckEnemy = false;
-    public bool health;
+    public float health;
 
     // Start is called before the first frame update
     void Start()
