@@ -9,6 +9,7 @@ TagManager:
   - FollowCamera
   - Barricades
   - Staff
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: New Ai Config
   m_EditorClassIdentifier: 
   followStateDistance: 5
+  followStateStopDistance: 5
   attackEnemyStateDistance: 5
+  Timer: 1

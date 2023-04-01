@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DownedState : MonoBehaviour
+public class DownedState : AiState
 {
-    // Start is called before the first frame update
-    void Start()
+    public AiStateID GetStateID()
+    {
+        return AiStateID.Downed;
+    }
+    
+    public void Enter(AiAgent agent)
     {
         
     }
+    
+    public void Update(AiAgent agent)
+    {
+        if (agent.health > 0) agent.stateMachine.ChangeState(AiStateID.Idle);
+    }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit(AiAgent agent)
     {
         
     }

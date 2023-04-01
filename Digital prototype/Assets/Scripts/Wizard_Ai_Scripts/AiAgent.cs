@@ -12,19 +12,24 @@ public class AiAgent : MonoBehaviour
     public GameObject player;
     public AiConfig config;
     public float timer;
+    public GameObject[] enemies;
+    public CharacterController characterController;
+    public bool attckEnemy = false;
+    public bool health;
 
     // Start is called before the first frame update
     void Start()
     {
         active = true;
         navMeshAgent = GetComponent<NavMeshAgent>();
+        characterController = GetComponent<CharacterController>();
 
         stateMachine = new AiStateMachine(this);
-        //stateMachine.RegisterState(new UnactiveState());
+        stateMachine.RegisterState(new UnactiveState());
         stateMachine.RegisterState(new IdleState());
         stateMachine.RegisterState(new FollowPlayerState());
         stateMachine.RegisterState(new TargetEnemyState());
-        //stateMachine.RegisterState(new DownedState());
+        stateMachine.RegisterState(new DownedState());
         stateMachine.ChangeState(initialState);
     }
 

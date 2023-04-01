@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnactiveState : MonoBehaviour
+public class UnactiveState : AiState
 {
-    // Start is called before the first frame update
-    void Start()
+    public AiStateID GetStateID()
     {
-        
+        return AiStateID.Unactive;
+    }
+    
+    public void Enter(AiAgent agent)
+    {
+        agent.characterController.enabled = true;
+        agent.navMeshAgent.enabled = false;
+    }
+    
+    public void Update(AiAgent agent)
+    {
+        if (agent.active == true) agent.stateMachine.ChangeState(AiStateID.Idle); 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit(AiAgent agent)
     {
-        
-    }
+        agent.characterController.enabled = false;
+        agent.navMeshAgent.enabled = true;
+    }    
 }

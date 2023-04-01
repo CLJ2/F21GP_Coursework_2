@@ -11,8 +11,8 @@ public class FollowPlayerState : AiState
     
     public void Enter(AiAgent agent)
     {
-        agent.timer = agent.config.followPlayerCheckTimer;
-        agent.GetComponent<CharacterController>().enabled = false;
+        agent.timer = agent.config.Timer;
+        Debug.Log("following player");
     }
     
     public void Update(AiAgent agent)
@@ -24,12 +24,20 @@ public class FollowPlayerState : AiState
         if(agent.timer < 0.0f)
         {
             agent.navMeshAgent.destination = agent.player.transform.position;
-            agent.timer = agent.config.followPlayerCheckTimer;
+            agent.timer = agent.config.Timer; 
+            
+        }
+        Debug.Log(Vector3.Distance(agent.player.transform.position, agent.transform.position) < agent.config.followStateStopDistance);
+        Debug.Log(agent.config.followStateStopDistance);
+        if (Vector3.Distance(agent.player.transform.position, agent.transform.position) < agent.config.followStateStopDistance)
+        {
+            agent.navMeshAgent.destination = agent.transform.position;
+            agent.stateMachine.ChangeState(AiStateID.Idle);
         }
     }
 
     public void Exit(AiAgent agent)
     {
-        agent.GetComponent<CharacterController>().enabled = true;
+        
     }
 }
