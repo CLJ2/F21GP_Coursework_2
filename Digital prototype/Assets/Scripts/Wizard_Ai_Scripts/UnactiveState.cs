@@ -13,6 +13,7 @@ public class UnactiveState : AiState
     {
         agent.characterController.enabled = true;
         agent.navMeshAgent.enabled = false;
+        agent.tag = "Player";
     }
     
     public void Update(AiAgent agent)
@@ -24,5 +25,6 @@ public class UnactiveState : AiState
     {
         agent.characterController.enabled = false;
         agent.navMeshAgent.enabled = true;
+        agent.tag = "AiPlayer";
     }    
 }
