@@ -10,6 +10,7 @@ TagManager:
   - Barricades
   - Staff
   - AiPlayer
+  - Enemy
   layers:
   - Default
   - TransparentFX
