@@ -2057,7 +2057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d905c90b00ea94418e8093deb905e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentTransform: {fileID: 0}
+  agentTransform: {fileID: 420612}
   foreground: {fileID: 8329647744583310339}
   background: {fileID: 5684214312843787135}
   offset: {x: 0, y: 0.4, z: 0}

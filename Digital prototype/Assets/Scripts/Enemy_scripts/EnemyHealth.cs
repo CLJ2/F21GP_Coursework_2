@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(healthBar.gameObject.active == false) healthBar.gameObject.SetActive(true);
         health -= damage;
-        healthBar.SetHealthBarPecentage(health /agent.config.maxhealth);
+        healthBar.SetHealthBarPecentage(health/agent.config.maxhealth);
         if (health < 0)
         {
             Die(direction);
