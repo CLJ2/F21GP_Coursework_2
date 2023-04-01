@@ -14,7 +14,6 @@ public class AiAgent : MonoBehaviour
     public float timer;
     public GameObject[] enemies;
     public CharacterController characterController;
-    public bool attckEnemy = false;
     public float health;
 
     // Start is called before the first frame update
