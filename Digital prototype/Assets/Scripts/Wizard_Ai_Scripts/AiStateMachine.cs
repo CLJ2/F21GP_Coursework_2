@@ -20,7 +20,7 @@ public class AiStateMachine
         int i = (int)state.GetStateID();
         states[i] = state;
     }
-   
+
     public AiState GetState(AiStateID stateID)
     {
         int i = (int)stateID;
@@ -29,7 +29,7 @@ public class AiStateMachine
 
     public void Update()
     {
-        GetState(currentState)?.Upadte(agent);
+        GetState(currentState)?.Update(agent);
     }
 
     public void ChangeState(AiStateID newStateID)
