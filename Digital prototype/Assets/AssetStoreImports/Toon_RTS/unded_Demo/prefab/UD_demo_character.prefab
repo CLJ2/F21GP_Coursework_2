@@ -1246,7 +1246,7 @@ Animator:
   m_GameObject: {fileID: 165424}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3392e95529ae7540ad53657e3d0ce7d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ae615fe5ea0dfd49abae5933142ded3, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1300,6 +1300,7 @@ MonoBehaviour:
   player: {fileID: 0}
   barricades: []
   barricade: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &6404071971503148806
 MonoBehaviour:
   m_ObjectHideFlags: 0
