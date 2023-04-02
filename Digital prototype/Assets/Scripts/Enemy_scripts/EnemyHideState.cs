@@ -25,7 +25,7 @@ public class EnemyHideState : EnemyAiState
     {
         if (!agent.enabled) return; //is agent is not enabled, skip
 
-        if (Vector3.Distance(agent.transform.position, agent.barricade.transform.position) < agent.config.hideDistance)  //if the agemt is less than the hide distance
+        if (Vector3.Distance(agent.transform.position, agent.barricade.transform.position) < agent.config.hideDistance)  //if the agent is less than the hide distance
         {
             agent.navMeshAgent.isStopped = true;    //stop agent from moving
             agent.timer -= Time.deltaTime;  //update timer
