@@ -53,6 +53,7 @@ public class lightning : Spell
 
     public override void beginSpell()
     {
+        StartCoroutine(RotateOverTime());
         StartCoroutine(throwLightningBolt());
     }
 }
