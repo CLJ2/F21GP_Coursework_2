@@ -4,14 +4,18 @@ using UnityEngine;
 
 public enum AiStateID
 {
-    targetPlayer
+    Idle,
+    Downed,
+    TargetEnemy,
+    FollowPlayer,
+    Unactive
 }
 
 public interface AiState
 {
     AiStateID GetStateID();
     void Enter(AiAgent agent);
-    void Upadte(AiAgent agent);
+    void Update(AiAgent agent);
     void Exit(AiAgent agent);
 
 }

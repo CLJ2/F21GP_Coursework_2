@@ -9,6 +9,8 @@ TagManager:
   - FollowCamera
   - Barricades
   - Staff
+  - AiPlayer
+  - Enemy
   - Lightning
   layers:
   - Default

@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 8640153423351567721}
   m_Layer: 10
   m_Name: UD_demo_character
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1246,7 +1246,7 @@ Animator:
   m_GameObject: {fileID: 165424}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f3392e95529ae7540ad53657e3d0ce7d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ae615fe5ea0dfd49abae5933142ded3, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1297,9 +1297,14 @@ MonoBehaviour:
   timer: 0
   ragdoll: {fileID: 0}
   healthBar: {fileID: 0}
+  players:
+  - {fileID: 9193899985922452890, guid: 000fa2a2abf8a354595fa22e63702c2c, type: 3}
+  - {fileID: 816968258418747857, guid: 2f161b7f1fed9f64f875b9b4b622a322, type: 3}
+  - {fileID: 1878810683277006649, guid: b95c05c709237e748b7c913c947fdbdf, type: 3}
   player: {fileID: 0}
   barricades: []
   barricade: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &6404071971503148806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2057,7 +2062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d905c90b00ea94418e8093deb905e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentTransform: {fileID: 0}
+  agentTransform: {fileID: 420612}
   foreground: {fileID: 8329647744583310339}
   background: {fileID: 5684214312843787135}
   offset: {x: 0, y: 0.4, z: 0}

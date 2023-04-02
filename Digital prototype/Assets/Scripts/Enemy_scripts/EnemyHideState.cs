@@ -11,8 +11,13 @@ public class EnemyHideState : EnemyAiState
     
     public void Enter(EnemyAiAgent agent)
     {
-        agent.barricade = agent.barricades[Random.Range(0, agent.barricades.Length)];
-        agent.navMeshAgent.destination = agent.barricade.gameObject.transform.position;
+        bool selectingBarricade = true;
+        while (selectingBarricade)
+        {
+            agent.barricade = agent.barricades[Random.Range(0, agent.barricades.Length)];
+            if (Vector3.Distance(agent.barricade.transform.position, agent.transform.position) < agent.config.hideRange) selectingBarricade = false;
+        }
+        agent.navMeshAgent.destination = agent.barricade.transform.position;
         agent.timer = agent.config.maxTime;
     }
     
@@ -20,7 +25,7 @@ public class EnemyHideState : EnemyAiState
     {
         if (!agent.enabled) return; //is agent is not enabled, skip
 
-        if (Vector3.Distance(agent.transform.position, agent.barricade.transform.position) < agent.config.hideDistance)  //if the agemt is less than the hide distance
+        if (Vector3.Distance(agent.transform.position, agent.barricade.transform.position) < agent.config.hideDistance)  //if the agent is less than the hide distance
         {
             agent.navMeshAgent.isStopped = true;    //stop agent from moving
             agent.timer -= Time.deltaTime;  //update timer

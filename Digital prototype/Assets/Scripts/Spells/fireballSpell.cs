@@ -52,6 +52,7 @@ public class fireballSpell : Spell
 
     public override void beginSpell()
     {
+        StartCoroutine(RotateOverTime());
         animator.SetBool(animIDAbility, true);
         StartCoroutine(throwFireball());
     }
