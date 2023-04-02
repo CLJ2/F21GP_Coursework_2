@@ -45,11 +45,11 @@ public class keyManagement : MonoBehaviour
         {
             if (hasKey)
             {
-                var door = collision.gameObject.GetComponent<door>();
+                var door = collision.gameObject.transform.parent.gameObject.GetComponent<door>();
                 if (door.locked)
                 {
                     toggleKey();
-                    collision.gameObject.SendMessage("open");
+                    collision.gameObject.SendMessageUpwards("open");
                 }
             }
         }
