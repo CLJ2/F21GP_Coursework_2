@@ -12,7 +12,7 @@ public class FollowPlayerState : AiState
     public void Enter(AiAgent agent)
     {
         agent.timer = agent.config.Timer;
-        Debug.Log("following player");
+        //Debug.Log("following player");
     }
 
     public void Update(AiAgent agent)

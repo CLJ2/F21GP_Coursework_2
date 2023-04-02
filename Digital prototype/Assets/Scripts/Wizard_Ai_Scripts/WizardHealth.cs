@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class WizardHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float health;
+    public AiAgent agent;
+    public fireWizardGUI gui;
+
     void Start()
     {
-        
+        agent = GetComponent<AiAgent>();
+        health = agent.config.maxHealth;
+        gui = GameObject.Find("GUI").GetComponent<fireWizardGUI>();
+        gui.SetUpHealthBar(agent.config.maxHealth);
+        Debug.Log(agent);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(float damage)
     {
-        
+        health -= damage;
+        gui.UpdateHealthBars(agent, health);
+        if(health < 0)
+        {
+            agent.stateMachine.ChangeState(AiStateID.Downed);
+        }
     }
 }

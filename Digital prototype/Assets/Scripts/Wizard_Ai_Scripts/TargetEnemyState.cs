@@ -11,7 +11,7 @@ public class TargetEnemyState : AiState
 
     public void Enter(AiAgent agent)
     {
-        Debug.Log("Attack Enemy");
+        //Debug.Log("Attack Enemy");
     }
 
     public void Update(AiAgent agent)
