@@ -9,6 +9,7 @@ TagManager:
   - FollowCamera
   - Barricades
   - Staff
+  - Lightning
   layers:
   - Default
   - TransparentFX
