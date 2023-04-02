@@ -16,6 +16,8 @@ public class EnemyIdleState : EnemyAiState
 
     public void Update(EnemyAiAgent agent)
     {
+        GameObject player = agent.playersArray[Random.Range(0, agent.playersArray.Length)];
+        agent.playerTransform = player.transform;
         Vector3 playerDirection = agent.playerTransform.position - agent.transform.position;
         if (playerDirection.magnitude > agent.config.maxSightDistance) return;
 

@@ -19,18 +19,9 @@ public class flamethrowerSpell : Spell
     private int animIDAbility;
     private int animIDFinishedAbility;
     //Other components
-    private Animator animator;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        AssignAnimationIDs();
-        animator = GetComponent<Animator>();
-    }
-
 
     //Sets all animation parameters to ID's for faster comparison
-    private void AssignAnimationIDs()
+    protected override void AssignAnimationIDs()
     {
         animIDAbility = Animator.StringToHash("UseSecondaryAbility");
         animIDFinishedAbility = Animator.StringToHash("FinishedSecondaryAbility");

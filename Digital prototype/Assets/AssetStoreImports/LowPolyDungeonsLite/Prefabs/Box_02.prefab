@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2186342828165975494}
   - component: {fileID: 9199318076177868339}
   - component: {fileID: 9152009896336452313}
-  - component: {fileID: -8821087605195241831}
+  - component: {fileID: 3744324217537192559}
   m_Layer: 8
   m_Name: Box_02
   m_TagString: Barricades
@@ -99,7 +99,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8257fe5fd024e1640b84edb679463fd9, type: 3}
---- !u!208 &-8821087605195241831
+--- !u!208 &3744324217537192559
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
