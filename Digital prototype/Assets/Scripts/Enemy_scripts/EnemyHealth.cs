@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(healthBar.gameObject.active == false) healthBar.gameObject.SetActive(true);
         health -= damage;
-        healthBar.SetHealthBarPecentage(health /agent.config.maxhealth);
+        healthBar.SetHealthBarPecentage(health/agent.config.maxhealth);
         if (health < 0)
         {
             Die(direction);
@@ -40,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
     //change agent to death state
     private void Die(Vector3 direction)
     {
+        healthBar.gameObject.SetActive(false);
         EnemyDeathState state = agent.stateMachine.GetState(EnemyAiStateID.Dead) as EnemyDeathState;
         state.deathDirection = direction;
         agent.stateMachine.ChangeState(EnemyAiStateID.Dead);
