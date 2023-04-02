@@ -5,10 +5,9 @@ using UnityEngine.AI;
 
 public class iceExplosionEffects : MonoBehaviour
 {
-    private bool hasCollided = false;
-    private NavMeshAgent nma;
-    private Animator animator;
-    private float waitTime = 5f;
+    [Tooltip("How much damage does the explosion do?")]
+    [SerializeField] private float frostDamage = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,34 +17,24 @@ public class iceExplosionEffects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waitTime-=Time.deltaTime;
+
     }
 
     public IEnumerator OnTriggerEnter(Collider collider)
     {
+        //Debug.Log(collider.gameObject.name);
         EnemyAiAgent ai;
         Transform t = collider.transform.root;
-        if (t.gameObject.layer == 10 && hasCollided == false)
+        if (t.gameObject.layer == 10)
         {
-            hasCollided = true;
-
-            Debug.Log("hit");
+            Debug.Log("Frozen!");
             ai = t.GetComponent<EnemyAiAgent>();
             ai.isFrozen= true;
             ai.animator.speed = 0;
             ai.frozenTimer = ai.config.freezeDuration;
-            
+            t.GetComponent<EnemyHealth>().TakeDamage(frostDamage, -t.forward);
         } 
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
-    }
-
-    public IEnumerator RestartAI() {
-        yield return new WaitForSeconds(5f);
-        hasCollided = false;
-        Debug.Log("hit2s");
-        nma.isStopped = false;
-        animator.speed = 1;
-        //nma.ResetPath();
     }
 }

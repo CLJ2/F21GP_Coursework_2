@@ -25,7 +25,6 @@ public class iceExplosionSpell : Spell
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
-
     }
 
     //Sets all animation parameters to ID's for faster comparison
@@ -39,10 +38,9 @@ public class iceExplosionSpell : Spell
         yield return new WaitForSeconds(iceExplosionDelay);
         animator.SetBool(animIDAbility, false);
         GameObject current = GameObject.Instantiate(projectile);
-        
         current.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        
         ParticleSystem[] ps = current.GetComponentsInChildren<ParticleSystem>();
+
         for (int i = 0; i < ps.Length; i++)
         {
             if (ps[i].gameObject.name == "Ground")
@@ -59,7 +57,6 @@ public class iceExplosionSpell : Spell
             {
                 ParticleSystem sphereParticles = ps[i];
                 sphereParticles.transform.localScale = sphereParticles.transform.localScale*iceExplosionScale;
-                
             }
             else if (ps[i].gameObject.name == "Impact")
             {
@@ -85,14 +82,5 @@ public class iceExplosionSpell : Spell
         StartCoroutine(RotateOverTime());
         animator.SetBool(animIDAbility, true);
         StartCoroutine(castIceExplosion());
-
     }
-
-    private void OnTriggerEnter(Collider c) {
-        if (c.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-            Animator animator = c.GetComponentInParent<Animator>();
-            Debug.Log("triggering");
-        }
-    }
-
 }
