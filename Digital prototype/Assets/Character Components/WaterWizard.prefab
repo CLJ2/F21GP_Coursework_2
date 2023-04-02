@@ -1932,12 +1932,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648baf4730a5a3548aa39c26936c3316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAbility: {fileID: 0}
-  primaryCooldown: 0
+  primaryAbility: {fileID: 7638862399028550704}
+  primaryCooldown: 1
   secondaryAbility: {fileID: 0}
   secondaryCooldown: 0
   meleeAbility: {fileID: 2987367263262414988}
   meleeCooldown: 1.1
+
 --- !u!195 &3294939002730282936
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1969,10 +1970,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1878810683277006649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6773afc9d7753d94a8839a2772993449, type: 3}
+  m_Script: {fileID: 11500000, guid: 519319cc9a9ccce449e9a0d76263cd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 0
+  projectile: {fileID: 7624496878921423553, guid: 35769368e5fb3434facb399cb977b55f, type: 3}
+  iceBoltDelay: 0.3
+  iceBoltForwardPosition: 1.9
+  iceBoltHeight: 1
+
 --- !u!1 &1878814632148710863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,7 +2646,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 3745326595631558970}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.07
   m_Height: 2.3
   m_Direction: 1
