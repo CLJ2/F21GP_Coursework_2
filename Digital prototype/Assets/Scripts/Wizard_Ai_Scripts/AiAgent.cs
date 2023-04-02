@@ -38,6 +38,6 @@ public class AiAgent : MonoBehaviour
     void Update()
     {
         stateMachine.Update();
-        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);    //animator not working for ai
     }
 }
