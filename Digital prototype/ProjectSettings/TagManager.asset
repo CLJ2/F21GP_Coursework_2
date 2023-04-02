@@ -11,6 +11,7 @@ TagManager:
   - Staff
   - AiPlayer
   - Enemy
+  - Lightning
   layers:
   - Default
   - TransparentFX
