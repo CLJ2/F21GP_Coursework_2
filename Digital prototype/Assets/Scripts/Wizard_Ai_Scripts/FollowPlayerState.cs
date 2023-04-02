@@ -27,8 +27,8 @@ public class FollowPlayerState : AiState
             agent.timer = agent.config.Timer;
 
         }
-        Debug.Log(Vector3.Distance(agent.player.transform.position, agent.transform.position) < agent.config.followStateStopDistance);
-        Debug.Log(agent.config.followStateStopDistance);
+        //Debug.Log(Vector3.Distance(agent.player.transform.position, agent.transform.position) < agent.config.followStateStopDistance);
+        //Debug.Log(agent.config.followStateStopDistance);
         if (Vector3.Distance(agent.player.transform.position, agent.transform.position) < agent.config.followStateStopDistance)
         {
             agent.navMeshAgent.destination = agent.transform.position;

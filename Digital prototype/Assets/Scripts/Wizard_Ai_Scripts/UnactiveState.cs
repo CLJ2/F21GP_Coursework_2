@@ -18,6 +18,8 @@ public class UnactiveState : AiState
 
     public void Update(AiAgent agent)
     {
+        Debug.Log(agent);
+        Debug.Log(agent.tag);
         if (agent.active == true) agent.stateMachine.ChangeState(AiStateID.Idle);
     }
 

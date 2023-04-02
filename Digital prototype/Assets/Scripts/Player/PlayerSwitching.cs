@@ -22,9 +22,10 @@ public class PlayerSwitching : MonoBehaviour
     //Switches characters based on input and array of characters set in unity
     public void switchCharacter(int selection)
     {
+        characters[selection].GetComponent<AiAgent>().active = false;
         characters[selection].GetComponent<PlayerInput>().enabled = true; //Enalbe control of character swapping too
         characters[selection].GetComponent<PlayerMovementInputs>().SetCharacterSelection(selection); //Let character know its selected (for swapping purposes)
-        characters[selection].GetComponent<AiAgent>().active = false;
+        
         virtualCamera.Follow = characters[selection].transform.GetChild(2); //Tell camera to follow new character
     }
 }

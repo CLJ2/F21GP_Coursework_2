@@ -1767,8 +1767,8 @@ GameObject:
   - component: {fileID: 2013168413455157099}
   - component: {fileID: 2013168413455157109}
   - component: {fileID: 6472690076216136300}
-  - component: {fileID: 3294939002730282936}
   - component: {fileID: -7332768332754743740}
+  - component: {fileID: 3294939002730282936}
   m_Layer: 9
   m_Name: WaterWizard
   m_TagString: AiPlayer
@@ -1938,6 +1938,27 @@ MonoBehaviour:
   secondaryCooldown: 0
   meleeAbility: {fileID: 2987367263262414988}
   meleeCooldown: 1.1
+--- !u!114 &-7332768332754743740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878810683277006649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6773afc9d7753d94a8839a2772993449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialState: 0
+  navMeshAgent: {fileID: 3294939002730282936}
+  active: 0
+  player: {fileID: 0}
+  config: {fileID: 11400000, guid: 9e6c7b19d68ea2541968f2e25ce63fd9, type: 2}
+  timer: 0
+  enemies: []
+  characterController: {fileID: 0}
+  health: 0
 --- !u!195 &3294939002730282936
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1960,27 +1981,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-7332768332754743740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1878810683277006649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6773afc9d7753d94a8839a2772993449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialState: 0
-  navMeshAgent: {fileID: 3294939002730282936}
-  active: 0
-  player: {fileID: 0}
-  config: {fileID: 11400000, guid: 9e6c7b19d68ea2541968f2e25ce63fd9, type: 2}
-  timer: 0
-  enemies: []
-  characterController: {fileID: 0}
-  health: 0
 --- !u!1 &1878814632148710863
 GameObject:
   m_ObjectHideFlags: 0
