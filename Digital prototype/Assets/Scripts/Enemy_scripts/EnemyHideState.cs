@@ -11,8 +11,13 @@ public class EnemyHideState : EnemyAiState
     
     public void Enter(EnemyAiAgent agent)
     {
-        agent.barricade = agent.barricades[Random.Range(0, agent.barricades.Length)];
-        agent.navMeshAgent.destination = agent.barricade.gameObject.transform.position;
+        bool selectingBarricade = true;
+        while (selectingBarricade)
+        {
+            agent.barricade = agent.barricades[Random.Range(0, agent.barricades.Length)];
+            if (Vector3.Distance(agent.barricade.transform.position, agent.transform.position) < agent.config.hideRange) selectingBarricade = false;
+        }
+        agent.navMeshAgent.destination = agent.barricade.transform.position;
         agent.timer = agent.config.maxTime;
     }
     

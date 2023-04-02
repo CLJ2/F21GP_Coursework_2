@@ -13,5 +13,12 @@ MonoBehaviour:
   m_Name: New Enemy Ai Config
   m_EditorClassIdentifier: 
   maxSightDistance: 5
+  attackRange: 1.5
   maxTime: 0.5
   minDistance: 1
+  hideDistance: 2
+  hideRange: 10
+  deathForce: 10
+  maxhealth: 50
+  unhideChance: 2
+  attackPlayerOnSightChance: 5

@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Digital prototype/Assets/AssetStoreImports/AShopExport/Barbarian Shaman/witch doctor.unity.meta
-guid: b1f50e87294b97f4e980ee23efa1b30e
+<<<<<<<< HEAD:Digital prototype/Assets/Scripts/Enemy_scripts/SkeltonAnimationController.controller.meta
+guid: 749906a8cd088fa40a8ec7c33944c24f
+NativeFormatImporter:
 ========
 guid: e1660c69a8f4def4aa7460e260f48b4b
 >>>>>>>> main:Digital prototype/Assets/AssetStoreImports/LightningBolt/Demo/LightningBoltDemo.unity.meta
 DefaultImporter:
+>>>>>>>> main:Digital prototype/Assets/AssetStoreImports/LightningBolt/Demo/LightningBoltDemo.unity.meta
   externalObjects: {}
+  mainObjectFileID: 9100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
