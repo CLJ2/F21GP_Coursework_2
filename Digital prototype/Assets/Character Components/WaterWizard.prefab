@@ -1936,7 +1936,7 @@ MonoBehaviour:
   primaryAbility: {fileID: 0}
   primaryCooldown: 0
   secondaryAbility: {fileID: 8120906137418583885}
-  secondaryCooldown: 1
+  secondaryCooldown: 2.5
   meleeAbility: {fileID: 2987367263262414988}
   meleeCooldown: 1.1
 --- !u!195 &3294939002730282936
@@ -1988,8 +1988,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 443653445314069269, guid: 34b02160d24db1a41b261dc52c18d09b, type: 3}
   iceExplosionDelay: 0.3
-  iceExplosionForwardPosition: 1.9
-  iceExplosionHeight: 1
   iceExplosionScale: 2
 --- !u!1 &1878814632148710863
 GameObject:
