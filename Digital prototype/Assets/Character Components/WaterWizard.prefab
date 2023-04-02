@@ -1960,6 +1960,7 @@ MonoBehaviour:
   enemies: []
   characterController: {fileID: 0}
   health: 0
+  animator: {fileID: 0}
 --- !u!195 &3294939002730282936
 NavMeshAgent:
   m_ObjectHideFlags: 0

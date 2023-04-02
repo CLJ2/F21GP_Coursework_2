@@ -11,7 +11,7 @@ public class DownedState : AiState
 
     public void Enter(AiAgent agent)
     {
-
+        agent.animator.SetBool("Downed", true);
     }
 
     public void Update(AiAgent agent)
@@ -21,6 +21,6 @@ public class DownedState : AiState
 
     public void Exit(AiAgent agent)
     {
-
+        agent.animator.SetBool("Downed", false);
     }
 }

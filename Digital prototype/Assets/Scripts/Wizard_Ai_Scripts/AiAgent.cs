@@ -15,6 +15,7 @@ public class AiAgent : MonoBehaviour
     public GameObject[] enemies;
     public CharacterController characterController;
     public float health;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class AiAgent : MonoBehaviour
         active = true;
         navMeshAgent = GetComponent<NavMeshAgent>();
         characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
 
         stateMachine = new AiStateMachine(this);
         stateMachine.RegisterState(new UnactiveState());
@@ -36,5 +38,6 @@ public class AiAgent : MonoBehaviour
     void Update()
     {
         stateMachine.Update();
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
     }
 }
