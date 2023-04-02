@@ -13,6 +13,8 @@ public class EnemyAiAgent : MonoBehaviour
     public float timer = 0.0f;
     public Ragdoll ragdoll;
     public UIHealthBar healthBar;
+    public List<GameObject> players = new List<GameObject>();
+    public GameObject[] playersArray;
     public GameObject player;
     public GameObject[] barricades;
     public GameObject barricade;
@@ -24,8 +26,17 @@ public class EnemyAiAgent : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         ragdoll = GetComponent<Ragdoll>();
         healthBar = GetComponentInChildren<UIHealthBar>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = player.gameObject.transform;
+
+        GameObject playerTemp = GameObject.FindGameObjectWithTag("Player");
+        GameObject[] playerAiTemp = GameObject.FindGameObjectsWithTag("AiPlayer");
+        players.Add(playerTemp);
+        foreach (GameObject i in playerAiTemp)
+        {
+            players.Add(i);
+        }
+        playersArray = players.ToArray();
+
+        //playerTransform = player.gameObject.transform;
         barricades = GameObject.FindGameObjectsWithTag("Barricades");
         animator = GetComponent<Animator>();
         
@@ -35,6 +46,9 @@ public class EnemyAiAgent : MonoBehaviour
         stateMachine.RegisterState(new EnemyIdleState());
         stateMachine.RegisterState(new EnemyHideState());
         stateMachine.ChangeState(initialState);
+        
+        
+        //Debug.Log(healthBar.gameObject);
     }
 
     // Update is called once per frame

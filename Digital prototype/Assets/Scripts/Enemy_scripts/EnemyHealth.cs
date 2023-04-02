@@ -40,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
     //change agent to death state
     private void Die(Vector3 direction)
     {
+        healthBar.gameObject.SetActive(false);
         EnemyDeathState state = agent.stateMachine.GetState(EnemyAiStateID.Dead) as EnemyDeathState;
         state.deathDirection = direction;
         agent.stateMachine.ChangeState(EnemyAiStateID.Dead);
