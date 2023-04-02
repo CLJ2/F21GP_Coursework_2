@@ -25,7 +25,7 @@ public class EnemyAiAgent : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         ragdoll = GetComponent<Ragdoll>();
-        healthBar = GetComponentInChildren<UIHealthBar>();
+        //healthBar = GetComponentInChildren<UIHealthBar>();
 
         GameObject playerTemp = GameObject.FindGameObjectWithTag("Player");
         GameObject[] playerAiTemp = GameObject.FindGameObjectsWithTag("AiPlayer");
