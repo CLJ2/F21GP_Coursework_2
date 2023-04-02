@@ -11,11 +11,13 @@ public class WitchAiAgent : MonoBehaviour
     public Transform playerTransform;
     public WitchAiConfig config;
     public float timer = 0.0f;
+    public float spellTimer = 0.0f;
     public Ragdoll ragdoll;
     public UIHealthBar healthBar;
     public GameObject player;
     public GameObject[] barricades;
     public GameObject barricade;
+    public Animation animator;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class WitchAiAgent : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.gameObject.transform;
         barricades = GameObject.FindGameObjectsWithTag("Barricades");
+        animator = GetComponent<Animation>();
         
         stateMachine = new WitchAiStateMachine(this);
         stateMachine.RegisterState(new WitchTargetPlayer());

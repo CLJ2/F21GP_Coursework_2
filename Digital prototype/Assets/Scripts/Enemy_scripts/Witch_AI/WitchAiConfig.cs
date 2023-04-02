@@ -10,8 +10,11 @@ public class WitchAiConfig : ScriptableObject
     public float attackRange = 1.0f;
 
     public float maxTime = 1.0f;
-    public float minDistance = 1.0f;
-    public float wantedDistance = 15;
+    public float spellCooldown = 2.5f;
+    
+    public float minDistance = 15f;//the needed distance away from the player the witch will start to move further away to the player
+    public float maxDistance = 30f; //the needed distance away from the player the witch will start to move closer to the player
+    public float wantedDistance = 15f; //the distance away from the player the witch will move to
 
     public float deathForce = 5.0f;
 

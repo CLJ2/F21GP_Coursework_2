@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abec7f1cc44fe24dbc0eedf35aa3d2c, type: 3}
   m_Name: New Witch Ai Config
   m_EditorClassIdentifier: 
-  maxSightDistance: 15
-  attackRange: 1
+  maxSightDistance: 20
+  attackRange: 20
   maxTime: 1
-  minDistance: 15
+  spellCooldown: 4
+  minDistance: 10
+  maxDistance: 20
+  wantedDistance: 12
   deathForce: 5
   maxhealth: 50
   attackPlayerOnSightChance: 4
