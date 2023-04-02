@@ -1993,7 +1993,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816968258418747857}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50c04fafd39037a439d7228b27a21bf9, type: 3}
   m_Name: 
@@ -2053,6 +2053,7 @@ MonoBehaviour:
   timer: 0
   enemies: []
   characterController: {fileID: 0}
+  thirdPersonController: {fileID: 0}
   health: 0
   animator: {fileID: 0}
 --- !u!195 &-4909276406893808860

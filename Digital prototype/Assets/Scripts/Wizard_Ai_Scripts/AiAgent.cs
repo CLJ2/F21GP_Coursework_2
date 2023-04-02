@@ -14,8 +14,12 @@ public class AiAgent : MonoBehaviour
     public float timer;
     public GameObject[] enemies;
     public CharacterController characterController;
+    public ThirdPersonController thirdPersonController;
     public float health;
     public Animator animator;
+
+    private float animationMovementBlend;
+    private int animIDSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,9 @@ public class AiAgent : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        thirdPersonController = GetComponent<ThirdPersonController>();
+
+        AssignAnimationIDs();
 
         stateMachine = new AiStateMachine(this);
         stateMachine.RegisterState(new UnactiveState());
@@ -34,10 +41,19 @@ public class AiAgent : MonoBehaviour
         stateMachine.ChangeState(initialState);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void AssignAnimationIDs()
+    {
+        animIDSpeed = Animator.StringToHash("Speed");
+    }
+        // Update is called once per frame
+        void Update()
     {
         stateMachine.Update();
-        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);    //animator not working for ai
+        animationMovementBlend = Mathf.Lerp(animationMovementBlend, navMeshAgent.velocity.magnitude, Time.deltaTime * navMeshAgent.acceleration);
+        if (animationMovementBlend < 0.01f)
+        {
+            animationMovementBlend = 0f;
+        }
+        animator.SetFloat(animIDSpeed, animationMovementBlend);    //animator not working for ai
     }
 }
