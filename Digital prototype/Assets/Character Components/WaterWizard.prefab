@@ -1767,8 +1767,10 @@ GameObject:
   - component: {fileID: 2013168413455157099}
   - component: {fileID: 2013168413455157109}
   - component: {fileID: 6472690076216136300}
-  - component: {fileID: 3294939002730282936}
   - component: {fileID: -7332768332754743740}
+  - component: {fileID: 3294939002730282936}
+  - component: {fileID: -966513517507426968}
+  - component: {fileID: 7847816177121574653}
   m_Layer: 9
   m_Name: WaterWizard
   m_TagString: AiPlayer
@@ -1867,7 +1869,7 @@ CharacterController:
   m_GameObject: {fileID: 1878810683277006649}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 1.877275
   m_Radius: 0.3271355
@@ -1898,7 +1900,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878810683277006649}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50c04fafd39037a439d7228b27a21bf9, type: 3}
   m_Name: 
@@ -1932,13 +1934,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648baf4730a5a3548aa39c26936c3316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAbility: {fileID: 7638862399028550704}
+  primaryAbility: {fileID: 7847816177121574653}
   primaryCooldown: 1
   secondaryAbility: {fileID: 0}
   secondaryCooldown: 0
   meleeAbility: {fileID: 2987367263262414988}
   meleeCooldown: 1.1
-
+--- !u!114 &-7332768332754743740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878810683277006649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6773afc9d7753d94a8839a2772993449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialState: 0
+  navMeshAgent: {fileID: 3294939002730282936}
+  active: 0
+  player: {fileID: 0}
+  config: {fileID: 11400000, guid: 9e6c7b19d68ea2541968f2e25ce63fd9, type: 2}
+  timer: 0
+  enemies: []
+  characterController: {fileID: 0}
+  thirdPersonController: {fileID: 0}
+  health: 0
+  animator: {fileID: 0}
 --- !u!195 &3294939002730282936
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1946,10 +1970,10 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878810683277006649}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1961,7 +1985,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-7332768332754743740
+--- !u!114 &-966513517507426968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878810683277006649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d64bd2865007a747bebdbb9af324a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  agent: {fileID: 0}
+  gui: {fileID: 0}
+--- !u!114 &7847816177121574653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1977,7 +2016,6 @@ MonoBehaviour:
   iceBoltDelay: 0.3
   iceBoltForwardPosition: 1.9
   iceBoltHeight: 1
-
 --- !u!1 &1878814632148710863
 GameObject:
   m_ObjectHideFlags: 0
