@@ -13,7 +13,7 @@ public class IceBolt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + transform.forward * 0.03f;
+        transform.position = transform.position + transform.forward * 0.5f;
     }
     public void OnCollisionEnter(Collision collision)
     {
