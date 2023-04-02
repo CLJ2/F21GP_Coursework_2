@@ -46123,6 +46123,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1696924525532352689, guid: 6bd1cb4dea0d5c148b0914ea7d88ad49, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1696924525532352691, guid: 6bd1cb4dea0d5c148b0914ea7d88ad49, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -46133,7 +46137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1696924525532352694, guid: 6bd1cb4dea0d5c148b0914ea7d88ad49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.870532
+      value: 9.070532
       objectReference: {fileID: 0}
     - target: {fileID: 1696924525532352694, guid: 6bd1cb4dea0d5c148b0914ea7d88ad49, type: 3}
       propertyPath: m_LocalPosition.y
@@ -57236,13 +57240,17 @@ PrefabInstance:
       propertyPath: characters.Array.data[2]
       value: 
       objectReference: {fileID: 325084651}
+    - target: {fileID: 5546923297651878316, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
+      propertyPath: CameraDistance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5546923297733700400, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
       propertyPath: m_RootOrder
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5546923297733700400, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.870532
+      value: 9.070532
       objectReference: {fileID: 0}
     - target: {fileID: 5546923297733700400, guid: 8b06cd278755a714f9160c49bea25643, type: 3}
       propertyPath: m_LocalPosition.y
