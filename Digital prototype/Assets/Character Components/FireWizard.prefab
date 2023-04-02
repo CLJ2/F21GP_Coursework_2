@@ -2266,7 +2266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabfaacbb1b7a5a4c8198697755463f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 3}
+  projectile: {fileID: 141530, guid: b51d38e5115763847abd310200dca41d, type: 3}
   fireballDelay: 0.3
   fireballForwardPosition: 1.9
   fireballHeight: 1
