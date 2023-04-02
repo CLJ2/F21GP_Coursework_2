@@ -6,12 +6,18 @@ public class fireballCollision : MonoBehaviour
 {
 
     private int enemyLayer = 10;
+    private int witchLayer = 11;
 
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == enemyLayer)
         {
             var hitBox = collision.gameObject.GetComponent<EnemyHitbox>();
+            hitBox.OnHit(2, Vector3.one);
+        }
+        if (collision.gameObject.layer == witchLayer)
+        {
+            var hitBox = collision.gameObject.GetComponent<WitchHitbox>();
             hitBox.OnHit(2, Vector3.one);
         }
     }

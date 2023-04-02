@@ -11,10 +11,10 @@ public class Healing_circle : MonoBehaviour
          Collider[] hitColliders = Physics.OverlapSphere(transform.position, 7.5f);
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.layer == 9){
+            if (hitCollider.gameObject.layer == 10){
                 Debug.Log("healy you hahaha");
+                //give health here
             }
-
         }
     }
     void Update()

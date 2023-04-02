@@ -24,8 +24,6 @@ public class WitchTargetPlayer : WitchAiState
     public void Enter(WitchAiAgent agent)
     {
         //this acts similar to the start function
-       
-        Debug.Log("attackstate entered");
         agent.animator.CrossFade("idle_combat", 0.5f);
     }
 
@@ -37,6 +35,7 @@ public class WitchTargetPlayer : WitchAiState
         agent.spellTimer -= Time.deltaTime; 
         if(agent.timer < 0) //if the timer has reached 0
         {
+            
             float srtDistance = (agent.playerTransform.position - agent.navMeshAgent.destination).sqrMagnitude; //calc distance to the player
             if (srtDistance < agent.config.minDistance*agent.config.minDistance || srtDistance > agent.config.maxDistance*agent.config.maxDistance)    //if the distance is greater than the maxdistance^2
             {
@@ -54,7 +53,6 @@ public class WitchTargetPlayer : WitchAiState
             
             if (Random.Range(0, 4) < 2) agent.StartCoroutine(healSpell(agent));
             else agent.StartCoroutine(attackSpell(agent));
-            Debug.Log("wants to attack");
             agent.spellTimer = agent.config.spellCooldown;
         }
     }
