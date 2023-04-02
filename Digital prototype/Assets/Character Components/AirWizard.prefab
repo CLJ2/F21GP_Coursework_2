@@ -2028,7 +2028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryAbility: {fileID: 0}
   primaryCooldown: 0
-  secondaryAbility: {fileID: 5615978924836236750}
+  secondaryAbility: {fileID: 0}
   secondaryCooldown: 2
   meleeAbility: {fileID: 6929113773737087622}
   meleeCooldown: 1.1
@@ -2052,7 +2052,6 @@ MonoBehaviour:
   timer: 0
   enemies: []
   characterController: {fileID: 0}
-  attckEnemy: 0
   health: 0
 --- !u!195 &-4909276406893808860
 NavMeshAgent:

@@ -11,8 +11,8 @@ public class UnactiveState : AiState
 
     public void Enter(AiAgent agent)
     {
-        agent.characterController.enabled = true;
         agent.navMeshAgent.enabled = false;
+        agent.characterController.enabled = true;
         agent.tag = "Player";
     }
 

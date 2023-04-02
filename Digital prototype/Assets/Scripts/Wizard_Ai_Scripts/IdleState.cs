@@ -24,6 +24,7 @@ public class IdleState : AiState
         if (agent.timer < 0.0f)
         {
             agent.player = GameObject.FindGameObjectWithTag("Player");
+            Debug.Log(agent.config.followStateDistance);
             if (Vector3.Distance(agent.transform.position, agent.player.transform.position) > agent.config.followStateDistance)
             {
                 agent.stateMachine.ChangeState(AiStateID.FollowPlayer);

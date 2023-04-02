@@ -1973,10 +1973,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: 0
-  navMeshAgent: {fileID: 0}
+  navMeshAgent: {fileID: 3294939002730282936}
   active: 0
   player: {fileID: 0}
-  config: {fileID: 0}
+  config: {fileID: 11400000, guid: 9e6c7b19d68ea2541968f2e25ce63fd9, type: 2}
   timer: 0
   enemies: []
   characterController: {fileID: 0}

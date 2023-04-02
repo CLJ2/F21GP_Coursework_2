@@ -24,6 +24,7 @@ public class PlayerSwitching : MonoBehaviour
     {
         characters[selection].GetComponent<PlayerInput>().enabled = true; //Enalbe control of character swapping too
         characters[selection].GetComponent<PlayerMovementInputs>().SetCharacterSelection(selection); //Let character know its selected (for swapping purposes)
+        characters[selection].GetComponent<AiAgent>().active = false;
         virtualCamera.Follow = characters[selection].transform.GetChild(2); //Tell camera to follow new character
     }
 }
