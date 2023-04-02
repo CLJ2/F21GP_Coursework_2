@@ -9,11 +9,8 @@ public class fireWizardGUI : MonoBehaviour
     public ProgressBar water_wizard_health_bar;
     public ProgressBar air_wizard_health_bar;
 
-    private int fire_wizard_health;
-    private int water_wizard_health;
-    private int air_wizard_health;
 
-    void Start()
+    public void SetUpHealthBar(float maxhealth)
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
 
@@ -21,44 +18,22 @@ public class fireWizardGUI : MonoBehaviour
         water_wizard_health_bar = root.Q<ProgressBar>("WaterWizardHealthBar");
         air_wizard_health_bar = root.Q<ProgressBar>("AirWizardHealthBar");
 
+        Debug.Log(maxhealth);
+        //Set the health bars max value to the maxhealth
+        fire_wizard_health_bar.highValue = maxhealth;
+        water_wizard_health_bar.highValue = maxhealth;
+        air_wizard_health_bar.highValue = maxhealth;
 
-        fire_wizard_health=100;
-        water_wizard_health=40;
-        air_wizard_health=88;
-
+        //Set the health bars current value to the max health of the wizard
+        fire_wizard_health_bar.value = maxhealth;
+        water_wizard_health_bar.value = maxhealth;
+        air_wizard_health_bar.value = maxhealth;
     }
 
-    void Update()
+    public void UpdateHealthBars(AiAgent agent, float health)
     {
-       //TODO
-       //m_health = get health (for each wizard)
-       
-       fire_wizard_health_bar.value = fire_wizard_health;
-       water_wizard_health_bar.value = water_wizard_health;
-       air_wizard_health_bar.value = air_wizard_health;
-
-    //     //testing
-    //    if (fire_wizard_health >=100){
-    //         fire_wizard_health = 1;
-    //    }
-    //    else{
-    //         fire_wizard_health=fire_wizard_health+1;
-    //    }
-
-    //     if (water_wizard_health >=100){
-    //         water_wizard_health = 1;
-    //     }
-    //     else{
-    //         water_wizard_health = water_wizard_health+2;
-    //     }
-        
-    //     if (air_wizard_health <=0){
-    //         air_wizard_health = 100;
-    //     }
-    //     else{
-    //         air_wizard_health = air_wizard_health-3;
-    //     }
-
-
+        if (agent.name == "FireWizard") fire_wizard_health_bar.value = health;
+        if (agent.name == "WaterWizard") water_wizard_health_bar.value = health;
+        if (agent.name == "AirWizard") air_wizard_health_bar.value = health;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyAiStateID  //possible states for enmey agents to have
+public enum EnemyAiStateID  //possible states for enemy agents to have
 {
     TargetPlayer,
     Dead,
