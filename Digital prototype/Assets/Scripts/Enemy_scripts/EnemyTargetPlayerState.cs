@@ -31,8 +31,7 @@ public class EnemyTargetPlayer : EnemyAiState
         }
         if (Vector3.Distance(agent.playerTransform.position, agent.transform.position) < agent.config.attackRange)  //if close enough to the player, attack player
         {
-            //agent.player.takeDamage();    uncomment once player can take damage;
-            //Debug.Log("attack");
+            agent.animator.SetTrigger("Attack");
         }
     }
 
