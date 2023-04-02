@@ -18,6 +18,8 @@ public class WitchAiAgent : MonoBehaviour
     public GameObject[] barricades;
     public GameObject barricade;
     public Animation animator;
+    public GameObject healing_spell;
+    public GameObject attack_spell;
 
     // Start is called before the first frame update
     void Start()
