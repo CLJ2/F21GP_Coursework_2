@@ -1769,6 +1769,7 @@ GameObject:
   - component: {fileID: 6472690076216136300}
   - component: {fileID: 3294939002730282936}
   - component: {fileID: -7332768332754743740}
+  - component: {fileID: 8120906137418583885}
   m_Layer: 9
   m_Name: WaterWizard
   m_TagString: AiPlayer
@@ -1934,8 +1935,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryAbility: {fileID: 0}
   primaryCooldown: 0
-  secondaryAbility: {fileID: 0}
-  secondaryCooldown: 0
+  secondaryAbility: {fileID: 8120906137418583885}
+  secondaryCooldown: 1
   meleeAbility: {fileID: 2987367263262414988}
   meleeCooldown: 1.1
 --- !u!195 &3294939002730282936
@@ -1973,6 +1974,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: 0
+--- !u!114 &8120906137418583885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878810683277006649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f78a234b3af6ef48911eebfa1d4159f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 443653445314069269, guid: 34b02160d24db1a41b261dc52c18d09b, type: 3}
+  iceExplosionDelay: 0.3
+  iceExplosionForwardPosition: 1.9
+  iceExplosionHeight: 1
+  iceExplosionScale: 2
 --- !u!1 &1878814632148710863
 GameObject:
   m_ObjectHideFlags: 0

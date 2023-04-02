@@ -21,29 +21,22 @@ public class iceExplosionEffects : MonoBehaviour
         waitTime-=Time.deltaTime;
     }
 
-    public void OnTriggerEnter(Collider collider)
+    public IEnumerator OnTriggerEnter(Collider collider)
     {
         EnemyAiAgent ai;
         Transform t = collider.transform.root;
         if (t.gameObject.layer == 10 && hasCollided == false)
         {
             hasCollided = true;
-            /* var hitBox = collider.gameObject.GetComponent<EnemyHitbox>();
-            hitBox.OnHit(10, Vector3.one); */
-            nma = t.GetComponent<NavMeshAgent>();
-            animator = t.GetComponent<Animator>();
-            /* nma.isStopped = true;
-            nma.velocity = Vector3.zero;
-            animator.speed = 0; */
-            //animator.speed = 0;
+
             Debug.Log("hit");
-            //StartCoroutine(RestartAI());
             ai = t.GetComponent<EnemyAiAgent>();
-            ai.navMeshAgent.isStopped = true;
-            ai.navMeshAgent.ResetPath();
+            ai.isFrozen= true;
+            ai.animator.speed = 0;
+            ai.frozenTimer = ai.config.freezeDuration;
             
-            ai.navMeshAgent.isStopped = false;
-        }  
+        } 
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
 
