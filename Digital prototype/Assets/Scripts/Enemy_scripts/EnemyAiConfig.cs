@@ -21,4 +21,6 @@ public class EnemyAiConfig : ScriptableObject
 
     public int unhideChance = 2;
     public int attackPlayerOnSightChance = 4;
+
+    public float freezeDuration = 5;
 }

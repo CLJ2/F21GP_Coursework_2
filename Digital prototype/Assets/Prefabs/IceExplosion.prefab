@@ -4892,8 +4892,10 @@ GameObject:
   m_Component:
   - component: {fileID: 443653445314069266}
   - component: {fileID: 443653445314069268}
+  - component: {fileID: 8177033400373522854}
+  - component: {fileID: 7173979977692738395}
   m_Layer: 0
-  m_Name: FX_Explosion_Blue
+  m_Name: IceExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4940,6 +4942,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!135 &8177033400373522854
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443653445314069269}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7173979977692738395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443653445314069269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7303cabf076797f48b31aacc96d58560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &443653445637789877
 GameObject:
   m_ObjectHideFlags: 0
