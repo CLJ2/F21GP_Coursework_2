@@ -12,8 +12,9 @@ public class Healing_circle : MonoBehaviour
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.gameObject.layer == 10){
-                Debug.Log("healy you hahaha");
-                //give health here
+                Debug.Log("healy skelebob hahaha");
+                var hitBox = hitCollider.gameObject.GetComponent<EnemyHitbox>();
+                hitBox.OnHit(-20, Vector3.one);
             }
         }
     }

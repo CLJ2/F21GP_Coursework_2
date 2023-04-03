@@ -22,10 +22,12 @@ public class WitchAiAgent : MonoBehaviour
     public Animation animator;
     public GameObject healing_spell;
     public GameObject attack_spell;
+    public bool dead;
 
     // Start is called before the first frame update
     void Start()
     {
+        dead = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
         ragdoll = GetComponent<WitchRagdoll>();
         //healthBar = GetComponentInChildren<UIHealthBar>();
