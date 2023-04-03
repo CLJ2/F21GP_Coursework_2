@@ -49,7 +49,6 @@ public class IdleState : AiState
 
             agent.timer = agent.config.Timer;
         }
-        Debug.Log("idle");
     }
 
     public void Exit(AiAgent agent)
