@@ -64,11 +64,12 @@ public class EnemyAiAgent : MonoBehaviour
             frozenTimer -= Time.deltaTime;
             if(frozenTimer < 0) {
                 if(isKnocked) {
+                    animator.ResetTrigger("Fall");
                     animator.SetTrigger("Recover");
+                    isKnocked = false;
                 }
                 navMeshAgent.isStopped = false;
                 animator.speed = 1;
-                
             }  
         }
     }
