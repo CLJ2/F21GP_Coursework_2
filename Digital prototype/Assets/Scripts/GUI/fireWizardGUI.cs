@@ -18,7 +18,7 @@ public class fireWizardGUI : MonoBehaviour
         water_wizard_health_bar = root.Q<ProgressBar>("WaterWizardHealthBar");
         air_wizard_health_bar = root.Q<ProgressBar>("AirWizardHealthBar");
 
-        Debug.Log(maxhealth);
+        //Debug.Log(maxhealth);
         //Set the health bars max value to the maxhealth
         fire_wizard_health_bar.highValue = maxhealth;
         water_wizard_health_bar.highValue = maxhealth;
