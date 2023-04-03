@@ -10,6 +10,7 @@ public class flamethrowerDamage : MonoBehaviour
     private float damage;
 
     private int enemyLayer = 10;
+    private int witchLayer = 11;
 
     void OnParticleCollision(GameObject other)
     {
@@ -17,6 +18,11 @@ public class flamethrowerDamage : MonoBehaviour
         if (other.gameObject.layer == enemyLayer)
         {
             var hitBox = other.gameObject.GetComponent<EnemyHitbox>();
+            hitBox.OnHit(damage, Vector3.one);
+        }
+         if (other.gameObject.layer == witchLayer)
+        {
+            var hitBox = other.gameObject.GetComponent<WitchHitbox>();
             hitBox.OnHit(damage, Vector3.one);
         }
     }
