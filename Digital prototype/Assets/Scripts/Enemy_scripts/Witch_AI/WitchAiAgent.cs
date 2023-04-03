@@ -22,6 +22,9 @@ public class WitchAiAgent : MonoBehaviour
     public Animation animator;
     public GameObject healing_spell;
     public GameObject attack_spell;
+     public bool isFrozen = false;
+    public bool isKnocked = false;
+    public float frozenTimer = 0;
     public bool dead;
 
     // Start is called before the first frame update
@@ -57,5 +60,17 @@ public class WitchAiAgent : MonoBehaviour
     void Update()
     {
         stateMachine.Update();
+         if (isFrozen) {
+            navMeshAgent.isStopped = true;
+            frozenTimer -= Time.deltaTime;
+            if(frozenTimer < 0) {
+                if(isKnocked) {
+                    //recover animation
+                }
+                navMeshAgent.isStopped = false;
+                animator.CrossFade("idle_combat", 0.5f);
+                isFrozen = false;
+            }  
+        }
     }
 }
