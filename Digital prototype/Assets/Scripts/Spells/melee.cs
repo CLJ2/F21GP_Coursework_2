@@ -51,12 +51,12 @@ public class melee : Spell
         if (attacking && (collision.gameObject.layer == enemyLayer))
         {
             var hitBox = collision.gameObject.GetComponent<EnemyHitbox>();
-            hitBox.OnHit(1, Vector3.one);
+            hitBox.OnHit(2, Vector3.one);
         }
         if (attacking && (collision.gameObject.layer == witchLayer))
         {
             var hitBox = collision.gameObject.GetComponent<WitchHitbox>();
-            hitBox.OnHit(1, Vector3.one);
+            hitBox.OnHit(2, Vector3.one);
         }
     }
 }

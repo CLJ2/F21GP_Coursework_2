@@ -15,5 +15,6 @@ MonoBehaviour:
   followStateDistance: 5
   followStateStopDistance: 5
   attackEnemyStateDistance: 5
-  attackRange: 5
+  attackRange: 2
+  maxHealth: 50
   Timer: 1
