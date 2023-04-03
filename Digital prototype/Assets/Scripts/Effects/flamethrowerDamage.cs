@@ -14,6 +14,7 @@ public class flamethrowerDamage : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
+        //Debug.Log("Collision");
         if (other.gameObject.layer == enemyLayer)
         {
             var hitBox = other.gameObject.GetComponent<EnemyHitbox>();
