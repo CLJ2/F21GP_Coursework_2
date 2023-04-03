@@ -59,7 +59,7 @@ public class WitchTargetPlayer : WitchAiState
 
     IEnumerator healSpell(WitchAiAgent agent){
         yield return new WaitForSeconds(1);
-        if (agent.dead == false){
+        if (agent.dead == false && agent.isFrozen == false){
             agent.transform.LookAt(agent.playerTransform.position);
             Debug.Log("healing!");
             agent.animator.CrossFade("attack_short_001",0.5f);
@@ -72,7 +72,7 @@ public class WitchTargetPlayer : WitchAiState
 
     IEnumerator attackSpell(WitchAiAgent agent){
         yield return new WaitForSeconds(1);
-        if (agent.dead == false){
+        if (agent.dead == false && agent.isFrozen == false){
             agent.transform.LookAt(agent.playerTransform.position);
             Debug.Log("attacking!");
             agent.animator.CrossFade("attack_short_001",0.5f);
@@ -80,6 +80,7 @@ public class WitchTargetPlayer : WitchAiState
             float yRot = agent.transform.rotation.eulerAngles.y;
             Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
             GameObject current = GameObject.Instantiate(agent.attack_spell);
+            current.GetComponentInChildren<fireballCollision>().fromEnemy = true;
             current.transform.position = agent.transform.position + (positionAdjustment * fireballForwardPosition);
             positionAdjustment =  new Vector3(current.transform.position.x, current.transform.position.y + fireballHeight, current.transform.position.z);
             current.transform.position = positionAdjustment;
