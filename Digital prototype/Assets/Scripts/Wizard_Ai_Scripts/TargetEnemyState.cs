@@ -52,7 +52,7 @@ public class TargetEnemyState : AiState
             {
                 agent.navMeshAgent.destination = agent.transform.position;
                 agent.transform.LookAt(closestEnemy.transform.position);
-                //add attack here
+                agent.attack.beginSpell();
                 if (closestEnemy.GetComponent<EnemyHealth>() != null){
                     if (closestEnemy.GetComponent<EnemyHealth>().health <= 0) agent.stateMachine.ChangeState(AiStateID.Idle);
                 }
