@@ -4893,7 +4893,7 @@ GameObject:
   - component: {fileID: 443653445314069266}
   - component: {fileID: 443653445314069268}
   - component: {fileID: 8177033400373522854}
-  - component: {fileID: 7173979977692738395}
+  - component: {fileID: 918707949154366442}
   m_Layer: 0
   m_Name: IceExplosion
   m_TagString: Untagged
@@ -4955,7 +4955,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7173979977692738395
+--- !u!114 &918707949154366442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4967,6 +4967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7303cabf076797f48b31aacc96d58560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frostDamage: 1
 --- !u!1 &443653445637789877
 GameObject:
   m_ObjectHideFlags: 0

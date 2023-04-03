@@ -17,6 +17,7 @@ public class AiAgent : MonoBehaviour
     public ThirdPersonController thirdPersonController;
     public float health;
     public Animator animator;
+    public Spell attack;
 
     private float animationMovementBlend;
     private int animIDSpeed;

@@ -32,8 +32,14 @@ public class LightningDamage : MonoBehaviour
         foreach (RaycastHit enemy in enemies)
         {
             Debug.Log("Shocking enemy");
-            var hitBox = enemy.transform.gameObject.GetComponent<EnemyHitbox>();
-            hitBox.OnHit(damage, -temp.normalized);
+            if (enemy.transform.gameObject.layer == 10){
+                var hitBox = enemy.transform.gameObject.GetComponent<EnemyHitbox>();
+                hitBox.OnHit(damage, -temp.normalized);
+            }
+            else if (enemy.transform.gameObject.layer == 11){
+                var hitBox = enemy.transform.gameObject.GetComponent<WitchHitbox>();
+                hitBox.OnHit(damage, -temp.normalized);
+            }
         }
        
     }

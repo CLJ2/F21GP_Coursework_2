@@ -2073,6 +2073,7 @@ MonoBehaviour:
   thirdPersonController: {fileID: 0}
   health: 0
   animator: {fileID: 0}
+  attack: {fileID: 7541027560005746363}
 --- !u!195 &-4909276406893808860
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2667,6 +2668,7 @@ GameObject:
   - component: {fileID: 6335833195153701490}
   - component: {fileID: 2454780277975697170}
   - component: {fileID: 6929113773737087622}
+  - component: {fileID: 7541027560005746363}
   - component: {fileID: 5295428685292779451}
   - component: {fileID: 3123816599350067025}
   m_Layer: 9
@@ -2768,6 +2770,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0b3bf2f1bc127145b693c0de33d12a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
+  difficultCollider: {fileID: 0}
+--- !u!114 &7541027560005746363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321810037723348924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac108b3868349541905d8527a60f3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}

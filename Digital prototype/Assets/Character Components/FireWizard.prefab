@@ -1825,6 +1825,7 @@ GameObject:
   - component: {fileID: 7543714472610388861}
   - component: {fileID: 8132930246632798763}
   - component: {fileID: 5441895329424949956}
+  - component: {fileID: 3287046996460134626}
   m_Layer: 9
   m_Name: Staff
   m_TagString: Staff
@@ -1956,6 +1957,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
   difficultCollider: {fileID: 8132930246632798763}
+--- !u!114 &3287046996460134626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193881174970092518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac108b3868349541905d8527a60f3d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
+  difficultCollider: {fileID: 7543714472610388861}
 --- !u!1 &9193885635050732720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,6 +2360,7 @@ MonoBehaviour:
   thirdPersonController: {fileID: 0}
   health: 0
   animator: {fileID: 0}
+  attack: {fileID: 3287046996460134626}
 --- !u!195 &3430453070045137834
 NavMeshAgent:
   m_ObjectHideFlags: 0
