@@ -26,6 +26,7 @@ public class windSpell : Spell
     //Other components
     private GameObject mainCamera;
     private EnemyAiAgent enemyAI;
+    private WitchAiAgent WitchAI;
     private Vector3 original_rot;
     private Vector3 original_pos;
 
@@ -45,7 +46,7 @@ public class windSpell : Spell
         AssignAnimationIDs();
         animator = GetComponent<Animator>();
         //Get Enemy layer
-        EnemyLayer = LayerMask.GetMask("Enemy");
+        EnemyLayer = LayerMask.GetMask("Enemy", "witch_doctor");
     }
 
     //Sets all animation parameters to ID's for faster comparison
@@ -67,8 +68,6 @@ public class windSpell : Spell
         if(Physics.Raycast(ray, out hitData, windForwardLength, EnemyLayer)) {
             if (hitData.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
                 enemyAI = hitData.transform.root.gameObject.GetComponent<EnemyAiAgent>();
-                /* enemyAI.ragdoll.ActivateRagdoll();
-                enemyAI.ragdoll.ApplyForce(Vector3.back * windForce); */
                 enemyAI.animator.SetTrigger("Fall");
                 //wait a couple seconds
                 //isfrozen
@@ -77,8 +76,23 @@ public class windSpell : Spell
                 enemyAI.isFrozen = true;
                 enemyAI.frozenTimer = enemyAI.config.knockdownDuration;
                 enemyAI.isKnocked = true;
-                //enemyAI.ragdoll.DeactivateRagdoll();
-                //yield return new WaitForSeconds(enemyAI.config.knockdownDuration);
+
+            }
+            if (hitData.collider.gameObject.layer == LayerMask.NameToLayer("witch_doctor")) {
+                WitchAI = hitData.transform.root.gameObject.GetComponent<WitchAiAgent>();
+
+                Debug.Log("knocked back witch");
+                WitchAI.animator.Stop();
+                //WitchAI.gameObject.transform.root.GetChild(0).rotation = (Quaternion.Euler(-180,WitchAI.gameObject.transform.rotation.y , WitchAI.gameObject.transform.rotation.z));
+                WitchAI.gameObject.transform.root.GetChild(0).rotation = Quaternion.Lerp(WitchAI.gameObject.transform.rotation,Quaternion.Euler(-180,WitchAI.gameObject.transform.rotation.y , WitchAI.gameObject.transform.rotation.z),0.5f);
+                //wait a couple seconds
+                //isfrozen
+                //deactivate ragdoll
+                
+                WitchAI.isFrozen = true;
+                WitchAI.frozenTimer = WitchAI.config.knockdownDuration;
+                WitchAI.isKnocked = true;
+
             }
         }
         endSpell();
