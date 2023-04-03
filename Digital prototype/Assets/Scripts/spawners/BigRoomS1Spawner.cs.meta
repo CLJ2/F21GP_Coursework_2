@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 7617d3c74580aa145a5980b79faca1fd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - skellybob: {fileID: 165424, guid: 9f4313a771e05c64d8da7ae6bd19a19f, type: 3}
+  - witchDR: {fileID: 6764680829890723596, guid: 9b7f5e986f5eb644da63105188e63416, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

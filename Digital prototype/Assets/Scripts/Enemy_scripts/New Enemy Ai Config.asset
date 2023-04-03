@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef79b790fdebf439ad79116b038611, type: 3}
   m_Name: New Enemy Ai Config
   m_EditorClassIdentifier: 
-  maxSightDistance: 5
+  maxSightDistance: 10
   attackRange: 1
   maxTime: 1
   minDistance: 1
