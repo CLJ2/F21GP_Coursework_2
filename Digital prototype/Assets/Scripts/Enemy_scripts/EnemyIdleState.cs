@@ -11,7 +11,7 @@ public class EnemyIdleState : EnemyAiState
     
     public void Enter(EnemyAiAgent agent)
     {
-        Debug.Log(agent.playersArray);
+        //Debug.Log(agent.playersArray);
     }
 
     public void Update(EnemyAiAgent agent)

@@ -12,7 +12,7 @@ public class TargetEnemyState : AiState
 
     public void Enter(AiAgent agent)
     {
-        Debug.Log("Attack Enemy");
+
     }
 
     public void Update(AiAgent agent)
@@ -36,7 +36,6 @@ public class TargetEnemyState : AiState
             }
             if (Vector3.Distance(closestEnemy.transform.position, agent.transform.position) < agent.config.attackEnemyStateDistance) 
             {
-                Debug.Log(agent.navMeshAgent.isActiveAndEnabled);
                 agent.navMeshAgent.destination = closestEnemy.transform.position; 
             }
             if (Vector3.Distance(closestEnemy.transform.position, agent.transform.position) < agent.config.attackRange)
@@ -49,7 +48,6 @@ public class TargetEnemyState : AiState
             if (closestEnemy != null || closestEnemy.GetComponent<EnemyHealth>().health <= 0) agent.stateMachine.ChangeState(AiStateID.Idle);
             agent.timer = agent.config.Timer;
         }
-        Debug.Log("target");
     }
 
     public void Exit(AiAgent agent)

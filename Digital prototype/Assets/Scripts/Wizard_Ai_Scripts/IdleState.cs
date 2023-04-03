@@ -13,7 +13,7 @@ public class IdleState : AiState
 
     public void Enter(AiAgent agent)
     {
-        Debug.Log("Idle");
+        //Debug.Log("Idle");
     }
 
     public void Update(AiAgent agent)
