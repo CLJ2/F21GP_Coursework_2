@@ -2133,7 +2133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
-  difficultCollider: {fileID: 8132930246632798763}
+  difficultCollider: {fileID: 0}
 --- !u!114 &3287046996460134626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2147,7 +2147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
-  difficultCollider: {fileID: 7543714472610388861}
+  difficultCollider: {fileID: 0}
 --- !u!1 &9193885635050732720
 GameObject:
   m_ObjectHideFlags: 0
