@@ -9,6 +9,6 @@ public class EnemyHitbox : MonoBehaviour
 
     public void OnHit(float damage, Vector3 direction)    //the raycast hit should be replaced with a spell/weapon object. direction is the direction of the attack
     {
-        health.TakeDamage(damage, direction); 
+        health.TakeDamage(damage, direction);
     }
 }

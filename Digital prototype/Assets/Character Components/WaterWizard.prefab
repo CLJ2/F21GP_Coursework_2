@@ -1775,6 +1775,7 @@ GameObject:
   - component: {fileID: 5395462655425830028}
   - component: {fileID: 8000497978095340240}
   - component: {fileID: 117245235491628566}
+  - component: {fileID: -4798271673476103356}
   m_Layer: 9
   m_Name: WaterWizard
   m_TagString: AiPlayer
@@ -1956,6 +1957,7 @@ MonoBehaviour:
   secondaryCooldown: 2.5
   meleeAbility: {fileID: 2987367263262414988}
   meleeCooldown: 1.1
+  reviveAbility: {fileID: -4798271673476103356}
 --- !u!195 &3294939002730282936
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2075,6 +2077,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
+--- !u!114 &-4798271673476103356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878810683277006649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76772f13f42cfa64e92cc108684668dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
 --- !u!1 &1878814632148710863
 GameObject:
   m_ObjectHideFlags: 0

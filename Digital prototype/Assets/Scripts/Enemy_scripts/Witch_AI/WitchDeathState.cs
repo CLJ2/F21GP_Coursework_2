@@ -19,7 +19,7 @@ public class WitchDeathState : WitchAiState
         agent.healthBar.gameObject.SetActive(false);    //turn off health bar
         deathDirection.y = 0.5f;    //give direction of death a heigh to make the agent lift up at the start of death
         agent.dead =true;
-        Debug.Log("dead now yey");
+        //Debug.Log("dead now yey");
         }
 
     }

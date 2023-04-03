@@ -22,7 +22,6 @@ public class melee : Spell
         {
             colliderIssues = true;
         }
-        
     }
 
     protected override void AssignAnimationIDs()
