@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class IceBolt : MonoBehaviour
 {
+    public int iceBoltDamage;
     // Start is called before the first frame update
     void Start()
     {
-        
+        iceBoltDamage = 15;
     }
 
     // Update is called once per frame
@@ -20,7 +21,12 @@ public class IceBolt : MonoBehaviour
         if (collision.gameObject.layer == 10)
         {
             var hitBox = collision.gameObject.GetComponent<EnemyHitbox>();
-            hitBox.OnHit(10, Vector3.one);
+            hitBox.OnHit(iceBoltDamage, Vector3.one);
+        }
+        if (collision.gameObject.layer == 11)
+        {
+            var hitBox = collision.gameObject.GetComponent<WitchHitbox>();
+            hitBox.OnHit(iceBoltDamage, Vector3.one);
         }
         Destroy(gameObject);
     }

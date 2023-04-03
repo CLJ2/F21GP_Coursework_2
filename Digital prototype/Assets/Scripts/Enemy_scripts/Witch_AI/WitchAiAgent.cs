@@ -12,23 +12,37 @@ public class WitchAiAgent : MonoBehaviour
     public WitchAiConfig config;
     public float timer = 0.0f;
     public float spellTimer = 0.0f;
-    public Ragdoll ragdoll;
+    public WitchRagdoll ragdoll;
     public UIHealthBar healthBar;
+    public List<GameObject> players = new List<GameObject>();
+    public GameObject[] playersArray;
     public GameObject player;
     public GameObject[] barricades;
     public GameObject barricade;
     public Animation animator;
     public GameObject healing_spell;
     public GameObject attack_spell;
+    public bool dead;
 
     // Start is called before the first frame update
     void Start()
     {
+        dead = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        ragdoll = GetComponent<Ragdoll>();
-        healthBar = GetComponentInChildren<UIHealthBar>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = player.gameObject.transform;
+        ragdoll = GetComponent<WitchRagdoll>();
+        //healthBar = GetComponentInChildren<UIHealthBar>();
+        //player = GameObject.FindGameObjectWithTag("Player");
+
+        GameObject playerTemp = GameObject.FindGameObjectWithTag("Player");
+        GameObject[] playerAiTemp = GameObject.FindGameObjectsWithTag("AiPlayer");
+        players.Add(playerTemp);
+        foreach (GameObject i in playerAiTemp)
+        {
+            players.Add(i);
+        }
+        playersArray = players.ToArray();
+
+        //playerTransform = player.gameObject.transform;
         barricades = GameObject.FindGameObjectsWithTag("Barricades");
         animator = GetComponent<Animation>();
         

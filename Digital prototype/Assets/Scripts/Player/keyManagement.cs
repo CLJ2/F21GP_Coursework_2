@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class keyManagement : MonoBehaviour
 {
-    private int collectableLayer = 11;
-    private int doorLayer = 12;
+    private int collectableLayer = 13;
+    private int doorLayer = 14;
     private bool hasKey;
 
     // Start is called before the first frame update
