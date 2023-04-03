@@ -24,8 +24,6 @@ public class WitchTargetPlayer : WitchAiState
     public void Enter(WitchAiAgent agent)
     {
         //this acts similar to the start function
-       
-        Debug.Log("attackstate entered");
         agent.animator.CrossFade("idle_combat", 0.5f);
     }
 
@@ -37,8 +35,9 @@ public class WitchTargetPlayer : WitchAiState
         agent.spellTimer -= Time.deltaTime; 
         if(agent.timer < 0) //if the timer has reached 0
         {
+            
             float srtDistance = (agent.playerTransform.position - agent.navMeshAgent.destination).sqrMagnitude; //calc distance to the player
-            if (srtDistance < agent.config.minDistance*agent.config.minDistance || srtDistance > agent.config.maxDistance*agent.config.maxDistance)    //if the distance is greater than the maxdistance^2
+            if ((srtDistance < agent.config.minDistance*agent.config.minDistance || srtDistance > agent.config.maxDistance*agent.config.maxDistance) && agent.dead == false)    //if the distance is greater than the maxdistance^2
             {
                 agent.navMeshAgent.isStopped = false;
                 
@@ -54,36 +53,38 @@ public class WitchTargetPlayer : WitchAiState
             
             if (Random.Range(0, 4) < 2) agent.StartCoroutine(healSpell(agent));
             else agent.StartCoroutine(attackSpell(agent));
-            Debug.Log("wants to attack");
             agent.spellTimer = agent.config.spellCooldown;
         }
     }
 
     IEnumerator healSpell(WitchAiAgent agent){
-        yield return new WaitForSeconds(3);
-        agent.transform.LookAt(agent.playerTransform.position);
-        Debug.Log("healing!");
-        agent.animator.CrossFade("attack_short_001",0.5f);
-        agent.animator.CrossFadeQueued("idle_combat", 0.5f);
-        GameObject current = GameObject.Instantiate(agent.healing_spell);
-        current.transform.position = new Vector3(agent.transform.position.x,agent.transform.position.y + 2,agent.transform.position.z);
-        current.transform.LookAt(agent.playerTransform.position);
+        yield return new WaitForSeconds(1);
+        if (agent.dead == false){
+            agent.transform.LookAt(agent.playerTransform.position);
+            Debug.Log("healing!");
+            agent.animator.CrossFade("attack_short_001",0.5f);
+            agent.animator.CrossFadeQueued("idle_combat", 0.5f);
+            GameObject current = GameObject.Instantiate(agent.healing_spell);
+            current.transform.position = new Vector3(agent.transform.position.x,agent.transform.position.y + 2,agent.transform.position.z);
+            current.transform.LookAt(agent.playerTransform.position);
+        } 
     }
 
     IEnumerator attackSpell(WitchAiAgent agent){
-        yield return new WaitForSeconds(3);
-        agent.transform.LookAt(agent.playerTransform.position);
-        Debug.Log("attacking!");
-        agent.animator.CrossFade("attack_short_001",0.5f);
-        agent.animator.CrossFadeQueued("idle_combat", 0.5f);
-        float yRot = agent.transform.rotation.eulerAngles.y;
-        Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
-        GameObject current = GameObject.Instantiate(agent.attack_spell);
-        current.transform.position = agent.transform.position + (positionAdjustment * fireballForwardPosition);
-        positionAdjustment =  new Vector3(current.transform.position.x, current.transform.position.y + fireballHeight, current.transform.position.z);
-        current.transform.position = positionAdjustment;
-        current.transform.LookAt(new Vector3(agent.playerTransform.position.x, agent.playerTransform.position.y + 1, agent.playerTransform.position.z));
-        
+        yield return new WaitForSeconds(1);
+        if (agent.dead == false){
+            agent.transform.LookAt(agent.playerTransform.position);
+            Debug.Log("attacking!");
+            agent.animator.CrossFade("attack_short_001",0.5f);
+            agent.animator.CrossFadeQueued("idle_combat", 0.5f);
+            float yRot = agent.transform.rotation.eulerAngles.y;
+            Vector3 positionAdjustment = Quaternion.Euler(0.0f, yRot, 0.0f) * Vector3.forward;
+            GameObject current = GameObject.Instantiate(agent.attack_spell);
+            current.transform.position = agent.transform.position + (positionAdjustment * fireballForwardPosition);
+            positionAdjustment =  new Vector3(current.transform.position.x, current.transform.position.y + fireballHeight, current.transform.position.z);
+            current.transform.position = positionAdjustment;
+            current.transform.LookAt(new Vector3(agent.playerTransform.position.x, agent.playerTransform.position.y + 1, agent.playerTransform.position.z));
+        }
     }
 
     public void Exit(WitchAiAgent agent)

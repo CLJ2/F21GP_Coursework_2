@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236475763533962582}
   - component: {fileID: 9189105731621709718}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Door_iron_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   degreesPerSecond: 20
+  desiredRotation: 0
   locked: 0
 --- !u!1 &4960041150965508391
 GameObject:
@@ -59,7 +60,7 @@ GameObject:
   - component: {fileID: 3611097319797908224}
   - component: {fileID: 1530587891031318463}
   - component: {fileID: 8302630821648595208}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

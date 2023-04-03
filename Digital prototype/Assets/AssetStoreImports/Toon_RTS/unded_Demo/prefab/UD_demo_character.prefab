@@ -1306,6 +1306,9 @@ MonoBehaviour:
   barricades: []
   barricade: {fileID: 0}
   animator: {fileID: 0}
+  isFrozen: 0
+  isKnocked: 0
+  frozenTimer: 0
 --- !u!114 &6404071971503148806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1330,6 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90165bab5eadfec4eb3dde34a89d21a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
 --- !u!1 &165938
 GameObject:
   m_ObjectHideFlags: 0

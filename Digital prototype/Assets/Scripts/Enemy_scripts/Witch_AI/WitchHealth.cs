@@ -7,14 +7,14 @@ public class WitchHealth : MonoBehaviour
 {
     private float health;   //Stpres current agent health
     WitchAiAgent agent; //Stores agent Ai object
-    WitchUIHealthBar healthBar;  //Stores agent healthbar
+    UIHealthBar healthBar;  //Stores agent healthbar
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<WitchAiAgent>();   //Get the agent Ai component
         health = agent.config.maxhealth;    //set current health to maxhealth of the agent upon spawning
-        healthBar = GetComponentInChildren<WitchUIHealthBar>();  //get healthbar component
+        healthBar = GetComponentInChildren<UIHealthBar>();  //get healthbar component
 
         var rigidBodies = GetComponentsInChildren<Rigidbody>(); //get all rigidbody components
         foreach (var rigidBody in rigidBodies)

@@ -15,14 +15,14 @@ public class WizardHealth : MonoBehaviour
         health = agent.config.maxHealth;
         gui = GameObject.Find("GUI").GetComponent<fireWizardGUI>();
         gui.SetUpHealthBar(agent.config.maxHealth);
-        Debug.Log(agent);
+        //Debug.Log(agent);
     }
 
     public void TakeDamage(float damage)
     {
         health -= damage;
         gui.UpdateHealthBars(agent, health);
-        if(health < 0)
+        if(health <= 0)
         {
             agent.stateMachine.ChangeState(AiStateID.Downed);
         }

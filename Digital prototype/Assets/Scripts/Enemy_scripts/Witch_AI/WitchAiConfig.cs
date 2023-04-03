@@ -21,4 +21,7 @@ public class WitchAiConfig : ScriptableObject
     public float maxhealth = 50.0f;
 
     public int attackPlayerOnSightChance = 4;
+
+    public float freezeDuration = 5;
+    public float knockdownDuration = 3;
 }

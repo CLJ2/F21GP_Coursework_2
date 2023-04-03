@@ -13,10 +13,15 @@ public class WitchDeathState : WitchAiState
 
     public void Enter(WitchAiAgent agent)
     {
-        agent.ragdoll.ActivateRagdoll();    //upon death, turn on the ragdoll physics
+        agent.healthBar.gameObject.SetActive(false);
+        if(agent.dead == false){
+        agent.animator.CrossFade("dead", 0.5f);
         agent.healthBar.gameObject.SetActive(false);    //turn off health bar
         deathDirection.y = 0.5f;    //give direction of death a heigh to make the agent lift up at the start of death
-        agent.ragdoll.ApplyForce(deathDirection * agent.config.deathForce); //apply the force to the agent
+        agent.dead =true;
+        Debug.Log("dead now yey");
+        }
+
     }
 
     public void Update(WitchAiAgent agent)

@@ -11,22 +11,23 @@ public class EnemyIdleState : EnemyAiState
     
     public void Enter(EnemyAiAgent agent)
     {
-        
+        //Debug.Log(agent.playersArray);
     }
 
     public void Update(EnemyAiAgent agent)
     {
-        GameObject player = agent.playersArray[Random.Range(0, agent.playersArray.Length)];
-        agent.playerTransform = player.transform;
+        agent.player = agent.playersArray[Random.Range(0, agent.playersArray.Length)];
+        agent.playerTransform = agent.player.transform;
         Vector3 playerDirection = agent.playerTransform.position - agent.transform.position;
         if (playerDirection.magnitude > agent.config.maxSightDistance) return;
 
         Vector3 agentDirection = agent.transform.forward;
         playerDirection.Normalize();
         float dotProduct = Vector3.Dot(agentDirection, playerDirection);
-        if (dotProduct > 0.0f) 
+        if (dotProduct > 0.0f && agent.player.GetComponent<WizardHealth>().health > 0) 
         {
-            if (Random.Range(0, 11) < agent.config.attackPlayerOnSightChance) agent.stateMachine.ChangeState(EnemyAiStateID.TargetPlayer);
+            if (Random.Range(0, 11) < agent.config.attackPlayerOnSightChance) 
+            agent.stateMachine.ChangeState(EnemyAiStateID.TargetPlayer);
             else agent.stateMachine.ChangeState(EnemyAiStateID.Hide);
         }
     }
