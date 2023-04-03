@@ -5,12 +5,15 @@ using UnityEngine;
 public class fireballCollision : MonoBehaviour
 {
 
+    private int playerLayer = 9;
     private int enemyLayer = 10;
     private int witchLayer = 11;
-    private int fireBallDamage = 20;
+    private int fireBallDamage = 5;
+    public bool fromEnemy = false;
 
     public void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("spell thrown");
         if (collision.gameObject.layer == enemyLayer)
         {
             var hitBox = collision.gameObject.GetComponent<EnemyHitbox>();
@@ -21,13 +24,9 @@ public class fireballCollision : MonoBehaviour
             var hitBox = collision.gameObject.GetComponent<WitchHitbox>();
             hitBox.OnHit(fireBallDamage, Vector3.one);
         }
-         if (GetComponent<Collider>().gameObject.tag == "Player")
+        if (collision.gameObject.layer ==  playerLayer && fromEnemy == true)
         {
-            GetComponent<Collider>().GetComponent<WizardHealth>().TakeDamage(fireBallDamage);
-        }
-        if (GetComponent<Collider>().gameObject.tag == "AiPlayer")
-        {
-            GetComponent<Collider>().GetComponent<WizardHealth>().TakeDamage(fireBallDamage);
+            collision.gameObject.GetComponent<WizardHealth>().TakeDamage(fireBallDamage);
         }
     }
 }

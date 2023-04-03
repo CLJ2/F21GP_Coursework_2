@@ -2003,6 +2003,7 @@ MonoBehaviour:
   thirdPersonController: {fileID: 0}
   health: 0
   animator: {fileID: 0}
+  attack: {fileID: 712599382749543160}
 --- !u!114 &-966513517507426968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2048,7 +2049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 443653445314069269, guid: 34b02160d24db1a41b261dc52c18d09b, type: 3}
   iceExplosionDelay: 0.3
-  iceExplosionScale: 2
+  iceExplosionScale: 3
 --- !u!114 &8000497978095340240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2647,6 +2648,7 @@ GameObject:
   - component: {fileID: 2987367263262414988}
   - component: {fileID: 8085766215816214447}
   - component: {fileID: 2496175980110819688}
+  - component: {fileID: 712599382749543160}
   m_Layer: 9
   m_Name: Staff
   m_TagString: Staff
@@ -2763,3 +2765,17 @@ CapsuleCollider:
   m_Height: 2.3
   m_Direction: 1
   m_Center: {x: 0, y: -0.13, z: 0}
+--- !u!114 &712599382749543160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745326595631558970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac108b3868349541905d8527a60f3d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
+  difficultCollider: {fileID: 0}

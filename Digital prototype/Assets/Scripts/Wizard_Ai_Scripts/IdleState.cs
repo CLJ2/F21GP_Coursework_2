@@ -33,15 +33,26 @@ public class IdleState : AiState
             agent.enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in agent.enemies)
             {
-                if (Vector3.Distance(enemy.transform.position, agent.transform.position) < agent.config.attackEnemyStateDistance && enemy.GetComponent<EnemyHealth>().health > 0)
-                {
-                    agent.stateMachine.ChangeState(AiStateID.TargetEnemy);
+                if (enemy.GetComponent<EnemyHealth>() != null){
+                    if (Vector3.Distance(enemy.transform.position, agent.transform.position) < agent.config.attackEnemyStateDistance && enemy.GetComponent<EnemyHealth>().health > 0)
+                    {
+                        agent.stateMachine.ChangeState(AiStateID.TargetEnemy);
+                    }
+                }
+                else if (enemy.GetComponent<WitchHealth>() != null){
+                    if (Vector3.Distance(enemy.transform.position, agent.transform.position) < agent.config.attackEnemyStateDistance && enemy.GetComponent<WitchHealth>().health > 0)
+                    {
+                        agent.stateMachine.ChangeState(AiStateID.TargetEnemy);
+                    }
                 }
             }
 
             agent.timer = agent.config.Timer;
         }
+<<<<<<< HEAD
         //Debug.Log("idle");
+=======
+>>>>>>> main
     }
 
     public void Exit(AiAgent agent)
