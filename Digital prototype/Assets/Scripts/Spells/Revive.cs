@@ -17,11 +17,13 @@ public class Revive : Spell
 
     public override void beginSpell()
     {
-        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, radius, LayerMask.NameToLayer("Player"));
+        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, radius, 1<<9);
         if (colliders != null)
         {
+            //Debug.Log(colliders.Length);
             foreach(Collider collider in colliders)
             {
+                //Debug.Log(collider.gameObject);
                 StartCoroutine(ReviveAbility(collider.gameObject));
             }
         }
@@ -30,9 +32,9 @@ public class Revive : Spell
 
     IEnumerator ReviveAbility(GameObject ally)
     {
-        if (ally.GetComponent<WizardHealth>().health <= 0)
+        if (ally.GetComponent<WizardHealth>().health <= 0 && !ally.Equals(gameObject))
         {
-            ally.GetComponent<Animator>().SetBool("Downed", false);
+            //Debug.Log(ally.name);
             yield return new WaitForSeconds(1);
             ally.GetComponent<WizardHealth>().health = ally.GetComponent<AiAgent>().config.maxHealth;
         }

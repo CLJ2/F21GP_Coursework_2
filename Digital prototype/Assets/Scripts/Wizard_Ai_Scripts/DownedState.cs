@@ -17,15 +17,17 @@ public class DownedState : AiState
 
     public void Update(AiAgent agent)
     {
-        if (agent.health > 0.0f)
+        
+        if (agent.GetComponent<WizardHealth>().health > 0.0f)
         {
-            Debug.Log("healing");
+            //Debug.Log("healing");
+            agent.GetComponent<WizardHealth>().gui.UpdateHealthBars(agent, agent.GetComponent<WizardHealth>().health);
             agent.stateMachine.ChangeState(AiStateID.Idle);
         }
     }
 
     public void Exit(AiAgent agent)
     {
- 
+        agent.animator.SetBool("Downed", false);
     }
 }

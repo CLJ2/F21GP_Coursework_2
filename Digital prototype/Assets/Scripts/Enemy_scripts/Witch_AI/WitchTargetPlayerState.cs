@@ -61,7 +61,7 @@ public class WitchTargetPlayer : WitchAiState
         yield return new WaitForSeconds(1);
         if (agent.dead == false){
             agent.transform.LookAt(agent.playerTransform.position);
-            Debug.Log("healing!");
+            //Debug.Log("healing!");
             agent.animator.CrossFade("attack_short_001",0.5f);
             agent.animator.CrossFadeQueued("idle_combat", 0.5f);
             GameObject current = GameObject.Instantiate(agent.healing_spell);
@@ -74,7 +74,7 @@ public class WitchTargetPlayer : WitchAiState
         yield return new WaitForSeconds(1);
         if (agent.dead == false){
             agent.transform.LookAt(agent.playerTransform.position);
-            Debug.Log("attacking!");
+            //Debug.Log("attacking!");
             agent.animator.CrossFade("attack_short_001",0.5f);
             agent.animator.CrossFadeQueued("idle_combat", 0.5f);
             float yRot = agent.transform.rotation.eulerAngles.y;
