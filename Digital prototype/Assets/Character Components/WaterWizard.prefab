@@ -2046,7 +2046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 443653445314069269, guid: 34b02160d24db1a41b261dc52c18d09b, type: 3}
   iceExplosionDelay: 0.3
-  iceExplosionScale: 2
+  iceExplosionScale: 3
 --- !u!114 &8000497978095340240
 MonoBehaviour:
   m_ObjectHideFlags: 0

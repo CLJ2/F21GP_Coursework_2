@@ -70,6 +70,7 @@ public class EnemyAiAgent : MonoBehaviour
                 }
                 navMeshAgent.isStopped = false;
                 animator.speed = 1;
+                isFrozen = false;
             }  
         }
     }
