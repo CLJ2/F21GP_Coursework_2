@@ -14,12 +14,12 @@ public class windSpell : Spell
     [Tooltip("What layers does the wind affect")]
     [SerializeField]
     private LayerMask EnemyLayer;
-    [Tooltip("How strong is the wind")]
-    [SerializeField]
-    private float windForce = 400f;
-    [Tooltip("How long does the wind knockdown for")]
-    [SerializeField]
-    private float windKnockdownTime = 5f;
+    //[Tooltip("How strong is the wind")]
+    //[SerializeField]
+    //private float windForce = 400f;
+    //[Tooltip("How long does the wind knockdown for")]
+    //[SerializeField]
+    //private float windKnockdownTime = 5f;
 
     // animation IDs
     private int animIDAbility;

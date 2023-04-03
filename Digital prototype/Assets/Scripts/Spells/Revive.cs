@@ -45,7 +45,7 @@ public class Revive : Spell
         animIDInteract = Animator.StringToHash("Interact");
     }
 
-    public void endSpell()
+    public new void endSpell()
     {
         gameObject.SendMessageUpwards("abilityFinished");
     }
