@@ -15,6 +15,7 @@ public class PlayerMovementInputs : MonoBehaviour
     private bool useAbility;
     private bool useSecondaryAbility;
     private bool melee;
+    private bool interact;
     [Tooltip("This must equal the position of this wizard in follow camera array at start")]
     [SerializeField]
     private int characterSelection;
@@ -69,6 +70,11 @@ public class PlayerMovementInputs : MonoBehaviour
         melee = value.isPressed;
     }
 
+    public void OnInteract(InputValue value)
+    {
+        interact = value.isPressed;
+    }
+
     private void OnApplicationFocus(bool hasFocus)
     {
         SetCursorState(cursorLocked);
@@ -115,6 +121,11 @@ public class PlayerMovementInputs : MonoBehaviour
         return melee;
     }
 
+    public bool GetInteract()
+    {
+        return interact;
+    }
+
     public int GetCharacterSelection()
     {
         return characterSelection;
@@ -143,6 +154,11 @@ public class PlayerMovementInputs : MonoBehaviour
     public void SetMelee(bool value)
     {
         melee = value;
+    }
+
+    public void SetInteract(bool value)
+    {
+        interact = value;
     }
 
     public void SetSwitchNeeded(bool value)

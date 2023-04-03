@@ -349,6 +349,7 @@ public class ThirdPersonController : MonoBehaviour
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
     }
 
+
     public void enableMove()
     {
         moveAllowed = true;
