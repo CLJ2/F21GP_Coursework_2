@@ -38,7 +38,7 @@ public class iceExplosionSpell : Spell
         yield return new WaitForSeconds(iceExplosionDelay);
         animator.SetBool(animIDAbility, false);
         GameObject current = GameObject.Instantiate(projectile);
-        current.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        current.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         ParticleSystem[] ps = current.GetComponentsInChildren<ParticleSystem>();
 
         for (int i = 0; i < ps.Length; i++)
