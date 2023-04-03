@@ -44,8 +44,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
   - FireLayer
   m_SortingLayers:
   - name: Default
