@@ -22,4 +22,5 @@ MonoBehaviour:
   maxhealth: 50
   unhideChance: 2
   attackPlayerOnSightChance: 5
-  damage: 1
+  damage: 100
+  freezeDuration: 5
