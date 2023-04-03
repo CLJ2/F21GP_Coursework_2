@@ -46,7 +46,7 @@ public class AiAgent : MonoBehaviour
         animIDSpeed = Animator.StringToHash("Speed");
     }
         // Update is called once per frame
-        void Update()
+    void Update()
     {
         stateMachine.Update();
         animationMovementBlend = Mathf.Lerp(animationMovementBlend, navMeshAgent.velocity.magnitude, Time.deltaTime * navMeshAgent.acceleration);
