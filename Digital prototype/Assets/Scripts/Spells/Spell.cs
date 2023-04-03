@@ -24,4 +24,18 @@ public abstract class Spell : MonoBehaviour
     {
         gameObject.SendMessage("abilityFinished");
     }
+
+    // Rotates the player to face the camera direction smoothly
+    public IEnumerator RotateOverTime() {
+        float timer = 0.0f;
+        Vector3 fwd = new Vector3(transform.localEulerAngles.x, Camera.main.transform.localEulerAngles.y, transform.localEulerAngles.z);
+        while (timer < 0.5f) {
+            timer += Time.deltaTime;
+            float t = timer / 0.5f;
+            t = t * t * t *(t *(6f *t -15f) + 10f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(fwd), t);
+            yield return null;
+        }
+        yield return null;
+    }
 }

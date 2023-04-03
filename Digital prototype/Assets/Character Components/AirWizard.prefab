@@ -1861,7 +1861,11 @@ GameObject:
   - component: {fileID: 771419628981647747}
   - component: {fileID: 771419628981647773}
   - component: {fileID: 1308906921586756281}
-  - component: {fileID: 5615978924836236750}
+  - component: {fileID: 5242122152233355906}
+  - component: {fileID: -4909276406893808860}
+  - component: {fileID: -601193119926706926}
+  - component: {fileID: 539858958381849912}
+  - component: {fileID: 462756495804802355}
   m_Layer: 9
   m_Name: AirWizard
   m_TagString: AiPlayer
@@ -1960,7 +1964,7 @@ CharacterController:
   m_GameObject: {fileID: 816968258418747857}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 1.877275
   m_Radius: 0.3271355
@@ -1991,7 +1995,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816968258418747857}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50c04fafd39037a439d7228b27a21bf9, type: 3}
   m_Name: 
@@ -2027,11 +2031,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryAbility: {fileID: 0}
   primaryCooldown: 0
-  secondaryAbility: {fileID: 5615978924836236750}
+  secondaryAbility: {fileID: 0}
   secondaryCooldown: 2
   meleeAbility: {fileID: 6929113773737087622}
   meleeCooldown: 1.1
---- !u!114 &5615978924836236750
+--- !u!114 &5242122152233355906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2040,13 +2044,85 @@ MonoBehaviour:
   m_GameObject: {fileID: 816968258418747857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fdea81c73ad8e4448de4de76e2c70e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6773afc9d7753d94a8839a2772993449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 106988, guid: b60b36da51dd44a41a5e9252fd0a8119, type: 3}
-  lightningBoltDelay: 2
-  boltDuration: 5
-  origin: {fileID: 1780863150686055238}
+  initialState: 0
+  navMeshAgent: {fileID: -4909276406893808860}
+  active: 0
+  player: {fileID: 0}
+  config: {fileID: 11400000, guid: 9e6c7b19d68ea2541968f2e25ce63fd9, type: 2}
+  timer: 0
+  enemies: []
+  characterController: {fileID: 0}
+  thirdPersonController: {fileID: 0}
+  health: 0
+  animator: {fileID: 0}
+--- !u!195 &-4909276406893808860
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816968258418747857}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 6
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-601193119926706926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816968258418747857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d64bd2865007a747bebdbb9af324a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  agent: {fileID: 0}
+  gui: {fileID: 0}
+--- !u!114 &539858958381849912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816968258418747857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a734554076144dc4084e080b076dfefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &462756495804802355
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816968258418747857}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 3
 --- !u!1 &816972211590613799
 GameObject:
   m_ObjectHideFlags: 0

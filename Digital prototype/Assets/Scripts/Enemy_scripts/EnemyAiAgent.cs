@@ -19,6 +19,8 @@ public class EnemyAiAgent : MonoBehaviour
     public GameObject[] barricades;
     public GameObject barricade;
     public Animator animator;
+    public bool isFrozen = false;
+    public float frozenTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -56,5 +58,13 @@ public class EnemyAiAgent : MonoBehaviour
     {
         stateMachine.Update();
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+        if (isFrozen) {
+            navMeshAgent.isStopped = true;
+            frozenTimer -= Time.deltaTime;
+            if(frozenTimer < 0) {
+                navMeshAgent.isStopped = false;
+                animator.speed = 1;
+            }  
+        }
     }
 }

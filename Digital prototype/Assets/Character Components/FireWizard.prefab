@@ -2103,6 +2103,11 @@ GameObject:
   - component: {fileID: 7724563765605789138}
   - component: {fileID: 5323442577066029210}
   - component: {fileID: 6772259190379039209}
+  - component: {fileID: 703009622534029615}
+  - component: {fileID: 3430453070045137834}
+  - component: {fileID: -7445139511055663470}
+  - component: {fileID: 710521197724379875}
+  - component: {fileID: 4032229481519640246}
   m_Layer: 9
   m_Name: FireWizard
   m_TagString: Player
@@ -2266,7 +2271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabfaacbb1b7a5a4c8198697755463f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 141530, guid: 369eee557c4d41c479225bf744fa6a5f, type: 3}
+  projectile: {fileID: 141530, guid: b51d38e5115763847abd310200dca41d, type: 3}
   fireballDelay: 0.3
   fireballForwardPosition: 1.9
   fireballHeight: 1
@@ -2304,6 +2309,94 @@ MonoBehaviour:
   secondaryCooldown: 4
   meleeAbility: {fileID: 5441895329424949956}
   meleeCooldown: 1.1
+--- !u!114 &703009622534029615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193899985922452890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6773afc9d7753d94a8839a2772993449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialState: 0
+  navMeshAgent: {fileID: 3430453070045137834}
+  active: 0
+  player: {fileID: 0}
+  config: {fileID: 11400000, guid: 9e6c7b19d68ea2541968f2e25ce63fd9, type: 2}
+  timer: 0
+  enemies: []
+  characterController: {fileID: 0}
+  thirdPersonController: {fileID: 0}
+  health: 0
+  animator: {fileID: 0}
+--- !u!195 &3430453070045137834
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193899985922452890}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 6
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-7445139511055663470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193899985922452890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d64bd2865007a747bebdbb9af324a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  agent: {fileID: 0}
+  gui: {fileID: 0}
+--- !u!114 &710521197724379875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193899985922452890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a734554076144dc4084e080b076dfefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &4032229481519640246
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193899985922452890}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 3
 --- !u!1 &9193908672351851160
 GameObject:
   m_ObjectHideFlags: 0
