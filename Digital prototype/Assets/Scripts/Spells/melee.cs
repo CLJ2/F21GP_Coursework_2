@@ -11,6 +11,7 @@ public class melee : Spell
     private int animIDMelee;
 
     private int enemyLayer = 10;
+    private int witchLayer = 11;
     private bool attacking = false;
     private bool colliderIssues = false;
 
@@ -66,6 +67,11 @@ public class melee : Spell
         if (attacking && (collision.gameObject.layer == enemyLayer))
         {
             var hitBox = collision.gameObject.GetComponent<EnemyHitbox>();
+            hitBox.OnHit(1, Vector3.one);
+        }
+        if (attacking && (collision.gameObject.layer == witchLayer))
+        {
+            var hitBox = collision.gameObject.GetComponent<WitchHitbox>();
             hitBox.OnHit(1, Vector3.one);
         }
     }
