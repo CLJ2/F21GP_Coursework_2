@@ -68,6 +68,9 @@ public class windSpell : Spell
         if(Physics.Raycast(ray, out hitData, windForwardLength, EnemyLayer)) {
             if (hitData.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
                 enemyAI = hitData.transform.root.gameObject.GetComponent<EnemyAiAgent>();
+                /* enemyAI.ragdoll.ActivateRagdoll();
+                enemyAI.ragdoll.ApplyForce(Vector3.back * windForce); */
+                animator.ResetTrigger("Recover");
                 enemyAI.animator.SetTrigger("Fall");
                 //wait a couple seconds
                 //isfrozen
