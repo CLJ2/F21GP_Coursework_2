@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    private float health;   //Stpres current agent health
+    public float health;   //Stpres current agent health
     EnemyAiAgent agent; //Stores agent Ai object
     UIHealthBar healthBar;  //Stores agent healthbar
 

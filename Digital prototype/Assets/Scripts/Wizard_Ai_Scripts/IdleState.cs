@@ -13,7 +13,7 @@ public class IdleState : AiState
 
     public void Enter(AiAgent agent)
     {
-        //Debug.Log("Idle");
+        Debug.Log("Idle");
     }
 
     public void Update(AiAgent agent)
@@ -33,7 +33,7 @@ public class IdleState : AiState
             agent.enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in agent.enemies)
             {
-                if (Vector3.Distance(enemy.transform.position, agent.transform.position) < agent.config.attackEnemyStateDistance)
+                if (Vector3.Distance(enemy.transform.position, agent.transform.position) < agent.config.attackEnemyStateDistance && enemy.GetComponent<EnemyHealth>().health > 0)
                 {
                     agent.stateMachine.ChangeState(AiStateID.TargetEnemy);
                 }
@@ -41,7 +41,7 @@ public class IdleState : AiState
 
             agent.timer = agent.config.Timer;
         }
-
+        Debug.Log("idle");
     }
 
     public void Exit(AiAgent agent)
