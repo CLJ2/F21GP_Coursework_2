@@ -17,6 +17,9 @@ public class windSpell : Spell
     [Tooltip("How strong is the wind")]
     [SerializeField]
     private float windForce = 400f;
+    [Tooltip("How long does the wind knockdown for")]
+    [SerializeField]
+    private float windKnockdownTime = 5f;
 
     // animation IDs
     private int animIDAbility;
@@ -70,9 +73,12 @@ public class windSpell : Spell
                 //wait a couple seconds
                 //isfrozen
                 //deactivate ragdoll
-                yield return new WaitForSeconds(3);
+                
+                enemyAI.isFrozen = true;
+                enemyAI.frozenTimer = enemyAI.config.knockdownDuration;
+                enemyAI.isKnocked = true;
                 //enemyAI.ragdoll.DeactivateRagdoll();
-                enemyAI.animator.SetTrigger("Recover");
+                //yield return new WaitForSeconds(enemyAI.config.knockdownDuration);
             }
         }
         endSpell();
@@ -80,6 +86,7 @@ public class windSpell : Spell
 
     public override void beginSpell()
     {
+        StartCoroutine(RotateOverTime());
         animator.SetBool(animIDAbility, true);
         StartCoroutine(castWind());
     }
