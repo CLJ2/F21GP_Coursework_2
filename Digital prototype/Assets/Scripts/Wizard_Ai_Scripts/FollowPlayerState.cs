@@ -33,7 +33,9 @@ public class FollowPlayerState : AiState
         {
             agent.navMeshAgent.destination = agent.transform.position;
             agent.stateMachine.ChangeState(AiStateID.Idle);
+            
         }
+        
     }
 
     public void Exit(AiAgent agent)

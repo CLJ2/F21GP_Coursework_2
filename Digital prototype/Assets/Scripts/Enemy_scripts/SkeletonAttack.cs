@@ -7,12 +7,11 @@ public class SkeletonAttack : MonoBehaviour
 {
     private EnemyAiAgent agent;
     private float timer;
-    private float timerReset = 0.75f;
 
     void Start()
     {
         agent = GetComponentInParent<EnemyAiAgent>();
-        timer = timerReset;
+        timer = agent.config.attackDamageTimer;
     }
 
     void Update()
@@ -32,7 +31,7 @@ public class SkeletonAttack : MonoBehaviour
             {
                 collider.GetComponent<WizardHealth>().TakeDamage(agent.config.damage);
             }
-            timer = timerReset;
+            timer = agent.config.attackDamageTimer;
         }
     }
 }

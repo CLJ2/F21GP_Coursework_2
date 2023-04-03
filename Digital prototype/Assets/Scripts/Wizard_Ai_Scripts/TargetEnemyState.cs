@@ -42,6 +42,7 @@ public class TargetEnemyState : AiState
             if (Vector3.Distance(closestEnemy.transform.position, agent.transform.position) < agent.config.attackRange)
             {
                 agent.navMeshAgent.destination = agent.transform.position;
+                agent.transform.LookAt(closestEnemy.transform.position);
                 //add attack here
                 if (closestEnemy.GetComponent<EnemyHealth>().health <= 0) agent.stateMachine.ChangeState(AiStateID.Idle);
             }
