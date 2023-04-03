@@ -1866,6 +1866,8 @@ GameObject:
   - component: {fileID: -601193119926706926}
   - component: {fileID: 539858958381849912}
   - component: {fileID: 462756495804802355}
+  - component: {fileID: 2273030988102561362}
+  - component: {fileID: 6418786834489114093}
   m_Layer: 9
   m_Name: AirWizard
   m_TagString: AiPlayer
@@ -2029,10 +2031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648baf4730a5a3548aa39c26936c3316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAbility: {fileID: 0}
-  primaryCooldown: 0
-  secondaryAbility: {fileID: 0}
-  secondaryCooldown: 2
+  primaryAbility: {fileID: 2273030988102561362}
+  primaryCooldown: 1
+  secondaryAbility: {fileID: 6418786834489114093}
+  secondaryCooldown: 2.5
   meleeAbility: {fileID: 6929113773737087622}
   meleeCooldown: 1.1
 --- !u!114 &5242122152233355906
@@ -2122,7 +2124,43 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
+--- !u!114 &2273030988102561362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816968258418747857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f871d0df6b374ea446d62b73a6965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
+  windDelay: 0.3
+  windForwardLength: 15
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  windForce: 400
+  windKnockdownTime: 5
+--- !u!114 &6418786834489114093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816968258418747857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdea81c73ad8e4448de4de76e2c70e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 106988, guid: b60b36da51dd44a41a5e9252fd0a8119, type: 3}
+  lightningBoltDelay: 0.3
+  boltDuration: 5
+  origin: {fileID: 1780863150686055238}
 --- !u!1 &816972211590613799
 GameObject:
   m_ObjectHideFlags: 0
