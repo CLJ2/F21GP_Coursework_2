@@ -22,6 +22,9 @@ public class AbilityManager : MonoBehaviour
     [Tooltip("Melee attack cooldown")]
     [SerializeField]
     private float meleeCooldown;
+    [Header("Revive Ability")]
+    [Tooltip("Interact Ability")]
+    public Spell reviveAbility;
 
     //Whether an ability is being used
     private bool abilityActive;
@@ -73,9 +76,19 @@ public class AbilityManager : MonoBehaviour
             {
                 abilityActive = true;
                 meleeAbility.beginSpell();
-                secondaryTimeoutDelta = secondaryCooldown;
+                secondaryTimeoutDelta = meleeCooldown;
             }
             input.SetMelee(false);
+        }
+        else if (input.GetInteract() == true)
+        {
+            Debug.Log("ability manager");
+            if (abilityActive == false) 
+            {
+                abilityActive = true;
+                reviveAbility.beginSpell();
+            }
+            input.SetInteract(false);
         }
 
         adjustTimers();

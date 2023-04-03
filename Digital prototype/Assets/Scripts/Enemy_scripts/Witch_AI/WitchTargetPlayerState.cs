@@ -5,9 +5,9 @@ using UnityEngine;
 public class WitchTargetPlayer : WitchAiState
 {
 
-    [Tooltip("A small delay to allow for casting animation")]
-    [SerializeField]
-    private float fireballDelay = 0.5f;
+    //[Tooltip("A small delay to allow for casting animation")]
+    //[SerializeField]
+    //private float fireballDelay = 0.5f;
     [Tooltip("How far in front of the wizard should the fireball be conjured")]
     [SerializeField]
     private float fireballForwardPosition = 1.9f;

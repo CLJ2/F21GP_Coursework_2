@@ -13,7 +13,6 @@ public class fireballCollision : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("spell thrown");
         if (collision.gameObject.layer == enemyLayer)
         {
             var hitBox = collision.gameObject.GetComponent<EnemyHitbox>();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DownedState : AiState
 {
@@ -16,7 +17,13 @@ public class DownedState : AiState
 
     public void Update(AiAgent agent)
     {
-        if (agent.health > 0.0f) agent.stateMachine.ChangeState(AiStateID.Idle);
+        
+        if (agent.GetComponent<WizardHealth>().health > 0.0f)
+        {
+            //Debug.Log("healing");
+            agent.GetComponent<WizardHealth>().gui.UpdateHealthBars(agent, agent.GetComponent<WizardHealth>().health);
+            agent.stateMachine.ChangeState(AiStateID.Idle);
+        }
     }
 
     public void Exit(AiAgent agent)
