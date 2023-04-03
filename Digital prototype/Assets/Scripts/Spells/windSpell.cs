@@ -69,6 +69,7 @@ public class windSpell : Spell
                 enemyAI = hitData.transform.root.gameObject.GetComponent<EnemyAiAgent>();
                 /* enemyAI.ragdoll.ActivateRagdoll();
                 enemyAI.ragdoll.ApplyForce(Vector3.back * windForce); */
+                animator.ResetTrigger("Recover");
                 enemyAI.animator.SetTrigger("Fall");
                 //wait a couple seconds
                 //isfrozen
