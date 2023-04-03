@@ -22,7 +22,7 @@ MonoBehaviour:
   maxhealth: 50
   unhideChance: 2
   attackPlayerOnSightChance: 4
-  damage: 3
+  damage: 100
   attackDamageTimer: 0.5
   freezeDuration: 5
   knockdownDuration: 3
