@@ -31,7 +31,9 @@ public class EnemyTargetPlayer : EnemyAiState
         }
         if (Vector3.Distance(agent.playerTransform.position, agent.transform.position) < agent.config.attackRange)  //if close enough to the player, attack player
         {
+            agent.transform.LookAt(agent.playerTransform.position);
             agent.animator.SetTrigger("Attack");
+            if (agent.player.GetComponent<WizardHealth>().health <= 0) agent.stateMachine.ChangeState(EnemyAiStateID.Idle);
         }
     }
 
