@@ -5,6 +5,7 @@ using UnityEngine;
 public class Healing_circle : MonoBehaviour
 {
     // Start is called before the first frame update
+    int healAmount =-2; 
     void Start()
     {
         Destroy(gameObject,2.5f);
@@ -14,7 +15,10 @@ public class Healing_circle : MonoBehaviour
             if (hitCollider.gameObject.layer == 10){
                 Debug.Log("healy skelebob hahaha");
                 var hitBox = hitCollider.gameObject.GetComponent<EnemyHitbox>();
-                hitBox.OnHit(-20, Vector3.one);
+                if (hitCollider.gameObject.GetComponentInParent<EnemyHealth>().health + healAmount >= hitCollider.gameObject.GetComponentInParent<EnemyAiAgent>().config.maxhealth){
+                    Debug.Log("too much health");
+                }
+                else hitBox.OnHit(healAmount, Vector3.one);
             }
         }
     }
