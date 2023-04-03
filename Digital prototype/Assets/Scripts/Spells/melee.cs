@@ -32,6 +32,7 @@ public class melee : Spell
 
     public override void beginSpell()
     {
+        StartCoroutine(RotateOverTime());
         StartCoroutine(meleeAttack());
     }
 

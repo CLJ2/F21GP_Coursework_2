@@ -24,4 +24,5 @@ public class EnemyAiConfig : ScriptableObject
 
     public float damage = 3.0f;
     public float freezeDuration = 5;
+    public float knockdownDuration = 3;
 }

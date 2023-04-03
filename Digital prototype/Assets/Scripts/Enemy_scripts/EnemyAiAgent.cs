@@ -20,6 +20,7 @@ public class EnemyAiAgent : MonoBehaviour
     public GameObject barricade;
     public Animator animator;
     public bool isFrozen = false;
+    public bool isKnocked = false;
     public float frozenTimer = 0;
 
     // Start is called before the first frame update
@@ -62,8 +63,12 @@ public class EnemyAiAgent : MonoBehaviour
             navMeshAgent.isStopped = true;
             frozenTimer -= Time.deltaTime;
             if(frozenTimer < 0) {
+                if(isKnocked) {
+                    animator.SetTrigger("Recover");
+                }
                 navMeshAgent.isStopped = false;
                 animator.speed = 1;
+                
             }  
         }
     }
