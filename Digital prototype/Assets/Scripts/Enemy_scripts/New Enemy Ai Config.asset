@@ -23,4 +23,9 @@ MonoBehaviour:
   unhideChance: 2
   attackPlayerOnSightChance: 5
   damage: 1
+<<<<<<< HEAD
   freezeDuration: 5
+=======
+  freezeDuration: 8
+  knockdownDuration: 5
+>>>>>>> main
