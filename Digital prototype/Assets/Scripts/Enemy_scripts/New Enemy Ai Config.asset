@@ -23,3 +23,5 @@ MonoBehaviour:
   unhideChance: 2
   attackPlayerOnSightChance: 5
   damage: 1
+  freezeDuration: 8
+  knockdownDuration: 5

@@ -27,7 +27,7 @@ public class iceExplosionEffects : MonoBehaviour
         Transform t = collider.transform.root;
         if (t.gameObject.layer == 10)
         {
-            Debug.Log("Frozen!");
+            //Debug.Log("Frozen!");
             ai = t.GetComponent<EnemyAiAgent>();
             ai.isFrozen= true;
             ai.animator.speed = 0;
