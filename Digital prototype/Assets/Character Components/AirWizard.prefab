@@ -2031,10 +2031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648baf4730a5a3548aa39c26936c3316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAbility: {fileID: 0}
-  primaryCooldown: 0
-  secondaryAbility: {fileID: 0}
-  secondaryCooldown: 2
+  primaryAbility: {fileID: 2273030988102561362}
+  primaryCooldown: 1
+  secondaryAbility: {fileID: 6418786834489114093}
+  secondaryCooldown: 2.5
   meleeAbility: {fileID: 6929113773737087622}
   meleeCooldown: 1.1
 --- !u!114 &5242122152233355906
@@ -2142,8 +2142,9 @@ MonoBehaviour:
   windForwardLength: 15
   EnemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   windForce: 400
+  windKnockdownTime: 5
 --- !u!114 &6418786834489114093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,10 +2157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdea81c73ad8e4448de4de76e2c70e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 178460, guid: 2736bbc2f2c78a949957b0719c2992bd, type: 3}
+  projectile: {fileID: 106988, guid: b60b36da51dd44a41a5e9252fd0a8119, type: 3}
   lightningBoltDelay: 0.3
-  boltDuration: 0
-  origin: {fileID: 0}
+  boltDuration: 5
+  origin: {fileID: 1780863150686055238}
 --- !u!1 &816972211590613799
 GameObject:
   m_ObjectHideFlags: 0
