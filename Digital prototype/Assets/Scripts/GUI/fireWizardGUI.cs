@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class fireWizardGUI : MonoBehaviour
 {
@@ -35,5 +36,14 @@ public class fireWizardGUI : MonoBehaviour
         if (agent.name == "FireWizard") fire_wizard_health_bar.value = health;
         if (agent.name == "WaterWizard") water_wizard_health_bar.value = health;
         if (agent.name == "AirWizard") air_wizard_health_bar.value = health;
+
+
+        if (air_wizard_health_bar.value <= 0 && water_wizard_health_bar.value <=0 && fire_wizard_health_bar.value <= 0) {
+            SceneManager.LoadScene(0);
+
+        }
     }
 }
+
+
+       
