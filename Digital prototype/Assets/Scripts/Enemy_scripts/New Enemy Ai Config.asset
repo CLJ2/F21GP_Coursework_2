@@ -19,10 +19,10 @@ MonoBehaviour:
   hideDistance: 2
   hideRange: 10
   deathForce: 5
-  maxhealth: 50
+  maxhealth: 30
   unhideChance: 2
   attackPlayerOnSightChance: 4
-  damage: 100
+  damage: 3
   attackDamageTimer: 0.5
   freezeDuration: 5
   knockdownDuration: 3

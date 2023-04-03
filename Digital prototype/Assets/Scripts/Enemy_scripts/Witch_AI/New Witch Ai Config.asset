@@ -20,5 +20,7 @@ MonoBehaviour:
   maxDistance: 20
   wantedDistance: 12
   deathForce: 5
-  maxhealth: 50
+  maxhealth: 70
   attackPlayerOnSightChance: 4
+  freezeDuration: 5
+  knockdownDuration: 3
