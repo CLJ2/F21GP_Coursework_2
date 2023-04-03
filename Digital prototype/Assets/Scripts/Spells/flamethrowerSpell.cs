@@ -47,6 +47,7 @@ public class flamethrowerSpell : Spell
 
     public override void beginSpell()
     {
+        StartCoroutine(RotateOverTime());
         StartCoroutine(startFlamethrower());
         gameObject.SendMessage("disableMove");
     }

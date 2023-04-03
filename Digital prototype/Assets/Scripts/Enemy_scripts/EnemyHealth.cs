@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour
     //calculate health when being damaged
     public void TakeDamage(float damage, Vector3 direction)
     {
-        if(healthBar.gameObject.active == false) healthBar.gameObject.SetActive(true);
+        if(healthBar.gameObject.activeSelf == false) healthBar.gameObject.SetActive(true);
         health -= damage;
         healthBar.SetHealthBarPecentage(health/agent.config.maxhealth);
         if (health < 0)
